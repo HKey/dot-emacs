@@ -1,5 +1,6 @@
 ;;; init.el ---   -*- lexical-binding: t; -*-
 
+;;; Package setup
 (require 'package)
 
 ;; add repositories
@@ -13,8 +14,12 @@
     (package-refresh-contents)
     (package-install 'el-init)))
 
+
+;;; el-init loading
+
 (require 'el-init)
 
+(setq el-init-lazy-init-regexp "\\`config-\\(.+\\)\\'")
 
 (let ((dot-emacs-root (file-name-directory
                        (or (buffer-file-name) load-file-name))))

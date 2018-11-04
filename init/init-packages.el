@@ -11,8 +11,16 @@
 
 (require 'use-package)
 
-(setq use-package-always-defer t
-      use-package-always-ensure t)
+(eval-and-compile
+  (setq use-package-always-defer t
+        use-package-always-ensure t))
+
+;;; rust
+
+(use-package rust-mode)
+
+(use-package racer)
+
 
 
 (provide 'init-packages)
