@@ -21,6 +21,8 @@
 
 (use-package racer)
 
+(use-package flycheck-rust)
+
 
 
 (provide 'init-packages)
