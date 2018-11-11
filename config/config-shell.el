@@ -6,6 +6,7 @@
 
 (defun my-shell-hook ()
   ;; disable echoing when input commands
+  (cl-assert (null comint-process-echoes))
   (setq-local comint-process-echoes t))
 
 (add-hook 'shell-mode-hook #'my-shell-hook)
