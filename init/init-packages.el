@@ -24,6 +24,13 @@
 (use-package flycheck-rust)
 
 
+;;; dimmer
+
+(use-package dimmer
+  :init
+  (dimmer-mode 1))
+
+
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
