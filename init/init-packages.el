@@ -28,7 +28,10 @@
 
 (use-package dimmer
   :init
-  (dimmer-mode 1))
+  (dimmer-mode 1)
+  :config
+  ;; Disable dimmer for helm buffers
+  (setq dimmer-exclusion-regexp "helm"))
 
 
 
