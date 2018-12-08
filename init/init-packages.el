@@ -30,8 +30,8 @@
   :init
   (dimmer-mode 1)
   :config
-  ;; Disable dimmer for helm buffers
-  (setq dimmer-exclusion-regexp "helm"))
+  (setq dimmer-exclusion-regexp "helm"  ; Disable dimmer for helm buffers
+        dimmer-fraction 0.4))
 
 
 
