@@ -34,6 +34,24 @@
         dimmer-fraction 0.4))
 
 
+;;; eyebrowse
+
+(use-package eyebrowse
+  :functions evil-define-key
+  :bind (:map eyebrowse-mode-map
+              ("C-t n" . eyebrowse-next-window-config)
+              ("C-t p" . eyebrowse-prev-window-config)
+              ("C-t w" . eyebrowse-switch-to-window-config))
+  :init
+  (setq eyebrowse-keymap-prefix (kbd "C-t"))
+  (eyebrowse-mode 1)
+  (with-eval-after-load 'evil
+    ;; Disable default "C-t" in evil.
+    (evil-define-key 'normal 'global eyebrowse-keymap-prefix nil))
+  :config
+  (setq eyebrowse-wrap-around t))
+
+
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
