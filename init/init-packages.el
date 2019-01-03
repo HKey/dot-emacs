@@ -52,6 +52,11 @@
   (setq eyebrowse-wrap-around t))
 
 
+;;; themes
+
+(use-package paper-theme)
+
+
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
