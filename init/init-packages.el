@@ -24,6 +24,15 @@
 (use-package flycheck-rust)
 
 
+;;; elisp
+
+(use-package comment-or-uncomment-sexp)
+
+(use-package lisp-extra-font-lock)
+
+(use-package paredit)
+
+
 ;;; dimmer
 
 (use-package dimmer
