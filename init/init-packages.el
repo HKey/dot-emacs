@@ -61,6 +61,14 @@
   (setq eyebrowse-wrap-around t))
 
 
+;;; iflipb
+
+(use-package iflipb
+  :bind (:map global-map
+              ("M-t" . iflipb-next-buffer)
+              ("M-T" . iflipb-previous-buffer)))
+
+
 ;;; themes
 
 (use-package paper-theme)
