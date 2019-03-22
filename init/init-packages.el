@@ -66,7 +66,10 @@
 (use-package iflipb
   :bind (:map global-map
               ("M-t" . iflipb-next-buffer)
-              ("M-T" . iflipb-previous-buffer)))
+              ("M-T" . iflipb-previous-buffer))
+  :config
+  ;; don't skip buffers that start with "*"
+  (setq iflipb-ignore-buffers nil))
 
 
 ;;; themes
