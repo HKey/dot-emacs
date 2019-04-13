@@ -85,6 +85,13 @@
         spacemacs-theme-org-priority-bold nil))
 
 
+;;;; feebleline
+
+(use-package feebleline
+  :init
+  (feebleline-mode 1))
+
+
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
