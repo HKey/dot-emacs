@@ -103,6 +103,14 @@
             #'my-workaround-feebleline-prevent-mode-line-revive))
 
 
+;;; sublimity
+
+(use-package sublimity
+  :init
+  (require 'sublimity-attractive)
+  (sublimity-mode 1))
+
+
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
