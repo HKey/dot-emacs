@@ -15,6 +15,15 @@
   (setq use-package-always-defer t
         use-package-always-ensure t
         use-package-verbose t))
+
+
+;;; org-mode
+
+(use-package org
+  :config
+  ;; use org-id
+  (require 'org-id))
+
 
 ;;; rust
 
