@@ -49,7 +49,11 @@
   :init
   (dimmer-mode 1)
   :config
-  (setq dimmer-exclusion-regexp "helm"  ; Disable dimmer for helm buffers
+  (setq dimmer-exclusion-regexp
+        (regexp-opt '("*helm"           ; for helm
+                      "*hkey helm "     ; for my helm command
+                      "*elfeed-entry*"  ; for elfeed entry buffer
+                      ))
         dimmer-fraction 0.4))
 
 
