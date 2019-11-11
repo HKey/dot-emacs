@@ -1,4 +1,4 @@
-;;; init-packages.el --- Package list and basic configuration  -*- lexical-binding: t; -*-
+;;; init-configuration.el --- Package list and basic configuration  -*- lexical-binding: t; -*-
 
 (require 'package)
 
@@ -15,6 +15,14 @@
   (setq use-package-always-defer t
         use-package-always-ensure t
         use-package-verbose t))
+
+
+;;; winner-mode
+
+(use-package winner
+  :ensure nil
+  :init
+  (winner-mode 1))
 
 
 ;;; org-mode
@@ -125,5 +133,5 @@
 
 
 
-(provide 'init-packages)
-;;; init-packages.el ends here
+(provide 'init-configuration)
+;;; init-configuration.el ends here
