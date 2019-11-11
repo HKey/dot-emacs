@@ -11,7 +11,7 @@ rebuild: clean build
 
 .PHONY: clean
 clean:
-	-rm $(ELCFILES)
+	-find . -name '*.elc' -type f | xargs -r rm
 
 %.elc: %.el
 	$(EMACS) -batch -l "$(BYTE_COMPILE_INIT)" -f batch-byte-compile "$<"
