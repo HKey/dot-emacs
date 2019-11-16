@@ -68,7 +68,7 @@
 ;;; eyebrowse
 
 (use-package eyebrowse
-  :functions evil-define-key
+  :functions evil-define-key*
   :bind (:map eyebrowse-mode-map
               ("C-t n" . eyebrowse-next-window-config)
               ("C-t p" . eyebrowse-prev-window-config)
@@ -78,7 +78,7 @@
   (eyebrowse-mode 1)
   (with-eval-after-load 'evil
     ;; Disable default "C-t" in evil.
-    (evil-define-key 'normal 'global eyebrowse-keymap-prefix nil))
+    (evil-define-key* 'normal 'global eyebrowse-keymap-prefix nil))
   :config
   (setq eyebrowse-wrap-around t))
 
