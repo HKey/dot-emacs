@@ -64,12 +64,12 @@
   :init
   (dimmer-mode 1)
   :config
-  (setq dimmer-exclusion-regexp
-        (regexp-opt '("*helm"           ; for helm
-                      "*hkey helm "     ; for my helm command
-                      "*elfeed-entry*"  ; for elfeed entry buffer
-                      ))
-        dimmer-fraction 0.4))
+  (cl-callf append dimmer-exclusion-regexp-list
+    (list (rx bos " *helm")             ; for helm
+          (rx bos " *hkey helm")        ; for my helm command
+          (rx bos "*elfeed-entry*" eos) ; for elfeed entry buffer
+          ))
+  dimmer-fraction 0.4)
 
 
 ;;; eyebrowse
