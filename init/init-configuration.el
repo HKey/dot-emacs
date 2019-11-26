@@ -33,6 +33,13 @@
   (require 'org-id))
 
 
+;;; org-download
+
+(use-package org-download
+  :config
+  (setq org-download-method 'attach))
+
+
 ;;; rust
 
 (use-package rust-mode)
