@@ -17,6 +17,15 @@
         use-package-verbose t))
 
 
+;;; shell
+
+(use-package shell
+  :ensure nil
+  :init
+  ;; config is in config-shell.el
+  (autoload 'my-new-shell "config-shell" nil t))
+
+
 ;;; winner-mode
 
 (use-package winner

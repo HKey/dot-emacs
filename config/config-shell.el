@@ -14,5 +14,11 @@
 
 (add-hook 'shell-mode-hook #'my-shell-hook)
 
+
+(defun my-new-shell ()
+  "Make new shell"
+  (interactive)
+  (shell (format "*shell from %s*" (buffer-name))))
+
 (provide 'config-shell)
 ;;; config-shell.el ends here
