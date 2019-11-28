@@ -17,6 +17,13 @@
         use-package-verbose t))
 
 
+;;; basic configuration
+
+(progn
+  (when window-system
+    (fringe-mode 0)))
+
+
 ;;; shell
 
 (use-package shell
