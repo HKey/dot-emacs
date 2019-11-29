@@ -165,6 +165,28 @@
   (sublimity-mode 1))
 
 
+;;; helm
+
+(use-package helm)
+
+(use-package helm-files
+  :ensure nil
+  :config
+  (setq
+   ;; Show full path for file selection.
+   ;; To toggle that, press "C-]".
+   helm-ff-transformer-show-only-basename nil
+
+   ;; Disable fuzzy matching.
+   helm-ff-fuzzy-matching nil))
+
+(use-package helm-command
+  :ensure nil
+  :config
+   ;; Disable fuzzy matching.
+  (setq helm-M-x-use-completion-styles nil))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
