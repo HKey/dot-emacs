@@ -41,6 +41,14 @@
   (winner-mode 1))
 
 
+;;; save-place
+
+(use-package saveplace
+  :ensure nil
+  :init
+  (save-place-mode 1))
+
+
 ;;; org-mode
 
 (use-package org
