@@ -195,6 +195,16 @@
   (setq helm-M-x-use-completion-styles nil))
 
 
+;;; ivy-posframe
+
+(use-package ivy-posframe
+  :init
+  (ivy-posframe-mode 1)
+  :config
+  (setq ivy-posframe-display-functions-alist
+        '((t . ivy-posframe-display-at-window-center))))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
