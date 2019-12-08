@@ -86,7 +86,10 @@
 
 (use-package dimmer
   :init
-  (dimmer-mode 1)
+  ;; A workaround: While using some dark themes, echo area messages get
+  ;; too dark to read.
+  ;; That can be prevented by delaying turning dimmer-mode on.
+  (add-hook 'emacs-startup-hook #'dimmer-mode)
   :config
   (cl-callf append dimmer-exclusion-regexp-list
     (list (rx bos " *helm")             ; for helm
