@@ -191,12 +191,6 @@
    ;; Disable fuzzy matching.
    helm-ff-fuzzy-matching nil))
 
-(use-package helm-command
-  :ensure nil
-  :config
-   ;; Disable fuzzy matching.
-  (setq helm-M-x-use-completion-styles nil))
-
 
 ;;; ivy-posframe
 
