@@ -54,7 +54,10 @@
 (use-package org
   :config
   ;; use org-id
-  (require 'org-id))
+  (require 'org-id)
+
+  ;; use org-tempo for old style template expansion
+  (require 'org-tempo))
 
 
 ;;; org-download
