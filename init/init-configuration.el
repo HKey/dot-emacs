@@ -67,6 +67,17 @@
   (setq org-download-method 'attach))
 
 
+;;; c/c++
+
+;; configurations are in config-cc-mode.el
+
+(use-package irony)
+
+(use-package company-irony)
+
+(use-package flycheck-irony)
+
+
 ;;; rust
 
 (use-package rust-mode)
