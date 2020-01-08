@@ -96,6 +96,16 @@
 (use-package paredit)
 
 
+;;; ielm
+
+(use-package ielm
+  :ensure nil
+  :bind (:map ielm-map
+              ("C-j" . newline-and-indent))
+  :config
+  (add-hook 'ielm-mode-hook #'enable-paredit-mode))
+
+
 ;;; dimmer
 
 (use-package dimmer
