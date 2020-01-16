@@ -216,6 +216,22 @@
    helm-ff-fuzzy-matching nil))
 
 
+;;; ivy
+
+(use-package ivy
+  :bind (nil                            ; just for indentation
+         :map ivy-minibuffer-map
+         ("M-m" . ivy-immediate-done) ; (lookup-key ivy-minibuffer-map (kbd "C-M-j"))
+         ("C-k" . delete-minibuffer-contents)
+         :map ivy-switch-buffer-map
+         ("C-k" . nil))
+  :init
+  (ivy-mode 1)
+  :config
+  (setq ivy-extra-directories nil
+        ivy-truncate-lines nil))
+
+
 ;;; ivy-posframe
 
 (use-package ivy-posframe
