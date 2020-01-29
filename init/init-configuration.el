@@ -234,12 +234,14 @@
 
 ;;; ivy-posframe
 
-(use-package ivy-posframe
-  :init
-  (ivy-posframe-mode 1)
-  :config
-  (setq ivy-posframe-display-functions-alist
-        '((t . ivy-posframe-display-at-window-center))))
+;; ivy-posframe moves the mouse cursor
+;; (use-package ivy-posframe
+;;   :init
+;;   (ivy-posframe-mode 1)
+;;   :config
+;;   (setq ivy-posframe-display-functions-alist
+;;         '((t . ivy-posframe-display-at-window-center))))
+
 
 
 
