@@ -252,6 +252,7 @@
   (setq-default js2-basic-offset tab-width))
 
 (use-package tern
+  :mode ("\\.tern-project\\'" . json-mode)
   :init
   (with-eval-after-load 'js2-mode
     (add-hook 'js2-mode-hook (lambda () (tern-mode 1)))))
