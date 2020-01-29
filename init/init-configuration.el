@@ -242,6 +242,24 @@
 ;;   (setq ivy-posframe-display-functions-alist
 ;;         '((t . ivy-posframe-display-at-window-center))))
 
+
+;;; js2-mode and tern
+
+(use-package js2-mode
+  :mode ("\\.js\\'" . js2-mode)
+  :config
+  ;; indent width
+  (setq-default js2-basic-offset tab-width))
+
+(use-package tern
+  :init
+  (with-eval-after-load 'js2-mode
+    (add-hook 'js2-mode-hook (lambda () (tern-mode 1)))))
+
+(use-package company-tern
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-tern)))
 
 
 
