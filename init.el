@@ -30,4 +30,8 @@
                             ;; el-init-require/record-error
                             )))
 
+;; load private configuration from "~/.emacs.d/private-conf"
+(el-init-load (expand-file-name "private-conf" user-emacs-directory)
+              :wrappers '(el-init-require/lazy))
+
 ;;; init.el ends here
