@@ -27,6 +27,7 @@
                 :subdirectories '(("init" t)
                                   ("config" t))
                 :wrappers '(el-init-require/lazy
-                            el-init-require/record-error)))
+                            ;; el-init-require/record-error
+                            )))
 
 ;;; init.el ends here
