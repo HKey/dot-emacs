@@ -232,6 +232,14 @@
         ivy-truncate-lines nil))
 
 
+;;; posframe
+
+(use-package posframe
+  :config
+  ;; prevent moving mouse cursor
+  (setq posframe-mouse-banish nil))
+
+
 ;;; ivy-posframe
 
 ;; ivy-posframe moves the mouse cursor
