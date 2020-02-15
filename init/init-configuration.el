@@ -67,6 +67,16 @@
   (setq org-download-method 'attach))
 
 
+;;; org-super-agenda
+
+(use-package org-super-agenda
+  :init
+  (with-eval-after-load 'org-agenda
+    (org-super-agenda-mode 1))
+  :config
+  (setq org-super-agenda-groups '((:auto-tags t))))
+
+
 ;;; c/c++
 
 ;; configurations are in config-cc-mode.el
