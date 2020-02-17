@@ -281,6 +281,14 @@
     (add-to-list 'company-backends 'company-tern)))
 
 
+;;; evil-surround
+
+(use-package evil-surround
+  :init
+  (with-eval-after-load 'evil
+    (global-evil-surround-mode 1)))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
