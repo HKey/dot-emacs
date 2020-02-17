@@ -281,6 +281,25 @@
     (add-to-list 'company-backends 'company-tern)))
 
 
+;;; evil
+
+(use-package evil
+  :config
+  ;; cursor
+  (setq evil-insert-state-cursor '(hbar . 4)
+        evil-emacs-state-cursor 'hollow
+        evil-motion-state-cursor '(bar . 1))
+
+  ;; do not show state tag in mode-line
+  (setq evil-mode-line-format nil)
+
+  ;; enable crossing lines
+  (setq evil-cross-lines t)
+
+  ;; use fine undo
+  (setq evil-want-fine-undo t))
+
+
 ;;; evil-surround
 
 (use-package evil-surround
