@@ -297,7 +297,44 @@
   (setq evil-cross-lines t)
 
   ;; use fine undo
-  (setq evil-want-fine-undo t))
+  (setq evil-want-fine-undo t)
+
+  ;; key bindings
+  :bind (:map
+         evil-emacs-state-map
+         ;; do not override C-z
+         ("C-z" . nil)
+         ;; same with other states
+         ("<escape>" . evil-exit-emacs-state)
+
+         :map
+         evil-insert-state-map
+         ;; do not override some keys
+         ("C-v" . nil)
+         ("C-k" . nil)
+         ("C-o" . nil)
+         ("C-r" . nil)
+         ("C-e" . nil)
+         ("C-y" . nil)
+         ("C-x C-n" . nil)
+         ("C-x C-p" . nil)
+         ("C-t" . nil)
+         ("C-d" . nil)
+         ("C-a" . nil)
+
+         :map
+         evil-motion-state-map
+         ;; page up, down
+         ("SPC" . evil-scroll-page-down)
+         ("S-SPC" . evil-scroll-page-up)
+         ;; beginning, end of line
+         ("gh" . evil-beginning-of-line)
+         ("gl" . evil-end-of-line)
+         ;; swap visual and physical of line moving
+         ("j" . evil-next-visual-line)
+         ("k" . evil-previous-visual-line)
+         ("gj" . evil-next-line)
+         ("gk" . evil-previous-line)))
 
 
 ;;; evil-surround
