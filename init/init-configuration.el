@@ -60,6 +60,14 @@
   (require 'org-tempo))
 
 
+;;; org-agenda
+
+(use-package org-agenda
+  :ensure nil
+  :config
+  (add-hook 'org-agenda-mode-hook #'hl-line-mode))
+
+
 ;;; org-download
 
 (use-package org-download
