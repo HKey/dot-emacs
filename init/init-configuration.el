@@ -342,7 +342,17 @@
          ("j" . evil-next-visual-line)
          ("k" . evil-previous-visual-line)
          ("gj" . evil-next-line)
-         ("gk" . evil-previous-line)))
+         ("gk" . evil-previous-line)
+
+         :map
+         evil-normal-state-map
+         ;; bm
+         ("m" . nil)
+         ("mm" . bm-toggle)
+         ("mn" . bm-next)
+         ("mp" . bm-previous)
+         ("ms" . bm-show)
+         ("ma" . bm-show-all)))
 
 
 ;;; evil-surround
