@@ -333,6 +333,10 @@
          ("C-t" . nil)
          ("C-d" . nil)
          ("C-a" . nil)
+         ;; mozc-temp
+         ("M-n" . mozc-temp-convert-dwim)
+         ;; caseformat
+         ("M-l" . caseformat-backward)
 
          :map
          evil-motion-state-map
@@ -347,6 +351,10 @@
          ("k" . evil-previous-visual-line)
          ("gj" . evil-next-line)
          ("gk" . evil-previous-line)
+         ;; avy
+         ("t" . avy-goto-word-0)
+         ("T" . avy-goto-line)
+         ("f" . avy-goto-char)
 
          :map
          evil-normal-state-map
@@ -356,7 +364,25 @@
          ("mn" . bm-next)
          ("mp" . bm-previous)
          ("ms" . bm-show)
-         ("ma" . bm-show-all)))
+         ("ma" . bm-show-all)
+
+         :map
+         evil-visual-state-map
+         ;; expand-region
+         ;; NOTE: using text object instead is better than
+         ;;       binding keys directly?
+         ("u" . er/expand-region)
+         ("U" . er/contract-region)
+
+         :map
+         evil-window-map
+         ;; buf-move
+         ("SPC h" . buf-move-left)
+         ("SPC j" . buf-move-down)
+         ("SPC k" . buf-move-up)
+         ("SPC l" . buf-move-right)
+         ;; winner
+         ("C-u" . winner-undo)))
 
 
 ;;; evil-surround
