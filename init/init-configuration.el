@@ -307,6 +307,10 @@
   ;; use fine undo
   (setq evil-want-fine-undo t)
 
+  ;; completion
+  (setq evil-complete-next-func
+        (lambda (_) (call-interactively #'company-complete)))
+
   ;; key bindings
   :bind (:map
          evil-emacs-state-map
