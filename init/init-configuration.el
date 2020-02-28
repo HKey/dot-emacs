@@ -247,7 +247,10 @@
   (ivy-mode 1)
   :config
   (setq ivy-extra-directories nil
-        ivy-truncate-lines nil))
+        ivy-truncate-lines nil
+        ;; stop starting completion with "^" with `org-refile', `woman'
+        ;; and more
+        ivy-initial-inputs-alist nil))
 
 
 ;;; posframe
