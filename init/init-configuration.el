@@ -311,7 +311,15 @@
   (setq evil-want-fine-undo t)
 
   ;; completion
-  (setq evil-complete-next-func
+  (setq evil-complete-previous-func
+        (lambda (_)
+          (let ((company-dabbrev-char-regexp
+                 ;; from `dabbrev-expand'
+                 "\\(?:\\sw\\|\\s_\\)+")
+                (company-dabbrev-time-limit 0.5)
+                (company-dabbrev-other-buffers 'all))
+            (call-interactively #'company-dabbrev)))
+        evil-complete-next-func
         (lambda (_) (call-interactively #'company-complete)))
 
   ;; key bindings
