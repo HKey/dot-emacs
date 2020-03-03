@@ -190,17 +190,7 @@
 (use-package feebleline
   :init
   (setq feebleline-timer-interval 0.5)
-  (feebleline-mode 1)
-
-  ;; workaround to prevent that mode-line sometimes revives.
-  (eval-and-compile
-    (defun my-workaround-feebleline-prevent-mode-line-revive ()
-      (when feebleline-mode
-        ;; disable minor-mode before enabling it everytime to stop timer.
-        (feebleline-mode -1)
-        (feebleline-mode 1))))
-  (add-hook 'window-configuration-change-hook
-            #'my-workaround-feebleline-prevent-mode-line-revive))
+  (feebleline-mode 1))
 
 
 ;;; sublimity
