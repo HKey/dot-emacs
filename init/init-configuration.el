@@ -185,14 +185,6 @@
         spacemacs-theme-org-priority-bold nil))
 
 
-;;; feebleline
-
-(use-package feebleline
-  :init
-  (setq feebleline-timer-interval 0.5)
-  (feebleline-mode 1))
-
-
 ;;; sublimity
 
 (use-package sublimity
@@ -395,6 +387,17 @@
   :init
   (with-eval-after-load 'evil
     (global-evil-surround-mode 1)))
+
+
+;;; feebleline
+
+(use-package feebleline
+  :init
+  (setq feebleline-timer-interval 0.5)
+  (feebleline-mode 1)
+  :config
+  (with-eval-after-load 'evil
+    (push (list (lambda () evil-mode-line-tag)) feebleline-msg-functions)))
 
 
 
