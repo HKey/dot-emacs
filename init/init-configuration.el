@@ -189,6 +189,7 @@
 
 (use-package feebleline
   :init
+  (setq feebleline-timer-interval 0.5)
   (feebleline-mode 1)
 
   ;; workaround to prevent that mode-line sometimes revives.
