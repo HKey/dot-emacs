@@ -127,6 +127,8 @@
 ;;; dimmer
 
 (use-package dimmer
+  ;; in "emacs -nw", dimmer slows redisplay down
+  :if window-system
   :init
   ;; A workaround: While using some dark themes, echo area messages get
   ;; too dark to read.
