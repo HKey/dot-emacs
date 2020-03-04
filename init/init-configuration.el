@@ -24,6 +24,17 @@
     (fringe-mode 0)))
 
 
+;;; libraries
+
+(use-package s)
+(use-package f)
+(use-package dash)
+
+(require 's)
+(require 'f)
+(require 'dash)
+
+
 ;;; shell
 
 (use-package shell
