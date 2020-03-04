@@ -73,11 +73,11 @@
                          "-i" "-selection" "clipboard")))
 
 (defun my-xclip-paste ()
-  ;; without "-noutf8" option on my system, the output of xclip contains "^M"
-  (let ((xclip-output (shell-command-to-string
-                       "xclip -o -selection clipboard -noutf8")))
-    (unless (string= (car kill-ring) xclip-output)
-      xclip-output)))
+  ;; on my system, the output of xclip contains "^M"
+  (--> (shell-command-to-string "xclip -o -selection clipboard")
+       (s-replace "" "" it)
+       (unless (string= (car kill-ring) it)
+         it)))
 
 (when (and (null window-system) (getenv "DISPLAY"))
   (setq interprogram-cut-function #'my-xclip-cut
