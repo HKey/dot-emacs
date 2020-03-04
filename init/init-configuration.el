@@ -49,6 +49,30 @@
   (save-place-mode 1))
 
 
+;;; clipboard for emacs --no-window-system
+
+;; - Emacs - ArchWiki
+;;   https://wiki.archlinux.jp/index.php/Emacs
+
+;; NOTE: may not work on tramp, because the process will be run on remote.
+(defun my-xclip-cut (text &optional _push)
+  (with-temp-buffer
+    (insert text)
+    (call-process-region (point-min) (point-max) "xclip" nil 0 nil
+                         "-i" "-selection" "clipboard")))
+
+(defun my-xclip-paste ()
+  ;; without "-noutf8" option on my system, the output of xclip contains "^M"
+  (let ((xclip-output (shell-command-to-string
+                       "xclip -o -selection clipboard -noutf8")))
+    (unless (string= (car kill-ring) xclip-output)
+      xclip-output)))
+
+(when (and (null window-system) (getenv "DISPLAY"))
+  (setq interprogram-cut-function #'my-xclip-cut
+        interprogram-paste-function #'my-xclip-paste))
+
+
 ;;; org-mode
 
 (use-package org
