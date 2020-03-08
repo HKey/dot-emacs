@@ -24,6 +24,21 @@
     (fringe-mode 0)))
 
 
+;;; customize
+
+;; workaround to limit custom variables to save
+(defun my-limited-custom-save-all (&rest _)
+  "Limit customized values to save."
+  (message "Saving customized is limited by `my-limited-custom-save-all'")
+  (mapatoms
+   (lambda (s)
+     (unless (memq s '(safe-local-variable-values))
+       (put s 'saved-value nil)
+       (message "  ignored: %s" s)))))
+
+(advice-add #'custom-save-all :before #'my-limited-custom-save-all)
+
+
 ;;; libraries
 
 (use-package s)
