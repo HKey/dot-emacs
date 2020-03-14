@@ -33,8 +33,9 @@
   (mapatoms
    (lambda (s)
      (unless (memq s '(safe-local-variable-values))
-       (put s 'saved-value nil)
-       (message "  ignored: %s" s)))))
+       (when (get s 'saved-value)
+         (put s 'saved-value nil)
+         (message "  ignored: %s" s))))))
 
 (advice-add #'custom-save-all :before #'my-limited-custom-save-all)
 
