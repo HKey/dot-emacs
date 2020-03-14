@@ -246,6 +246,11 @@
 
 ;;; sublimity
 
+(use-package sublimity-attractive
+  :ensure nil
+  :config
+  (setq sublimity-attractive-centering-width 80))
+
 (use-package sublimity
   :init
   ;; use sublimity-attractive (auto-margin)
