@@ -76,6 +76,14 @@
   (save-place-mode 1))
 
 
+;;; autorevert
+
+(use-package autorevert
+  :ensure nil
+  :config
+  (setq auto-revert-verbose nil))
+
+
 ;;; clipboard for emacs --no-window-system
 
 ;; - Emacs - ArchWiki
