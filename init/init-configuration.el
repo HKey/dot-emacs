@@ -48,6 +48,17 @@
   (setq dired-listing-switches "-AFhlv --time-style=long-iso"))
 
 
+;;; image
+
+(use-package image-file
+  :ensure nil
+  :config
+  ;; add webp as one of extensions of image file
+  (cl-assert (not (member "webp" image-file-name-extensions))
+             "webp is already registered in `image-file-name-extensions'")
+  (push "webp" image-file-name-extensions))
+
+
 ;;; libraries
 
 (use-package s)
