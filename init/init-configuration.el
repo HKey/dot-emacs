@@ -485,6 +485,13 @@
   :config
   (with-eval-after-load 'evil
     (push (list (lambda () evil-mode-line-tag)) feebleline-msg-functions)))
+
+;;; alert
+
+;; config is in config-alert.el
+(use-package alert
+  :init
+  (require 'config-alert))
 
 
 
