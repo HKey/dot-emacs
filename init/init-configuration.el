@@ -40,6 +40,14 @@
 (advice-add #'custom-save-all :before #'my-limited-custom-save-all)
 
 
+;;; dired
+
+(use-package dired
+  :ensure nil
+  :config
+  (setq dired-listing-switches "-AFhlv --time-style=long-iso"))
+
+
 ;;; libraries
 
 (use-package s)
