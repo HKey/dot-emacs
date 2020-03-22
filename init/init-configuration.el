@@ -372,6 +372,9 @@
         evil-complete-next-func
         (lambda (_) (call-interactively #'company-complete)))
 
+  ;; do not jump across buffers
+  (setq evil-jumps-cross-buffers nil)
+
   ;; key bindings
   :bind (:map
          evil-emacs-state-map
