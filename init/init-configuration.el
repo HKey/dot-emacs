@@ -218,7 +218,7 @@
   ;; That can be prevented by delaying turning dimmer-mode on.
   (add-hook 'emacs-startup-hook #'dimmer-mode)
   :config
-  (cl-callf append dimmer-exclusion-regexp-list
+  (cl-callf append dimmer-buffer-exclusion-regexps
     (list (rx bos " *helm")             ; for helm
           (rx bos " *hkey helm")        ; for my helm command
           (rx bos "*elfeed-entry*" eos) ; for elfeed entry buffer
