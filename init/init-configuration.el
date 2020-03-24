@@ -491,6 +491,14 @@
   (with-eval-after-load 'evil
     (push (list (lambda () evil-mode-line-tag)) feebleline-msg-functions)))
 
+;;; projectile
+
+(use-package projectile
+  :config
+  ;; use default to use ivy instead of ido
+  (setq projectile-completion-system 'default))
+
+
 ;;; alert
 
 ;; config is in config-alert.el
