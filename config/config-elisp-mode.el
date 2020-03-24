@@ -19,6 +19,22 @@
 ;; lisp-extra-font-lock
 (lisp-extra-font-lock-global-mode 1)
 
+;; major-mode-hydra
+(require 'major-mode-hydra)
+
+(major-mode-hydra-define emacs-lisp-mode nil
+  ("Eval"
+   (("ed" eval-defun)
+    ("eb" eval-buffer))
+   "REPL"
+   (("r" ielm))
+   "Package"
+   (("pf" package-install-file)
+    ("pb" package-install-from-buffer))
+   "Describe"
+   (("df" describe-function)
+    ("dv" describe-variable))))
+
 
 (provide 'config-elisp-mode)
 ;;; config-elisp-mode.el ends here

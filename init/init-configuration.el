@@ -127,6 +127,11 @@
         interprogram-paste-function #'my-xclip-paste))
 
 
+;;; major-mode-hydra
+
+(use-package major-mode-hydra)
+
+
 ;;; org-mode
 
 (use-package org
