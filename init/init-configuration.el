@@ -512,6 +512,13 @@
   (require 'config-alert))
 
 
+;;; which-key
+
+(use-package which-key
+  :init
+  (which-key-mode 1))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
