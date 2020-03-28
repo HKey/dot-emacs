@@ -543,6 +543,21 @@
   (which-key-mode 1))
 
 
+;;; avy
+
+(use-package avy
+  :config
+  (setq
+   ;; dvorak
+   avy-keys (cl-coerce "iduhetonasyfpg.c,r'lxbkmjwqv;z" 'list)
+   ;; t: make background characters gray
+   avy-background nil
+   ;; use current window only
+   avy-all-windows nil
+   ;; with C-u prefix, use all windows
+   avy-all-windows-alt t))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
