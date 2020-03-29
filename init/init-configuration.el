@@ -59,11 +59,24 @@
   (push "webp" image-file-name-extensions))
 
 
-;;; libraries
+;;; s
 
 (use-package s)
+
+
+;;; f
+
 (use-package f)
-(use-package dash)
+
+
+;;; dash
+
+(use-package dash
+  :config
+  (dash-enable-font-lock))
+
+
+;;; libraries
 
 (require 's)
 (require 'f)
