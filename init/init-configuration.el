@@ -205,6 +205,43 @@
   (setq org-super-agenda-groups '((:auto-tags t))))
 
 
+;;; company
+
+(use-package company
+  :init
+  (global-company-mode 1)
+  :bind (                               ; just for indentation
+         :map company-active-map
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous)
+         ("C-h" . nil)
+         ("C-s" . company-filter-candidates)
+         ("M-n" . nil)           ; for mozc-temp
+         ("M-p" . nil)           ; to keep consistency with "M-n"
+
+         :map company-search-map
+         ("C-n" . company-search-repeat-forward)
+         ("C-p" . company-search-repeat-backward))
+  :config
+  (setq company-idle-delay nil
+        company-selection-wrap-around t
+        company-tooltip-limit 30
+        ;; company-minimum-prefix-length 1
+        ;; company-minimum-prefix-length nil
+        ))
+
+(use-package company-dabbrev
+  :ensure nil
+  :config
+  (setq company-dabbrev-other-buffers nil
+        company-dabbrev-downcase nil))
+
+(use-package company-dabbrev-code
+  :ensure nil
+  :config
+  (setq company-dabbrev-code-other-buffers nil))
+
+
 ;;; c/c++
 
 ;; configurations are in config-cc-mode.el
