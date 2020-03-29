@@ -74,6 +74,15 @@
   (add-hook 'dired-mode-hook #'my-recentf-record-dired))
 
 
+;;; eldoc
+
+(use-package eldoc
+  :ensure nil
+  :config
+  (setq eldoc-idle-delay 0.2
+        eldoc-echo-area-use-multiline-p t))
+
+
 ;;; s
 
 (use-package s)
