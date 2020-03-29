@@ -59,6 +59,21 @@
   (push "webp" image-file-name-extensions))
 
 
+;;; recentf
+
+(use-package recentf
+  :ensure nil
+  :config
+  (setq recentf-max-saved-items nil)
+
+  ;; record dired directory
+  (eval-and-compile
+    (defun my-recentf-record-dired ()
+      (when (stringp dired-directory)
+        (recentf-add-file dired-directory))))
+  (add-hook 'dired-mode-hook #'my-recentf-record-dired))
+
+
 ;;; s
 
 (use-package s)
