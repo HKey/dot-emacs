@@ -697,6 +697,13 @@
   (setq flycheck-emacs-lisp-load-path 'inherit))
 
 
+;;; highlight-numbers
+
+(use-package highlight-numbers
+  :init
+  (add-hook 'prog-mode-hook #'highlight-numbers-mode))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
