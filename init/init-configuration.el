@@ -667,7 +667,10 @@
 
 (use-package which-key
   :init
-  (which-key-mode 1))
+  (which-key-mode 1)
+  :config
+  (setq which-key-max-description-length nil
+        which-key-side-window-max-height 0.5))
 
 
 ;;; avy
