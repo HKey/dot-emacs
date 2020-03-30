@@ -690,6 +690,13 @@
    avy-style 'words))
 
 
+;;; flycheck
+
+(use-package flycheck
+  :config
+  (setq flycheck-emacs-lisp-load-path 'inherit))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
