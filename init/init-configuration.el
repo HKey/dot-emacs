@@ -511,6 +511,17 @@
   (setq mozc-temp-auto-conversion t))
 
 
+;;; undo-tree
+
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode 1)
+  :bind (:map global-map
+              ("C-z"   . undo-tree-undo)
+              ("C-S-z" . undo-tree-redo)
+              ("M-z"   . undo-tree-visualize)))
+
+
 ;;; evil
 
 (use-package evil
