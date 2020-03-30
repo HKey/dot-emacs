@@ -730,6 +730,19 @@
   )
 
 
+;;; go-mode
+
+(use-package go-mode
+  :config
+  ;; gofmt
+  (eval-and-compile
+    (defun my-gofmt-set-hook-before-save ()
+      (add-hook 'before-save-hook #'gofmt-before-save nil t)))
+  (add-hook 'go-mode-hook #'my-gofmt-set-hook-before-save)
+  ;; eldoc
+  (add-hook 'go-mode-hook #'go-eldoc-setup))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
