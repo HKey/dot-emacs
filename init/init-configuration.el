@@ -119,6 +119,15 @@
   (add-hook 'prog-mode-hook #'hs-minor-mode))
 
 
+;;; ruby-mode
+
+(use-package ruby-mode
+  :ensure nil
+  :config
+  (setq ruby-insert-encoding-magic-comment nil
+        ruby-deep-indent-paren-style nil))
+
+
 ;;; s
 
 (use-package s)
