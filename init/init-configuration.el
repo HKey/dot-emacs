@@ -63,9 +63,11 @@
 
 (use-package recentf
   :ensure nil
-  :config
+  :init
+  ;; to prevent reducing `recentf-list' before loading config.
   (setq recentf-max-saved-items nil)
-
+  (recentf-mode 1)
+  :config
   ;; record dired directory
   (eval-and-compile
     (defun my-recentf-record-dired ()
