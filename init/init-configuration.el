@@ -93,6 +93,15 @@
   (global-whitespace-mode 1))
 
 
+;;; sh
+
+(use-package sh-script
+  :ensure nil
+  :config
+  (setq sh-basic-offset tab-width
+        sh-basic-offset tab-width))
+
+
 ;;; s
 
 (use-package s)
