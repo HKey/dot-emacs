@@ -488,6 +488,13 @@
   (add-hook 'org-taskforecast-list-mode-hook #'hl-line-mode))
 
 
+;;; mozc-temp
+
+(use-package mozc-temp
+  :config
+  (setq mozc-temp-auto-conversion t))
+
+
 ;;; evil
 
 (use-package evil
