@@ -85,6 +85,14 @@
         eldoc-echo-area-use-multiline-p t))
 
 
+;;; whitespace
+
+(use-package whitespace
+  :ensure nil
+  :init
+  (global-whitespace-mode 1))
+
+
 ;;; s
 
 (use-package s)
