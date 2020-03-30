@@ -102,6 +102,23 @@
         sh-basic-offset tab-width))
 
 
+;;; prog-mode
+
+(use-package prog-mode
+  :ensure nil
+  :config
+  ;; eldoc
+  (add-hook 'prog-mode-hook #'eldoc-mode)
+  ;; rainbow-delimiters
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  ;; highlight-parentheses
+  (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
+  ;; highlight-numbers
+  (add-hook 'prog-mode-hook #'highlight-numbers-mode)
+  ;; hs-minor-mode
+  (add-hook 'prog-mode-hook #'hs-minor-mode))
+
+
 ;;; s
 
 (use-package s)
@@ -700,8 +717,8 @@
 ;;; highlight-numbers
 
 (use-package highlight-numbers
-  :init
-  (add-hook 'prog-mode-hook #'highlight-numbers-mode))
+  ;; used by `prog-mode'
+  )
 
 
 
