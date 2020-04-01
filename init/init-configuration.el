@@ -450,7 +450,9 @@
 (use-package posframe
   :config
   ;; prevent moving mouse cursor
-  (setq posframe-mouse-banish nil))
+  (setq posframe-mouse-banish nil)
+  ;; disable double buffering
+  (setq posframe-inhibit-double-buffering t))
 
 
 ;;; ivy-posframe
