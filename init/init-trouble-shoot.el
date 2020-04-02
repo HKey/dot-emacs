@@ -28,11 +28,14 @@
       (-let (((&plist :command command :key key :time time) it))
         (insert "\n"
                 "time: " (format-time-string "%Y-%m-%d %H:%M:%S" time) "\n"
-                " cmd: " (symbol-name command) "\n"
+                " cmd: " (cond ((symbolp command) (symbol-name command))
+                               ((stringp command) (format-kbd-macro command))
+                               (t (format "%S" command))) "\n"
                 " key: " key "\n")))
     (switch-to-buffer (current-buffer))))
 
-(add-hook 'post-command-hook #'my-trouble-shoot-log-command-calling)
+;; (add-hook 'post-command-hook #'my-trouble-shoot-log-command-calling)
+(add-hook 'pre-command-hook #'my-trouble-shoot-log-command-calling)
 
 
 (provide 'init-trouble-shoot)
