@@ -21,7 +21,12 @@
 
 (progn
   (when window-system
-    (fringe-mode 0)))
+    (fringe-mode 0)
+    ;; `default-frame-alist'
+    (setq default-frame-alist
+          '((height . 35)
+            (width . 80)
+            (inhibit-double-buffering . t)))))
 
 
 ;;; customize
