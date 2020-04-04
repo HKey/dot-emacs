@@ -727,7 +727,9 @@
 
 (use-package flycheck
   :config
-  (setq flycheck-emacs-lisp-load-path 'inherit))
+  (setq flycheck-emacs-lisp-load-path 'inherit
+        ;; run flycheck manually
+        flycheck-check-syntax-automatically nil))
 
 
 ;;; highlight-numbers
