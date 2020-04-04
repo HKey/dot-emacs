@@ -630,8 +630,8 @@
          ("gk" . evil-previous-line)
          ;; avy
          ("t" . avy-goto-word-0)
-         ("T" . avy-goto-line)
-         ("f" . avy-goto-char)
+         ("T" . avy-goto-char)
+         ("f" . avy-goto-line)
 
          :map
          evil-normal-state-map
