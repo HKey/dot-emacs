@@ -340,7 +340,8 @@
   ;; A workaround: While using some dark themes, echo area messages get
   ;; too dark to read.
   ;; That can be prevented by delaying turning dimmer-mode on.
-  (add-hook 'emacs-startup-hook #'dimmer-mode)
+  ;; (add-hook 'emacs-startup-hook #'dimmer-mode)
+  ;; (require 'dimmer)                     ; to load config section
   :config
   (cl-callf append dimmer-buffer-exclusion-regexps
     (list (rx bos " *helm")             ; for helm
@@ -348,6 +349,18 @@
           (rx bos "*elfeed-entry*" eos) ; for elfeed entry buffer
           ))
   dimmer-fraction 0.4)
+
+
+;;; golden-ratio
+
+(use-package golden-ratio
+  :init
+  ;; use golden-ratio to visualize which window is selected
+  (golden-ratio-mode 1)
+  ;; selected window as the main window
+  ;; disable this:
+  ;;     (remove-hook 'window-selection-change-functions #'golden-ratio)
+  (add-hook 'window-selection-change-functions #'golden-ratio))
 
 
 ;;; eyebrowse
