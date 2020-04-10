@@ -1,7 +1,7 @@
 EMACS := emacs
 ELFILES = $(shell find . -name '*.el' -type f)
 ELCFILES = $(patsubst %.el, %.elc, $(ELFILES))
-BYTE_COMPILE_INIT = ./script/byte-compile-init.el
+LOAD_PATH_OPT = -L ./init -L ./config -L ./bootstrap
 
 .PHONY: build
 build: $(ELCFILES)
@@ -14,4 +14,4 @@ clean:
 	-find . -name '*.elc' -type f | xargs -r rm
 
 %.elc: %.el
-	$(EMACS) -batch -l "$(BYTE_COMPILE_INIT)" -f batch-byte-compile "$<"
+	$(EMACS) -batch $(LOAD_PATH_OPT) -f batch-byte-compile "$<"

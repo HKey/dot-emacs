@@ -1,5 +1,6 @@
 ;;; config-cc-mode.el --- c/c++                      -*- lexical-binding: t; -*-
 
+(require 'my-bootstrap)
 (require 'cc-mode)
 (require 'dash)
 (require 'company)

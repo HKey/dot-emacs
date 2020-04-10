@@ -1,5 +1,6 @@
 ;;; config-shell.el --- M-x shell                -*- lexical-binding: t; -*-
 
+(require 'my-bootstrap)
 (require 'shell)
 (require 'comint)
 (require 'company)

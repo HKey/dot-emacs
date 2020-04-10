@@ -1,5 +1,6 @@
 ;;; config-alert.el --- alert.el                    -*- lexical-binding: t; -*-
 
+(require 'my-bootstrap)
 (require 'alert)
 
 ;; use notify-send if possible

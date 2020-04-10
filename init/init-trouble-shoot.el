@@ -10,6 +10,7 @@
 ;; So I add a logging function which records command name, key sequence
 ;; and time.
 
+(require 'my-bootstrap)
 (require 'dash)
 
 (defvar my-trouble-shoot-log-command-record nil)

@@ -1,5 +1,6 @@
 ;;; config-elisp-mode.el --- Emacs lisp             -*- lexical-binding: t; -*-
 
+(require 'my-bootstrap)
 (require 'elisp-mode)
 (require 'paredit)
 (require 'lisp-extra-font-lock)

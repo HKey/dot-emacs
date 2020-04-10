@@ -1,5 +1,6 @@
 ;;; init-my-commands.el --- My utility commands   -*- lexical-binding: t; -*-
 
+(require 'my-bootstrap)
 (require 'init-configuration) ; for loading order
 
 (require 's)

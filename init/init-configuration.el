@@ -1,22 +1,7 @@
 ;;; init-configuration.el --- Package list and basic configuration  -*- lexical-binding: t; -*-
 
-(require 'package)
+(require 'my-bootstrap)
 
-(eval-and-compile
-  ;; `package-initialize' is called by `init.el' or `byte-compile-init.el'
-  (unless (package-installed-p 'use-package)
-    (when (yes-or-no-p "`use-package' package is missing, install it?: ")
-      (package-refresh-contents)
-      (package-install 'use-package))))
-
-(require 'use-package)
-
-(eval-and-compile
-  (setq use-package-always-defer t
-        use-package-always-ensure t
-        use-package-verbose t))
-
-
 ;;; basic configuration
 
 (progn

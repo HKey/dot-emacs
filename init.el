@@ -1,18 +1,13 @@
 ;;; init.el ---   -*- lexical-binding: t; -*-
 
-;;; Package setup
-(require 'package)
+(let ((dot-emacs-root (file-name-directory
+                       (or (buffer-file-name) load-file-name))))
+  (add-to-list 'load-path (expand-file-name "bootstrap" dot-emacs-root)))
 
-;; add repositories
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(require 'my-bootstrap)
+(require 'use-package)
 
-(package-initialize)
-
-(unless (package-installed-p 'el-init)
-  (when (yes-or-no-p "`el-init' package is missing, install it?: ")
-    (package-refresh-contents)
-    (package-install 'el-init)))
+(use-package el-init)
 
 
 ;;; el-init loading
