@@ -83,6 +83,17 @@
   (global-whitespace-mode 1))
 
 
+;;; shr
+
+(use-package shr
+  :ensure nil
+  :config
+  ;; for eww web browsing
+  (setq shr-inhibit-images t
+        shr-width 76
+        shr-use-colors nil))
+
+
 ;;; sh
 
 (use-package sh-script
