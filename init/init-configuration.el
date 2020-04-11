@@ -459,6 +459,14 @@
         ivy-initial-inputs-alist nil))
 
 
+;;; ivy-prescient
+
+(use-package ivy-prescient
+  :after ivy
+  :init
+  (ivy-prescient-mode 1))
+
+
 ;;; posframe
 
 (use-package posframe
