@@ -1,6 +1,11 @@
 ;;; config-rust-mode.el --- Rust                -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
+(use-package rust-mode)
+(use-package racer)
+(use-package flycheck)
+(use-package flycheck-rust)
+
 (require 'rust-mode)
 (require 'racer)
 (require 'flycheck)

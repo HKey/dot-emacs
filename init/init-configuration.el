@@ -288,35 +288,6 @@
   (setq company-dabbrev-code-other-buffers nil))
 
 
-;;; c/c++
-
-;; configurations are in config-cc-mode.el
-
-(use-package irony)
-
-(use-package company-irony)
-
-(use-package flycheck-irony)
-
-
-;;; rust
-
-(use-package rust-mode)
-
-(use-package racer)
-
-(use-package flycheck-rust)
-
-
-;;; elisp
-
-(use-package comment-or-uncomment-sexp)
-
-(use-package lisp-extra-font-lock)
-
-(use-package paredit)
-
-
 ;;; ielm
 
 (use-package ielm
@@ -703,14 +674,6 @@
   :config
   ;; use default to use ivy instead of ido
   (setq projectile-completion-system 'default))
-
-
-;;; alert
-
-;; config is in config-alert.el
-(use-package alert
-  :init
-  (require 'config-alert))
 
 
 ;;; which-key

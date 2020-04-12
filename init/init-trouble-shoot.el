@@ -11,6 +11,8 @@
 ;; and time.
 
 (require 'my-bootstrap)
+(use-package dash)
+
 (require 'dash)
 
 (defvar my-trouble-shoot-log-command-record nil)

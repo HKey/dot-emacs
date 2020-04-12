@@ -1,6 +1,8 @@
 ;;; config-alert.el --- alert.el                    -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
+(use-package alert)
+
 (require 'alert)
 
 ;; use notify-send if possible
