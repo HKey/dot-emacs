@@ -26,6 +26,7 @@
 (lisp-extra-font-lock-global-mode 1)
 
 ;; major-mode-hydra
+(require 'hydra)   ; for byte compilation of `major-mode-hydra-define'
 (require 'major-mode-hydra)
 
 (major-mode-hydra-define emacs-lisp-mode nil
