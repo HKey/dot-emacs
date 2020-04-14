@@ -5,8 +5,6 @@
 (use-package f)
 (use-package dash)
 
-(require 'init-configuration) ; for loading order
-
 (require 's)
 (require 'f)
 (require 'dash)
