@@ -660,6 +660,8 @@
 ;;; projectile
 
 (use-package projectile
+  :init
+  (projectile-mode 1)
   :config
   ;; use default to use ivy instead of ido
   (setq projectile-completion-system 'default))
