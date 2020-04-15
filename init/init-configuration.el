@@ -94,6 +94,16 @@
         shr-use-colors nil))
 
 
+;;; url
+
+(use-package url-cookie
+  :ensure nil
+  :config
+  ;; for eww web browsing
+  ;; do not accept cookies
+  (setq url-cookie-untrusted-urls '(".*")))
+
+
 ;;; sh
 
 (use-package sh-script
