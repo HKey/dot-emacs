@@ -422,19 +422,19 @@
          ("C-k" . nil))
   :init
   (ivy-mode 1)
-  :config
-  (setq ivy-extra-directories nil
-        ivy-truncate-lines nil
-        ;; stop starting completion with "^" with `org-refile', `woman'
-        ;; and more
-        ivy-initial-inputs-alist nil))
+  ;; config is in config-ivy.el
+  )
 
 
 ;;; ivy-prescient
 
 (use-package ivy-prescient
-  :after ivy
+  :after (ivy config-ivy)
   :init
+  (require 'ivy-prescient)
+  ;; to use `my-ivy-regex-plus-quoted' as a default re builder,
+  ;; do not overwrite `ivy-re-builders-alist'.
+  (setq ivy-prescient-enable-filtering nil)
   (ivy-prescient-mode 1))
 
 
