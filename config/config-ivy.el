@@ -2,8 +2,14 @@
 
 (require 'my-bootstrap)
 (use-package ivy)
+(use-package counsel)
 
 (require 'ivy)
+;; counsel.el pushes some config into `ivy-initial-inputs-alist' using
+;; toplevel code.
+;; So to prevent overwriting `ivy-initial-inputs-alist',
+;; load counsel.el before setting `ivy-initial-inputs-alist' explicitly.
+(require 'counsel)
 
 
 ;;;; miscs
