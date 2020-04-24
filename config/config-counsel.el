@@ -11,10 +11,10 @@
 
 ;; separate filename and dirname of candidates
 (defun my-counsel-recentf-transformer (str)
-      "Format STR in 'FILENAME  DIRNAME'"
-      (format "%-16s  %s"
-              (f-filename str)
-              (f-dirname str)))
+  "Format STR in 'FILENAME  DIRNAME'"
+  (format "%-16s  %s"
+          (f-filename str)
+          (f-dirname str)))
 
 (ivy-set-display-transformer 'counsel-recentf #'my-counsel-recentf-transformer)
 
