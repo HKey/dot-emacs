@@ -3,6 +3,8 @@
 (require 'my-bootstrap)
 (use-package ivy)
 (use-package counsel)
+(use-package dash)
+(use-package s)
 
 (require 'ivy)
 ;; counsel.el pushes some config into `ivy-initial-inputs-alist' using
@@ -10,6 +12,8 @@
 ;; So to prevent overwriting `ivy-initial-inputs-alist',
 ;; load counsel.el before setting `ivy-initial-inputs-alist' explicitly.
 (require 'counsel)
+(require 'dash)
+(require 's)
 
 
 ;;;; miscs
@@ -20,13 +24,14 @@
       ivy-initial-inputs-alist nil)
 
 ;;;; disable regexp of input query
-(defun my-ivy-regex-plus-quoted (query)
+(defun my-ivy-regex-quoted-orderless (query)
   "Like `ivy--regex-plus' but disable regexp in QUERY."
-  ;; using internal function is not good
-  (ivy--regex-plus (regexp-quote query)))
+  (--> (s-split " " query)
+       (-map #'regexp-quote it)
+       (--map (cons it t) it)))
 
 (setq ivy-re-builders-alist
-      `((t . ,#'my-ivy-regex-plus-quoted)))
+      `((t . ,#'my-ivy-regex-quoted-orderless)))
 
 
 (provide 'config-ivy)
