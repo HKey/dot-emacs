@@ -733,6 +733,17 @@
   (add-hook 'go-mode-hook #'go-eldoc-setup))
 
 
+;;; flycheck-posframe
+
+(use-package flycheck-posframe
+  :after flycheck
+  :init
+  (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode)
+  :config
+  (flycheck-posframe-configure-pretty-defaults)
+  (set-face-attribute 'flycheck-posframe-border-face nil :inherit 'default)
+  (setq flycheck-posframe-border-width 2))
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
