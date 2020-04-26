@@ -4,17 +4,20 @@
 (use-package ivy)
 (use-package counsel)
 (use-package f)
+(use-package dash)
 
 (require 'ivy)
 (require 'counsel)
 (require 'f)
+(require 'dash)
 
 ;; separate filename and dirname of candidates
 (defun my-counsel-recentf-transformer (str)
   "Format STR in 'FILENAME  DIRNAME'"
-  (format "%-16s  %s"
-          (f-filename str)
-          (f-dirname str)))
+  (format "%-20s  %s"
+          (--> (f-filename str)
+               (if (equal "" it) "/" it))
+          (or (f-dirname str) "")))
 
 (ivy-set-display-transformer 'counsel-recentf #'my-counsel-recentf-transformer)
 
