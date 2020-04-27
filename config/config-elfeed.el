@@ -8,7 +8,7 @@
 (require 'elfeed-search)
 (require 'elfeed-show)
 
-;;; org-capture
+;;;; org-capture
 (defun my-org-capture-elfeed-search ()
   "Capture current entry of elfeed-search"
   (interactive)
@@ -33,6 +33,28 @@
 
 (define-key elfeed-search-mode-map (kbd "C") #'my-org-capture-elfeed-search)
 (define-key elfeed-show-mode-map (kbd "C") #'my-org-capture-elfeed-show)
+
+;;;; eww
+
+(use-package dash)
+(require 'dash)
+
+(defun my-elfeed-search-eww ()
+  "Open entry of elfeed-search with eww"
+  (interactive)
+  (--> (elfeed-search-selected :single)
+       (elfeed-entry-link it)
+       (eww it)))
+
+(defun my-elfeed-show-eww ()
+  "Open entry of elfeed-show with eww"
+  (interactive)
+  (--> elfeed-show-entry
+       (elfeed-entry-link it)
+       (eww it)))
+
+(define-key elfeed-search-mode-map (kbd "e") #'my-elfeed-search-eww)
+(define-key elfeed-show-mode-map (kbd "e") #'my-elfeed-show-eww)
 
 
 (provide 'config-elfeed)
