@@ -196,6 +196,14 @@
   (setq auto-revert-verbose nil))
 
 
+;;; generic-x
+
+(use-package generic-x
+  :ensure nil
+  :init
+  (require 'generic-x))
+
+
 ;;; clipboard for emacs --no-window-system
 
 ;; - Emacs - ArchWiki
