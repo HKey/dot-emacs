@@ -80,7 +80,38 @@
 (use-package whitespace
   :ensure nil
   :init
-  (global-whitespace-mode 1))
+  (global-whitespace-mode 1)
+  :config
+  (setq whitespace-display-mappings
+        '((space-mark   ?　 [?□])
+          ;; (newline-mark ?\n [?↩ ?\n])
+          ;; (tab-mark     ?\t [?^ ?\t])
+          ))
+
+  ;; See `whitespace-style-value-list'
+  (setq whitespace-style
+        '(face
+          tabs
+          ;; spaces
+          trailing
+          ;; lines
+          ;; lines-tail
+          ;; newline
+          ;; empty
+          ;; indentation
+          ;; indentation::tab
+          ;; indentation::space
+          ;; space-after-tab
+          ;; space-after-tab::tab
+          ;; space-after-tab::space
+          ;; space-before-tab
+          ;; space-before-tab::tab
+          ;; space-before-tab::space
+          ;; help-newline
+          tab-mark
+          space-mark
+          ;; newline-mark
+          )))
 
 
 ;;; shr
