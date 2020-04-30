@@ -782,6 +782,21 @@
   (flycheck-posframe-configure-pretty-defaults)
   (set-face-attribute 'flycheck-posframe-border-face nil :inherit 'default)
   (setq flycheck-posframe-border-width 2))
+
+
+;;; slime
+
+(use-package slime
+  :config
+  (setq inferior-lisp-program "ccl"
+        slime-lisp-implementations '((clozurecl ("ccl"))
+                                     (sbcl      ("sbcl"))
+                                     (clisp     ("clisp"))
+                                     (ecl       ("ecl")))
+        slime-net-coding-system 'utf-8-unix)
+  (--each '(slime-mode-hook slime-repl-mode-hook)
+    (add-hook it #'enable-paredit-mode)))
+
 
 
 (provide 'init-configuration)
