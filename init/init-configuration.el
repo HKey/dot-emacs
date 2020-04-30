@@ -520,8 +520,7 @@
 (use-package org-taskforecast
   :ensure nil
   :config
-  (setq org-taskforecast-enable-assert t
-        org-taskforecast-day-start 0400
+  (setq org-taskforecast-day-start 0400
         org-taskforecast-sections '(("0700" 0700)
                                     ("0900" 0900)
                                     ("1200" 1200)
