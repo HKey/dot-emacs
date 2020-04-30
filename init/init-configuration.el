@@ -58,12 +58,8 @@
   (setq recentf-max-saved-items nil)
   (recentf-mode 1)
   :config
-  ;; record dired directory
-  (eval-and-compile
-    (defun my-recentf-record-dired ()
-      (when (stringp dired-directory)
-        (recentf-add-file dired-directory))))
-  (add-hook 'dired-mode-hook #'my-recentf-record-dired))
+  ;; config is in config-recentf.el
+  (require 'config-recentf))
 
 
 ;;; eldoc
