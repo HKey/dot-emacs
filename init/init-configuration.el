@@ -419,15 +419,11 @@
   ;; use sublimity-attractive (auto-margin)
   (require 'sublimity-attractive)
 
-  ;; `sublimity-mode' disables `auto-hscroll-mode', so I turn on it again
-  ;; using sublimity's hook.
-  (eval-and-compile
-    (defun my-sublimity-enable-auto-hscroll-mode ()
-      (setq auto-hscroll-mode t)))
-  (add-hook 'sublimity-mode-hook #'my-sublimity-enable-auto-hscroll-mode)
-
   ;; enable the minor mode
-  (sublimity-mode 1))
+  (sublimity-mode 1)
+  :config
+  ;; config is in config-sublimity.el
+  (require 'config-sublimity))
 
 
 ;;; helm
