@@ -195,8 +195,10 @@
 (use-package shell
   :ensure nil
   :init
+  (autoload 'my-new-shell "config-shell" nil t)
+  :config
   ;; config is in config-shell.el
-  (autoload 'my-new-shell "config-shell" nil t))
+  (require 'config-shell))
 
 
 ;;; winner-mode
@@ -453,8 +455,9 @@
          ("C-k" . nil))
   :init
   (ivy-mode 1)
+  :config
   ;; config is in config-ivy.el
-  )
+  (require 'config-ivy))
 
 
 ;;; ivy-prescient
