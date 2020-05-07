@@ -362,7 +362,8 @@
           (rx bos " *hkey helm")        ; for my helm command
           (rx bos "*elfeed-entry*" eos) ; for elfeed entry buffer
           ))
-  dimmer-fraction 0.4)
+  (setq dimmer-watch-frame-focus-events nil
+        dimmer-fraction 0.4))
 
 
 ;;; golden-ratio
