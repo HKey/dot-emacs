@@ -406,19 +406,6 @@
   (setq iflipb-ignore-buffers nil))
 
 
-;;; themes
-
-(use-package paper-theme)
-
-(use-package spacemacs-common
-  :ensure spacemacs-theme
-  :config
-  (setq spacemacs-theme-org-agenda-height nil
-        spacemacs-theme-org-bold nil
-        spacemacs-theme-org-height nil
-        spacemacs-theme-org-priority-bold nil))
-
-
 ;;; sublimity
 
 (use-package sublimity-attractive
