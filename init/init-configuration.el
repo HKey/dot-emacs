@@ -695,8 +695,17 @@
   (setq feebleline-timer-interval 0.5)
   (feebleline-mode 1)
   :config
+  ;; TODO: separate file and use `function' macro
   (with-eval-after-load 'evil
-    (push (list (lambda () evil-mode-line-tag)) feebleline-msg-functions)))
+    (setq feebleline-msg-functions
+          '(((lambda ()
+               (substring-no-properties evil-mode-line-tag)))
+            (feebleline-line-number         :post "")
+            (feebleline-column-number       :pre ":" :fmt "%-2s")
+            (feebleline-file-or-buffer-name :face font-lock-keyword-face :post "")
+            (feebleline-file-modified-star  :face font-lock-warning-face :post "")
+            (feebleline-file-directory      :face feebleline-dir-face :pre " ")))))
+
 
 ;;; projectile
 
