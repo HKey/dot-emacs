@@ -786,6 +786,15 @@
     (add-hook it #'enable-paredit-mode)))
 
 
+;;; rjsx-mode
+
+(use-package rjsx-mode
+  :init
+  (add-to-list 'auto-mode-alist
+               (cons (rx (or "components" "pages") "/" (* any) ".js" eos)
+                     #'rjsx-mode)))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
