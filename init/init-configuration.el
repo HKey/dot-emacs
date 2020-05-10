@@ -496,6 +496,17 @@
         ivy-posframe-border-width 2))
 
 
+;;; counsel
+
+(use-package counsel
+  :bind (:map global-map
+              ([remap yank-pop] . counsel-yank-pop) ; M-y
+              )
+  :config
+  ;; config is in config-counsel.el
+  (require 'config-counsel))
+
+
 ;;; js2-mode and tern
 
 (use-package js2-mode

@@ -11,7 +11,7 @@
 (require 'f)
 (require 'dash)
 
-;; separate filename and dirname of candidates
+;;;; separate filename and dirname of candidates
 (defun my-counsel-recentf-transformer (str)
   "Format STR in 'FILENAME  DIRNAME'"
   (format "%-20s  %s"
@@ -20,6 +20,10 @@
           (or (f-dirname str) "")))
 
 (ivy-set-display-transformer 'counsel-recentf #'my-counsel-recentf-transformer)
+
+;;;; settings
+
+(setq counsel-yank-pop-separator "\n---\n")
 
 
 (provide 'config-counsel)
