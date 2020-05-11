@@ -10,6 +10,7 @@
 (define-key bm-show-mode-map (kbd "p") #'previous-line)
 
 ;; evil
+(require 'init-evil)
 (require 'evil)
 
 (evil-set-initial-state 'bm-show-mode 'emacs)

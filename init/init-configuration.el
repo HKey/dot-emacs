@@ -587,6 +587,8 @@
 ;;; evil
 
 (use-package evil
+  :init
+  (require 'init-evil)
   :config
   ;; cursor
   (setq evil-insert-state-cursor '(hbar . 4)
