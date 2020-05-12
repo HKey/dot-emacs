@@ -808,6 +808,17 @@
                      #'rjsx-mode)))
 
 
+;;; eldoc-box
+
+(use-package eldoc-box
+  :if window-system
+  :after eldoc
+  :init
+  (add-hook 'eldoc-mode-hook #'eldoc-box-hover-at-point-mode)
+  :config
+  (setq eldoc-box-max-pixel-width (* 72 (frame-char-width))))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
