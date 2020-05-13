@@ -550,6 +550,13 @@
   (add-hook 'org-taskforecast-list-mode-hook #'hl-line-mode))
 
 
+;;; org-tree-slide
+
+(use-package org-tree-slide
+  :config
+  (setq org-tree-slide-slide-in-effect nil))
+
+
 ;;; mozc
 
 (use-package mozc
