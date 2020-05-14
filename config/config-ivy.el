@@ -24,14 +24,28 @@
       ivy-initial-inputs-alist nil)
 
 ;;;; disable regexp of input query
-(defun my-ivy-regex-quoted-orderless (query)
-  "Like `ivy--regex-plus' but disable regexp in QUERY."
+;; (defun my-ivy-regex-quoted-orderless (query)
+;;   "Like `ivy--regex-plus' but disable regexp in QUERY."
+;;   (--> (s-split " " query)
+;;        (-map #'regexp-quote it)
+;;        (--map (cons it t) it)))
+
+;; (setq ivy-re-builders-alist
+;;       `((t . ,#'my-ivy-regex-quoted-orderless)))
+
+;;;; migemoize input query
+(use-package migemo)
+
+(require 'migemo)
+
+(defun my-ivy-migemo-orderless (query)
+  "Make QUERY orderless and migemoized."
   (--> (s-split " " query)
-       (-map #'regexp-quote it)
+       (-map #'migemo-get-pattern it)
        (--map (cons it t) it)))
 
 (setq ivy-re-builders-alist
-      `((t . ,#'my-ivy-regex-quoted-orderless)))
+      `((t . ,#'my-ivy-migemo-orderless)))
 
 
 (provide 'config-ivy)
