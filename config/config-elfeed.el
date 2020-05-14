@@ -7,6 +7,7 @@
 (require 'elfeed)
 (require 'elfeed-search)
 (require 'elfeed-show)
+(require 'elfeed-db)
 
 ;;;; org-capture
 (defun my-org-capture-elfeed-search ()
@@ -14,10 +15,11 @@
   (interactive)
   (let* ((entry (elfeed-search-selected :single))
          (title (elfeed-entry-title entry))
-         (url (elfeed-entry-link entry)))
+         (url (elfeed-entry-link entry))
+         (feed-title (elfeed-feed-title (elfeed-entry-feed entry))))
     ;; pass title and url to org-capture via kill ring
     (kill-new
-     (format "%s\n%s" title url))
+     (format "%s\n%s\n\n- %s" title url feed-title))
     (org-capture nil "c")))
 
 (defun my-org-capture-elfeed-show ()
@@ -25,10 +27,11 @@
   (interactive)
   (let* ((entry elfeed-show-entry)
          (title (elfeed-entry-title entry))
-         (url (elfeed-entry-link entry)))
+         (url (elfeed-entry-link entry))
+         (feed-title (elfeed-feed-title (elfeed-entry-feed entry))))
     ;; pass title and url to org-capture via kill ring
     (kill-new
-     (format "%s\n%s" title url))
+     (format "%s\n%s\n\n- %s" title url feed-title))
     (org-capture nil "c")))
 
 (define-key elfeed-search-mode-map (kbd "C") #'my-org-capture-elfeed-search)
