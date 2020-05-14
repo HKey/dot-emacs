@@ -23,17 +23,16 @@
       ;; and more
       ivy-initial-inputs-alist nil)
 
-;;;; disable regexp of input query
-;; (defun my-ivy-regex-quoted-orderless (query)
-;;   "Like `ivy--regex-plus' but disable regexp in QUERY."
-;;   (--> (s-split " " query)
-;;        (-map #'regexp-quote it)
-;;        (--map (cons it t) it)))
+;;;; regex builder
 
-;; (setq ivy-re-builders-alist
-;;       `((t . ,#'my-ivy-regex-quoted-orderless)))
+;;;;; disable regexp of input query
+(defun my-ivy-regex-quoted-orderless (query)
+  "Like `ivy--regex-plus' but disable regexp in QUERY."
+  (--> (s-split " " query)
+       (-map #'regexp-quote it)
+       (--map (cons it t) it)))
 
-;;;; migemoize input query
+;;;;; migemoize input query
 (use-package migemo)
 
 (require 'migemo)
@@ -44,8 +43,12 @@
        (-map #'migemo-get-pattern it)
        (--map (cons it t) it)))
 
+;;;;; set re-builders
+
 (setq ivy-re-builders-alist
-      `((t . ,#'my-ivy-migemo-orderless)))
+      `((swiper . ,#'my-ivy-migemo-orderless)
+        (counsel-recentf . ,#'my-ivy-migemo-orderless)
+        (t . ,#'my-ivy-regex-quoted-orderless)))
 
 
 (provide 'config-ivy)
