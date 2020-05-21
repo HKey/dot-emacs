@@ -1,4 +1,4 @@
-;;; config-alert.el --- alert.el                    -*- lexical-binding: t; -*-
+;;; init-alert.el --- alert.el                    -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
 (use-package alert)
@@ -29,5 +29,5 @@
 (add-hook 'after-init-hook #'my-alert-emacs-startup)
 (add-hook 'kill-emacs-hook #'my-alert-emacs-shutdown)
 
-(provide 'config-alert)
-;;; config-alert.el ends here
+(provide 'init-alert)
+;;; init-alert.el ends here
