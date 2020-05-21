@@ -16,12 +16,20 @@
 
 (setq el-init-lazy-init-regexp "\\`config-\\(.+\\)\\'")
 
+(defun my-el-init-require/dont-load-lib (feature &optional filename noerror)
+  "Do not load lib-*.el"
+  (when (or el-init-overridden-require-p
+            (not (string-match-p "\\`lib-" (symbol-name feature))))
+    (el-init-next feature filename noerror)))
+
 (let ((dot-emacs-root (file-name-directory
                        (or (buffer-file-name) load-file-name))))
   (el-init-load dot-emacs-root
                 :subdirectories '(("init" t)
-                                  ("config" t))
-                :wrappers '(el-init-require/lazy
+                                  ("config" t)
+                                  ("util" t))
+                :wrappers '(my-el-init-require/dont-load-lib
+                            el-init-require/lazy
                             ;; el-init-require/record-error
                             )))
 
