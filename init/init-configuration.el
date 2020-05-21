@@ -597,6 +597,22 @@
   :init
   (require 'init-evil)
   :config
+  ;; initial state
+  (setq evil-motion-state-modes nil
+        evil-emacs-state-modes
+        (-uniq (append evil-emacs-state-modes
+                       '(
+                         ;; builtin
+                         dired-mode
+                         image-mode
+                         ;; extension
+                         ztree-mode
+                         pomidor-mode
+                         ag-mode
+                         elfeed-show-mode
+                         elfeed-search-mode
+                         ))))
+
   ;; cursor
   (setq evil-insert-state-cursor '(hbar . 4)
         evil-emacs-state-cursor 'hollow
