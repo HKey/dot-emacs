@@ -30,6 +30,33 @@
         solarized-height-plus-4       1.0
         solarized-scale-org-headlines nil))
 
+;;;; theme overriding
+
+(use-package dash)
+(require 'dash)
+
+(defvar my-theme-overriding
+  ;; ((THEME . ((FACE . (:PARAM VALUE ...)) ...) ...) ...)
+  '((solarized-dark-high-contrast
+     (link :inherit link-visited))))
+
+(defun my-theme-override-face (face attributes)
+  (let ((default (cl-loop for it in face-attribute-name-alist
+                          append (list (car it) 'unspecified))))
+    (--each (-partition 2 attributes)
+      (-let (((prop val) it))
+        (plist-put default prop val)))
+    (apply #'set-face-attribute face nil default)))
+
+(defun my-theme-override (&rest _)
+  (cl-loop for (theme . conf) in my-theme-overriding
+           if (or (null theme)
+                  (cl-member theme custom-enabled-themes))
+           do (--each conf
+                (my-theme-override-face (car it) (cdr it)))))
+
+(advice-add #'load-theme :after #'my-theme-override)
+
 ;;;; enable theme
 
 (load-theme 'spacemacs-light)
