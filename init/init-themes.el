@@ -30,6 +30,10 @@
         solarized-height-plus-4       1.0
         solarized-scale-org-headlines nil))
 
+;;;; base16-theme
+
+(use-package base16-theme)
+
 ;;;; theme overriding
 
 (use-package dash)
@@ -38,7 +42,9 @@
 (defvar my-theme-overriding
   ;; ((THEME . ((FACE . (:PARAM VALUE ...)) ...) ...) ...)
   '((solarized-dark-high-contrast
-     (link :inherit link-visited))))
+     (link :inherit link-visited))
+    (base16-greenscreen
+     (org-link :inherit link))))
 
 (defun my-theme-override-face (face attributes)
   (let ((default (cl-loop for it in face-attribute-name-alist
