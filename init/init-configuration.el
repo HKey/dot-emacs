@@ -603,6 +603,7 @@
                          ag-mode
                          elfeed-show-mode
                          elfeed-search-mode
+                         bm-show-mode
                          ))))
 
   ;; cursor
@@ -842,6 +843,15 @@
          ("p" . previous-line)
          ("n" . next-line)
          ("h" . ztree-move-up-in-tree)))
+
+
+;;; bm
+
+(use-package bm
+  :bind (nil                            ; just for indentation
+         :map bm-show-mode-map
+         ("n" . next-line)
+         ("p" . previous-line)))
 
 
 
