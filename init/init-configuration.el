@@ -834,6 +834,16 @@
   (setq eldoc-box-max-pixel-width (* 72 (frame-char-width))))
 
 
+;;; ztree
+
+(use-package ztree
+  :bind (nil                            ; just for indentation
+         :map ztree-mode-map
+         ("p" . previous-line)
+         ("n" . next-line)
+         ("h" . ztree-move-up-in-tree)))
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
