@@ -44,7 +44,15 @@
   '((solarized-dark-high-contrast
      (link :inherit link-visited))
     (base16-greenscreen
-     (org-link :inherit link))))
+     (org-link :inherit link)
+     (org-drawer :inherit font-lock-keyword-face)
+     (outline-2 :inherit outline-1)
+     (outline-3 :inherit outline-1)
+     (outline-4 :inherit outline-1)
+     (outline-5 :inherit outline-1)
+     (outline-6 :inherit outline-1)
+     (outline-7 :inherit outline-1)
+     (outline-8 :inherit outline-1))))
 
 (defun my-theme-override-face (face attributes)
   (let ((default (cl-loop for it in face-attribute-name-alist
