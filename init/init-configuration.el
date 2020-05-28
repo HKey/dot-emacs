@@ -549,6 +549,16 @@
   (setq org-tree-slide-slide-in-effect nil))
 
 
+;;; org-sticky-header
+
+(use-package org-sticky-header
+  :after org
+  :init
+  (add-hook 'org-mode-hook #'org-sticky-header-mode)
+  :config
+  (setq org-sticky-header-full-path 'full))
+
+
 ;;; mozc
 
 (use-package mozc
