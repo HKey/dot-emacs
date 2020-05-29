@@ -615,6 +615,7 @@
                          ;; builtin
                          dired-mode
                          image-mode
+                         calendar-mode
                          ;; extension
                          ztree-mode
                          pomidor-mode
@@ -622,7 +623,8 @@
                          elfeed-show-mode
                          elfeed-search-mode
                          bm-show-mode
-                         ))))
+                         org-taskforecast-list-mode
+                         flycheck-error-list-mode))))
 
   ;; cursor
   (setq evil-insert-state-cursor '(hbar . 4)
