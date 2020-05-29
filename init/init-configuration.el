@@ -235,6 +235,14 @@
   (setq ps-multibyte-buffer 'non-latin-printer))
 
 
+;;; calendar
+
+(use-package calendar
+  :ensure nil
+  :config
+  (require 'config-holidays))
+
+
 ;;; clipboard for emacs --no-window-system
 
 ;; - Emacs - ArchWiki
