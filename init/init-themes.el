@@ -41,7 +41,9 @@
 
 (defvar my-theme-overriding
   ;; ((THEME . ((FACE . (:PARAM VALUE ...)) ...) ...) ...)
-  '((solarized-dark-high-contrast
+  '((spacemacs-light
+     (dired-directory :inherit unspecified :patch t))
+    (solarized-dark-high-contrast
      (link :inherit link-visited))
     (base16-greenscreen
      (org-link :inherit link)
