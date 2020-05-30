@@ -61,9 +61,11 @@
           (unless (plist-get attributes :patch)
             (cl-loop for it in face-attribute-name-alist
                      append (list (car it) 'unspecified)))))
-    (--each (-partition 2 attributes)
-      (-let (((prop val) it))
-        (setq default (plist-put default prop val))))
+    (--> (-partition 2 attributes)
+         (--reject (eq (car it) :patch) it)
+         (--each it
+           (-let (((prop val) it))
+             (setq default (plist-put default prop val)))))
     (apply #'set-face-attribute face nil default)))
 
 (defun my-theme-override (&rest _)
