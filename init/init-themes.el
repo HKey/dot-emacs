@@ -55,11 +55,13 @@
      (outline-8 :inherit outline-1))))
 
 (defun my-theme-override-face (face attributes)
-  (let ((default (cl-loop for it in face-attribute-name-alist
-                          append (list (car it) 'unspecified))))
+  (let ((default
+          (unless (plist-get attributes :patch)
+            (cl-loop for it in face-attribute-name-alist
+                     append (list (car it) 'unspecified)))))
     (--each (-partition 2 attributes)
       (-let (((prop val) it))
-        (plist-put default prop val)))
+        (setq default (plist-put default prop val))))
     (apply #'set-face-attribute face nil default)))
 
 (defun my-theme-override (&rest _)
