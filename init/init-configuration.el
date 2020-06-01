@@ -624,7 +624,8 @@
                          elfeed-search-mode
                          bm-show-mode
                          org-taskforecast-list-mode
-                         flycheck-error-list-mode))))
+                         flycheck-error-list-mode
+                         ag-mode))))
 
   ;; cursor
   (setq evil-insert-state-cursor '(hbar . 4)
