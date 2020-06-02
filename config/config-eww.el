@@ -4,6 +4,16 @@
 
 (require 'eww)
 
+;;;; key binding
+
+(require 'lib-util)
+
+(my-define-key eww-mode-map
+  "j" #'scroll-down-line
+  "k" #'scroll-up-line
+  "H" #'eww-back-url
+  "L" #'eww-forward-url)
+
 ;;;; org-capture
 
 (defun my-org-capture-eww ()
