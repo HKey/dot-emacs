@@ -616,6 +616,7 @@
                          dired-mode
                          image-mode
                          calendar-mode
+                         eww-mode
                          ;; extension
                          ztree-mode
                          pomidor-mode
