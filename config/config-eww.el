@@ -9,8 +9,8 @@
 (require 'lib-util)
 
 (my-define-key eww-mode-map
-  "j" #'scroll-down-line
-  "k" #'scroll-up-line
+  "j" #'scroll-up-line
+  "k" #'scroll-down-line
   "H" #'eww-back-url
   "L" #'eww-forward-url)
 
