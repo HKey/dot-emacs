@@ -43,6 +43,8 @@
   ;; ((THEME . ((FACE . (:PARAM VALUE ...)) ...) ...) ...)
   '((spacemacs-light
      (dired-directory :inherit unspecified :patch t))
+    (solarized-light-high-contrast
+     (link :inherit link-visited))
     (solarized-dark-high-contrast
      (link :inherit link-visited))
     (base16-greenscreen
