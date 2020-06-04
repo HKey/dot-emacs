@@ -11,7 +11,8 @@
     (setq default-frame-alist
           '((height . 35)
             (width . 80)
-            (inhibit-double-buffering . t)))))
+            (inhibit-double-buffering . t)
+            (internal-border-width . 20)))))
 
 
 ;;; customize
