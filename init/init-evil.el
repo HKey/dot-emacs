@@ -9,7 +9,11 @@
 (use-package evil)
 
 ;;;; configuration
-(custom-set-variables '(evil-want-integration nil))
+
+;; evil-keybindings.el also changes initial state of some modes,
+;; e.g. `ag-mode'.
+(custom-set-variables '(evil-want-integration nil)
+                      '(evil-want-keybinding nil))
 
 ;;;; enable minor-mode
 (require 'evil)
