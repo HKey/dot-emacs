@@ -276,9 +276,6 @@
 
 (use-package org
   :config
-  ;; use org-id
-  (require 'org-id)
-
   ;; use org-tempo for old style template expansion
   (require 'org-tempo))
 
@@ -289,6 +286,18 @@
   :ensure nil
   :config
   (add-hook 'org-agenda-mode-hook #'hl-line-mode))
+
+
+;;; org-id
+
+(use-package org-id
+  :after org
+  :ensure nil
+  :init
+  (require 'org-id)
+  :config
+  (setq org-id-extra-files
+        (f-files org-directory (lambda (f) (f-ext-p f "org")) t)))
 
 
 ;;; org-download
