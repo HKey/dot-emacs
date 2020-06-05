@@ -763,7 +763,7 @@
   (with-eval-after-load 'evil
     (setq feebleline-msg-functions
           '(((lambda ()
-               (substring-no-properties evil-mode-line-tag)))
+               (substring-no-properties (or evil-mode-line-tag ""))))
             (feebleline-line-number         :post "")
             (feebleline-column-number       :pre ":" :fmt "%-2s")
             (feebleline-file-or-buffer-name :face font-lock-keyword-face :post "")
