@@ -585,7 +585,10 @@
          ("<zenkaku-hankaku>" . toggle-input-method)
          ("<muhenkan>" . toggle-input-method)
          :map mozc-mode-map
-         ("<muhenkan>" . toggle-input-method))
+         ("<muhenkan>" . toggle-input-method)
+         ;; prevent calling unwanted commands by mistyping
+         ("M-m" . ignore)
+         ("C-M-m" . ignore))
   :config
   (setq default-input-method "japanese-mozc"
         ;; - `echo-area'
