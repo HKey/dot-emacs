@@ -100,7 +100,11 @@
           tab-mark
           space-mark
           ;; newline-mark
-          )))
+          ))
+
+  ;; ignore some major-mode
+  (setq whitespace-global-modes
+        '(not magit-log-mode)))
 
 
 ;;; shr
