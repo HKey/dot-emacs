@@ -1,10 +1,13 @@
 ;;; config-elfeed.el --- elfeed                      -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-
 (use-package elfeed)
 
 (require 'elfeed)
+
+;;;; basic configuration
+
+(setq elfeed-curl-max-connections 4)
 
 ;;;; org-capture
 (use-package dash)
