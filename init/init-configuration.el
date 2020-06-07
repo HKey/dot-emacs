@@ -112,10 +112,16 @@
 (use-package shr
   :ensure nil
   :config
-  ;; for eww web browsing
-  (setq shr-inhibit-images t
-        shr-width 76
-        shr-use-colors nil))
+  ;; for eww and elfeed
+  (setq ;; shr-inhibit-images t
+        shr-width 70
+        shr-use-colors nil
+        shr-max-image-proportion 0.4
+        ;; use variable pitch font
+        shr-use-fonts t
+        ;; disable animation, it makes emacs slow
+        shr-image-animate nil
+        ))
 
 
 ;;; url
