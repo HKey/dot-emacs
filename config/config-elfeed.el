@@ -9,6 +9,60 @@
 
 (setq elfeed-curl-max-connections 4)
 
+;;;; entry formatter, `elfeed-show-refresh-function'
+
+(require 'elfeed-show)
+(require 'time-date)                    ; for `seconds-to-time'
+
+(defface my-elfeed-title
+  '((t :height 1.5 :inherit variable-pitch :bold t))
+  "Title face of elfeed-show"
+  :group 'elfeed)
+
+(defface my-elfeed-show-details
+  '((t :height 0.8 :inherit variable-pitch))
+  "Details face of elfeed-show"
+  :group 'elfeed)
+
+(defun my-elfeed-show-refresh ()
+  "Show entry"
+  ;; ref: `elfeed-show-refresh--mail-style'
+  (interactive)
+  (let* ((inhibit-read-only t)
+         (title (elfeed-entry-title elfeed-show-entry))
+         (date (seconds-to-time (elfeed-entry-date elfeed-show-entry)))
+         (tags (elfeed-entry-tags elfeed-show-entry))
+         (tagsstr (mapconcat #'symbol-name tags ", "))
+         (nicedate (format-time-string "%Y-%m-%d %H:%M:%S" date))
+         (content (elfeed-deref (elfeed-entry-content elfeed-show-entry)))
+         (type (elfeed-entry-content-type elfeed-show-entry))
+         (feed (elfeed-entry-feed elfeed-show-entry))
+         (feed-title (elfeed-feed-title feed))
+         (base (and feed (elfeed-compute-base (elfeed-feed-url feed)))))
+    (erase-buffer)
+    (insert (propertize (concat title "\n")
+                        'face '(my-elfeed-title message-header-subject)))
+    (insert
+     (propertize
+      (concat nicedate " / " feed-title "\n")
+      'face '(my-elfeed-show-details message-header-other)))
+    (when tags
+      (insert
+       (format
+        (propertize "Tags: %s\n"
+                    'face '(my-elfeed-show-details message-header-name))
+        (propertize tagsstr
+                    'face '(my-elfeed-show-details message-header-other)))))
+    (insert "\n")
+    (if content
+        (if (eq type 'html)
+            (elfeed-insert-html content base)
+          (insert content))
+      (insert (propertize "(empty)\n" 'face 'italic)))
+    (goto-char (point-min))))
+
+(setq elfeed-show-refresh-function #'my-elfeed-show-refresh)
+
 ;;;; org-capture
 (use-package dash)
 (use-package s)
