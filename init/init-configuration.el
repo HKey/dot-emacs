@@ -107,23 +107,6 @@
         '(not magit-log-mode)))
 
 
-;;; shr
-
-(use-package shr
-  :ensure nil
-  :config
-  ;; for eww and elfeed
-  (setq ;; shr-inhibit-images t
-        shr-width 70
-        shr-use-colors nil
-        shr-max-image-proportion 0.4
-        ;; use variable pitch font
-        shr-use-fonts t
-        ;; disable animation, it makes emacs slow
-        shr-image-animate nil
-        ))
-
-
 ;;; url
 
 (use-package url-cookie
