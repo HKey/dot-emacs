@@ -99,8 +99,8 @@
    (my-org-capture-elfeed--stringify-entry elfeed-show-entry))
   (org-capture nil "c"))
 
-(define-key elfeed-search-mode-map (kbd "C") #'my-org-capture-elfeed-search)
-(define-key elfeed-show-mode-map (kbd "C") #'my-org-capture-elfeed-show)
+(define-key elfeed-search-mode-map (kbd "Co") #'my-org-capture-elfeed-search)
+(define-key elfeed-show-mode-map (kbd "Co") #'my-org-capture-elfeed-show)
 
 ;;;; eww
 
@@ -123,6 +123,16 @@
 
 (define-key elfeed-search-mode-map (kbd "e") #'my-elfeed-search-eww)
 (define-key elfeed-show-mode-map (kbd "e") #'my-elfeed-show-eww)
+
+;;;; pocket-reader
+
+(use-package pocket-reader
+  :pin manual)
+
+(require 'pocket-reader)
+
+(define-key elfeed-search-mode-map (kbd "Cp") #'pocket-reader-elfeed-search-add-link)
+(define-key elfeed-show-mode-map (kbd "Cp") #'pocket-reader-elfeed-entry-add-link)
 
 
 (provide 'config-elfeed)
