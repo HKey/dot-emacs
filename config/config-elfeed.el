@@ -9,6 +9,15 @@
 
 (setq elfeed-curl-max-connections 4)
 
+;;;; key binding
+
+(require 'lib-util)
+(require 'elfeed-show)
+
+(my-define-key elfeed-show-mode-map
+  "j" #'scroll-up-line
+  "k" #'scroll-down-line)
+
 ;;;; entry formatter, `elfeed-show-refresh-function'
 
 (require 'elfeed-show)
