@@ -532,10 +532,14 @@
 
 ;;; org-taskforecast
 
+(require 'init-path)
+
 (use-package org-taskforecast
   :ensure nil
   :config
-  (setq org-taskforecast-day-start 0400
+  (setq org-taskforecast-dailylist-file
+        (my-path-org "org-taskforecast/%Y/%Y-%m/%Y-%m-%d.org")
+        org-taskforecast-day-start 0400
         org-taskforecast-sections '(("0700" 0700)
                                     ("0900" 0900)
                                     ("1200" 1200)
