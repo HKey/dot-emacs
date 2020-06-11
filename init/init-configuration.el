@@ -372,14 +372,23 @@
 
 ;;; golden-ratio
 
+;; move after evil
 (use-package golden-ratio
   :init
+  (require 'golden-ratio)
   ;; use golden-ratio to visualize which window is selected
-  (golden-ratio-mode 1)
-  ;; selected window as the main window
-  ;; disable this:
-  ;;     (remove-hook 'window-selection-change-functions #'golden-ratio)
-  (add-hook 'window-selection-change-functions #'golden-ratio))
+  (cl-callf append golden-ratio-extra-commands
+    (list 'evil-window-up
+          'evil-window-down
+          'evil-window-left
+          'evil-window-right
+          'evil-window-next
+          'evil-window-prev
+          'evil-window-mru
+          'evil-window-top-left
+          'evil-window-bottom-right))
+  (setq golden-ratio-max-width 80)
+  (golden-ratio-mode 1))
 
 
 ;;; eyebrowse
