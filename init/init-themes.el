@@ -81,7 +81,8 @@
 
 ;;;; enable theme
 
-(load-theme 'spacemacs-light)
+(when (display-graphic-p)
+  (load-theme 'spacemacs-light t))
 
 
 (provide 'init-themes)
