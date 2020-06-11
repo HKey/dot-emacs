@@ -411,25 +411,6 @@
   (setq iflipb-ignore-buffers nil))
 
 
-;;; sublimity
-
-(use-package sublimity-attractive
-  :ensure nil
-  :config
-  (setq sublimity-attractive-centering-width 80))
-
-(use-package sublimity
-  :init
-  ;; use sublimity-attractive (auto-margin)
-  (require 'sublimity-attractive)
-
-  ;; enable the minor mode
-  (sublimity-mode 1)
-  :config
-  ;; config is in config-sublimity.el
-  (require 'config-sublimity))
-
-
 ;;; helm
 
 (use-package helm)
