@@ -507,7 +507,11 @@
   :mode ("\\.js\\'" . js2-mode)
   :config
   ;; indent width
-  (setq-default js2-basic-offset tab-width))
+  (setq-default js2-basic-offset tab-width)
+  ;; warn
+  (setq js2-strict-missing-semi-warning nil)
+  ;; use `electric-pair-mode'
+  (add-hook 'js2-mode-hook #'electric-pair-local-mode))
 
 (use-package tern
   :mode ("\\.tern-project\\'" . json-mode)
