@@ -474,22 +474,6 @@
   (setq posframe-inhibit-double-buffering t))
 
 
-;;; ivy-posframe
-
-(use-package ivy-posframe
-  :init
-  (ivy-posframe-mode 1)
-  :config
-  (setq ivy-posframe-display-functions-alist
-        ;; '((t . ivy-posframe-display-at-window-center))
-        '((t . ivy-posframe-display-at-frame-center))
-        ;; width limitation is needed to work with sublimity-attractive
-        ivy-posframe-min-height 10
-        ivy-posframe-width 70
-        ivy-posframe-min-width 70
-        ivy-posframe-border-width 2))
-
-
 ;;; counsel
 
 (use-package counsel
