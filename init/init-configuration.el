@@ -6,13 +6,14 @@
 
 (progn
   (when window-system
-    (fringe-mode 0)
     ;; `default-frame-alist'
     (setq default-frame-alist
           '((height . 35)
             (width . 80)
             (inhibit-double-buffering . t)
-            (internal-border-width . 20)))))
+            (internal-border-width . 20)
+            (right-fringe . 0)
+            (left-fringe . 0)))))
 
 
 ;;; customize
