@@ -5,7 +5,7 @@
 ;;; basic configuration
 
 (progn
-  (when window-system
+  (when (display-graphic-p)
     ;; `default-frame-alist'
     (setq default-frame-alist
           '((height . 35)
@@ -257,7 +257,7 @@
        (unless (string= (car kill-ring) it)
          it)))
 
-(when (and (null window-system) (getenv "DISPLAY"))
+(when (and (not (display-graphic-p)) (getenv "DISPLAY"))
   (setq interprogram-cut-function #'my-xclip-cut
         interprogram-paste-function #'my-xclip-paste))
 
@@ -353,7 +353,7 @@
 
 (use-package dimmer
   ;; in "emacs -nw", dimmer slows redisplay down
-  :if window-system
+  :if (display-graphic-p)
   :init
   ;; A workaround: While using some dark themes, echo area messages get
   ;; too dark to read.
@@ -838,7 +838,7 @@
 ;;; eldoc-box
 
 (use-package eldoc-box
-  :if window-system
+  :if (display-graphic-p)
   :after eldoc
   :init
   (add-hook 'eldoc-mode-hook #'eldoc-box-hover-at-point-mode)
