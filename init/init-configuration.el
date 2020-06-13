@@ -509,33 +509,6 @@
     (add-to-list 'company-backends 'company-tern)))
 
 
-;;; org-taskforecast
-
-(require 'init-path)
-
-(use-package org-taskforecast
-  :ensure nil
-  :config
-  (setq org-taskforecast-dailylist-file
-        (my-path-org "org-taskforecast/%Y/%Y-%m/%Y-%m-%d.org")
-        org-taskforecast-day-start 0400
-        org-taskforecast-sections '(("0700" 0700)
-                                    ("0900" 0900)
-                                    ("1200" 1200)
-                                    ("1300" 1300)
-                                    ("1500" 1500)
-                                    ("1700" 1700)
-                                    ("1900" 1900)
-                                    ("2100" 2100)
-                                    ("2300" 2300)
-                                    ("2630" 2630)))
-  (use-package org-agenda
-    :ensure nil
-    :config
-    (define-key org-agenda-mode-map (kbd "r") #'org-taskforecast-register-task))
-  (add-hook 'org-taskforecast-list-mode-hook #'hl-line-mode))
-
-
 ;;; org-tree-slide
 
 (use-package org-tree-slide
