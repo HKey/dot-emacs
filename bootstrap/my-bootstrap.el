@@ -22,6 +22,7 @@
   (require 'dash)
 
   (defmacro my-with-package (package &rest args)
+    (declare (indent 1))
     (-let* ((err-sym (cl-gensym "err-"))
             ((&alist :no-install no-install
                      :when when
