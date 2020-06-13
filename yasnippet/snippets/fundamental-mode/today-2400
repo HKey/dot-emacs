@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: today-2400
+# key: today-2400
+# type: command
+# --
+(insert (format-time-string "%Y-%m-%d"))

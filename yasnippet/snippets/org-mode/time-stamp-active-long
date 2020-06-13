@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: time-stamp-active-long
+# key: time-stamp-active-long
+# type: command
+# --
+(insert (format-time-string (org-time-stamp-format t)))

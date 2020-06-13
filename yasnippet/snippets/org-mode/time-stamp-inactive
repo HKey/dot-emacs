@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: time-stamp-inactive
+# key: time-stamp-inactive
+# type: command
+# --
+(insert (format-time-string (org-time-stamp-format nil t)))

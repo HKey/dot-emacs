@@ -16,9 +16,9 @@
 
 ;;;; path
 
+(my-defpath my-path-dot-emacs-prj
+            (expand-file-name ".." (f-dirname (f-this-file))))
 (my-defpath my-path-org (expand-file-name "~/org"))
-
-
 
 
 (provide 'init-path)

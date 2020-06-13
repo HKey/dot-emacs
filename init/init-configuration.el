@@ -847,6 +847,28 @@
          ("p" . previous-line)))
 
 
+;;; yasnippet
+
+(my-with-package yasnippet)
+(require 'yasnippet)
+
+;;;; snippet dir
+(require 'init-path)
+
+(setq yas-snippet-dirs
+      (--> (list (my-path-dot-emacs-prj "yasnippet" "snippets"))
+           (-filter #'file-exists-p it)))
+
+;;;; global snippet
+(defun my-yasnippet-enable-global-snippet ()
+  (yas-activate-extra-mode 'fundamental-mode))
+
+(add-hook 'yas-minor-mode-hook #'my-yasnippet-enable-global-snippet)
+
+;;;; turn on minor mode
+(yas-global-mode 1)
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
