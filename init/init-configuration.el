@@ -509,6 +509,15 @@
     (add-to-list 'company-backends 'company-tern)))
 
 
+;;; org-taskforecast
+
+(my-with-package org-taskforecast
+  :pin "manual"
+  :config:
+  ;; config is in config-org-taskforecast.el
+  (require 'config-org-taskforecast))
+
+
 ;;; org-tree-slide
 
 (use-package org-tree-slide

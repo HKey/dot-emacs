@@ -1,8 +1,7 @@
 ;;; config-org-taskforecast.el --- org-taskforecast  -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(my-with-package org-taskforecast
-  :pin "manual")
+(my-with-package org-taskforecast)
 
 (require 'org-taskforecast)
 
