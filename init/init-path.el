@@ -18,7 +18,10 @@
 
 (my-defpath my-path-dot-emacs-prj
             (expand-file-name ".." (f-dirname (f-this-file))))
+
+;; org-mode
 (my-defpath my-path-org (expand-file-name "~/org"))
+(my-defpath my-path-org-agenda (my-path-org "gtd"))
 
 
 (provide 'init-path)
