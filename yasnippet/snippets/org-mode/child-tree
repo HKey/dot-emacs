@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: child-tree
+# key: child-tree
+# type: command
+# --
+(insert
+ (concat (if (bolp) "" "\n")
+         (make-string (1+ (org-current-level)) ?*)
+         " "))
