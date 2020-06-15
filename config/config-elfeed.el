@@ -135,8 +135,7 @@
 
 ;;;; pocket-reader
 
-(use-package pocket-reader
-  :pin manual)
+(use-package pocket-reader)
 
 (require 'pocket-reader)
 

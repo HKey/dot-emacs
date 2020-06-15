@@ -8,6 +8,11 @@
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
+  ;; pinning
+  (setq package-pinned-packages
+        '((org-taskforecast . "manual")
+          (pocket-reader . "manual")))
+
   (package-initialize)
 
 
@@ -27,7 +32,6 @@
             ((&alist :no-install no-install
                      :when when
                      :after after
-                     :pin pin
                      :init: init
                      :config: config)
              (--> (-partition-by-header #'keywordp args)
@@ -54,10 +58,8 @@
                                    ,err-sym)))))))
             (install-form
              (unless no-install
-               `(my--with-package-ensure-install ',package)))
-            (pin-form
-             (when pin
-               `(add-to-list 'package-pinned-packages (cons ',package ,pin))))
+               `(eval-and-compile
+                  (my--with-package-ensure-install ',package))))
             (after-form
              (-some--> (list init-form config-form)
                (-non-nil it)
@@ -67,13 +69,9 @@
             (when-form
              (when after-form
                `(when ,when
-                  ,after-form)))
-            (package-form
-             (-some--> (list pin-form install-form)
-               (-non-nil it)
-               `(eval-and-compile ,@it))))
+                  ,after-form))))
       `(condition-case-unless-debug ,err-sym
-           ,@(-non-nil (list package-form when-form))
+           ,@(-non-nil (list install-form when-form))
          (error
           (warn (format "Error at `%s' my-with-package form, %s"
                         ',package
