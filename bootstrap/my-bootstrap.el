@@ -32,21 +32,12 @@
             ((&alist :no-install no-install
                      :when when
                      :after after
-                     :init: init
                      :config: config)
              (--> (-partition-by-header #'keywordp args)
                   (--map (if (string-match-p ":.*:$" (symbol-name (car it)))
                              it
                            (cons (cl-first it) (cl-second it)))
                          it)))
-            (init-form
-             (when init
-               `(condition-case-unless-debug ,err-sym
-                    ,@init
-                  (error
-                   (warn (format "Error at `%s' init, %s"
-                                 ',package
-                                 ,err-sym))))))
             (config-form
              (when config
                `(with-eval-after-load ',package
@@ -61,8 +52,7 @@
                `(eval-and-compile
                   (my--with-package-ensure-install ',package))))
             (after-form
-             (-some--> (list init-form config-form)
-               (-non-nil it)
+             (--when-let config-form
                (if after
                    `(with-eval-after-load ',after ,@it)
                  `(progn ,@it))))
