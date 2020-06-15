@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: table
+# key: table
+# type: command
+# --
+(progn
+  (require 's)
+  (let ((n (string-to-number
+            (completing-read
+             "Num columns (default: 1): " nil nil nil nil nil "1"))))
+    (insert "|")
+    (let ((p (point)))
+      (insert (s-repeat n "   |"))
+      (goto-char (1+ p)))))
