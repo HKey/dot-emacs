@@ -10,6 +10,7 @@
 (setq migemo-command (executable-find "cmigemo")
       migemo-dictionary (expand-file-name "~/migemo/dict/utf-8.d/migemo-dict")
       ;; migemo-coding-system 'utf-8
+      migemo-use-default-isearch-keybinding nil
       migemo-user-dictionary nil
       migemo-regex-dictionary nil)
 
