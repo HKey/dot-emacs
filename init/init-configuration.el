@@ -15,6 +15,9 @@
             (right-fringe . 0)
             (left-fringe . 0)))))
 
+;; supress same file warnings like "file-a and file-b are the same file"
+(setq find-file-suppress-same-file-warnings t)
+
 
 ;;; customize
 
