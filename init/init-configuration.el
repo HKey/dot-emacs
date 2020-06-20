@@ -4,19 +4,78 @@
 
 ;;; basic configuration
 
-(progn
-  (when (display-graphic-p)
-    ;; `default-frame-alist'
-    (setq default-frame-alist
-          '((height . 35)
-            (width . 80)
-            (inhibit-double-buffering . t)
-            (internal-border-width . 20)
-            (right-fringe . 0)
-            (left-fringe . 0)))))
+;;;; frame-alist
+(when (display-graphic-p)
+  ;; `default-frame-alist'
+  (setq default-frame-alist
+        '((height . 30)
+          (width . 80)
+          (inhibit-double-buffering . t)
+          (internal-border-width . 20)
+          (right-fringe . 0)
+          (left-fringe . 0))))
 
-;; supress same file warnings like "file-a and file-b are the same file"
+;;;; supress same file warnings like "file-a and file-b are the same file"
 (setq find-file-suppress-same-file-warnings t)
+
+;;;; disable auto save files, backup files and lockfiles
+(setq
+ ;; delete auto save files before exitting
+ delete-auto-save-files t
+ ;; do not create auto save files
+ auto-save-default nil
+ ;; do not create backup files
+ backup-inhibited t
+ make-backup-files nil
+ ;; do not create lockfiles
+ create-lockfiles nil)
+
+;;;; completion
+(setq completion-ignore-case t
+      read-file-name-completion-ignore-case t)
+
+;;;; scrolling
+(setq scroll-step 1
+      scroll-conservatively 2
+      ;; scroll-margin 2
+      scroll-preserve-screen-position t
+      hscroll-step 1
+      hscroll-margin 20
+      make-cursor-line-fully-visible t
+      auto-window-vscroll nil
+      ;; auto-hscroll-mode 'current-line
+      )
+
+(when (boundp 'fast-but-imprecise-scrolling)
+  (setq fast-but-imprecise-scrolling t))
+
+;;;; editing
+(setq
+ ;; kill whole line by pressing "C-k" once at BOL
+ kill-whole-line t
+ ;; always insert an empty line at EOF
+ require-final-newline t)
+
+;;;; initial messages
+(setq inhibit-startup-message t)
+;; (setq inhibit-splash-screen t)
+;; (setq inhibit-startup-screen t)
+;; (setq inhibit-startup-buffer-menu t)
+
+;;;; bell
+;; - Emacs Lisp TIPS
+;;   https://sci.nao.ac.jp/MEMBER/zenitani/elisp-j.html#bell
+(setq ring-bell-function #'ignore)
+
+;;;; garbage collection
+;; - Garbage Collection - GNU Emacs Lisp Reference Manual
+;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html
+(setq
+ ;; message
+ garbage-collection-messages t
+ ;; increase thresholds
+ (cl-callf * gc-cons-threshold 2 2 2 2 2 2)
+ (cl-callf * gc-cons-percentage 2 2))
 
 
 ;;; customize
