@@ -77,6 +77,41 @@
  (cl-callf * gc-cons-threshold 2 2 2 2 2 2)
  (cl-callf * gc-cons-percentage 2 2))
 
+;;;; history
+(cl-callf max history-length 1000)
+
+;;;; key stroke
+(setq echo-keystrokes 0.01)
+
+;;;; cursor blinking
+(blink-cursor-mode -1)
+
+;;;; `yes-or-no-p'
+;; simplify answering yes or no asking
+(defalias 'yes-or-no-p #'y-or-n-p)
+
+;;;; remove trailing whitespaces before saving file
+(defun my-delete-trailing-whitespaces-before-saving ()
+  (unless (memq major-mode '(markdown-mode))
+    (delete-trailing-whitespace)))
+
+(add-hook 'before-save-hook #'my-delete-trailing-whitespaces-before-saving)
+
+;;;; vc-mode
+;; disable vc-mode
+(setq vc-handled-backends nil)
+
+;;;; indentation
+(require 'cl-lib)
+
+(setq-default tab-width 2)
+(setq tab-stop-list (cl-loop for i from 2 to 120 by 2 collect i))
+
+;; do not use tabs for indentation
+(setq-default indent-tabs-mode nil)
+
+(setq tab-always-indent t)
+
 
 ;;; customize
 
