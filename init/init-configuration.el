@@ -609,7 +609,9 @@
   :mode ("\\.tern-project\\'" . json-mode)
   :init
   (with-eval-after-load 'js2-mode
-    (add-hook 'js2-mode-hook (lambda () (tern-mode 1)))))
+    (add-hook 'js2-mode-hook (lambda () (tern-mode 1))))
+  :config
+  (setq tern-command '("tern" "--no-port-file")))
 
 (use-package company-tern
   :init
