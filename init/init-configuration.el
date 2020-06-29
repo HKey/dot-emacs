@@ -641,10 +641,8 @@
 (use-package mozc
   :bind (nil                            ; just for indentation
          :map global-map
-         ("<zenkaku-hankaku>" . toggle-input-method)
-         ("<muhenkan>" . toggle-input-method)
-         :map mozc-mode-map
-         ("<muhenkan>" . toggle-input-method)
+         ;; disable `toggle-input-method'
+         ("C-\\" . nil)
          ;; prevent calling unwanted commands by mistyping
          ("M-m" . ignore)
          ("C-M-m" . ignore))
