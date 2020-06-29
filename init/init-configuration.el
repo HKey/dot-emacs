@@ -644,8 +644,8 @@
          ;; disable `toggle-input-method'
          ("C-\\" . nil)
          ;; prevent calling unwanted commands by mistyping
-         ("M-m" . ignore)
-         ("C-M-m" . ignore))
+         ("M-m" . nil)
+         ("C-M-m" . nil))
   :config
   (setq default-input-method "japanese-mozc"
         ;; - `echo-area'
