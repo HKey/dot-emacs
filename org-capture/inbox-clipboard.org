@@ -1,0 +1,8 @@
+* todo %(car (s-split "\n" (with-temp-buffer (yank) (buffer-substring (point-min) (point-max)))))
+:PROPERTIES:
+:CAPTURED: %U
+:CREATED:  %U
+:MY_ATIME: %U
+:END:
+
+%(s-join "\n" (cdr (s-split "\n" (with-temp-buffer (yank) (buffer-substring (point-min) (point-max))))))

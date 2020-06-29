@@ -1,0 +1,6 @@
+* %?
+:PROPERTIES:
+:CAPTURED: %U
+:CREATED:  %U
+:MY_ATIME: %U
+:END:

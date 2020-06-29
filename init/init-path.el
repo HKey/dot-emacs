@@ -23,7 +23,9 @@
 ;; org-mode
 (my-defpath my-path-org (expand-file-name "~/org"))
 (my-defpath my-path-org-agenda (my-path-org "gtd"))
-
+(my-defpath my-path-org-capture-templates
+  (my-path-dot-emacs-prj "org-capture"))
+(my-defpath my-path-org-memo (my-path-org "memo"))
 
 (provide 'init-path)
 ;;; init-path.el ends here
