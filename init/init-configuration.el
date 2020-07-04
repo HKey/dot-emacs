@@ -112,6 +112,21 @@
 
 (setq tab-always-indent t)
 
+;;;; mode-line
+;; do not show major-mode and minor-mode name
+(setq-default mode-line-format
+              (remq 'mode-line-modes (default-value 'mode-line-format)))
+
+;; line number and column number
+(line-number-mode 1)
+(column-number-mode 1)
+
+;;;; frame title
+(setq frame-title-format "(　´・ω) (´・ω・) (・ω・｀) (ω・｀)")
+
+;;;; `show-paren-mode'
+(show-paren-mode 1)
+
 
 ;;; customize
 
