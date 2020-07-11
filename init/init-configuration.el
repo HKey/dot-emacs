@@ -131,6 +131,54 @@
 ;;;; `show-paren-mode'
 (show-paren-mode 1)
 
+;;;; font
+
+(my-with-package dash)
+(require 'dash)
+
+(defvar my-font-height 135)
+(defvar my-font-fixed-pitch '("mononoki" "ubuntu mono"))
+(defvar my-font-variable-pitch '("ubuntu"))
+(defvar my-font-japanese '("Migu 2M"
+                           "07YasashisaGothic"
+                           "セプテンバーＭ-等幅教漢"))
+(defvar my-font-symbol '("Noto Color Emoji"))
+(defvar my-font-rescale-table
+  '((("mononoki" . "Migu 2M") . 1.125)
+    (("mononoki" . "07YasashisaGothic") . 1.0625)
+    (("mononoki" . "セプテンバーＭ-等幅教漢") . 1.125)))
+
+(when (display-graphic-p)
+  (let ((fixed-pitch (-first #'font-info my-font-fixed-pitch))
+        (variable-pitch (-first #'font-info my-font-variable-pitch))
+        (japanese (-first #'font-info my-font-japanese))
+        (symbol (-first #'font-info my-font-symbol)))
+    (when fixed-pitch
+      (set-face-attribute 'default nil
+                          :family fixed-pitch
+                          :height my-font-height
+                          :weight 'normal)
+      (set-face-attribute 'fixed-pitch nil
+                          :family fixed-pitch
+                          :height 'unspecified))
+    (when variable-pitch
+      (set-face-attribute 'variable-pitch nil
+                          :family variable-pitch
+                          :height 'unspecified))
+    (when symbol
+      (set-fontset-font "fontset-default"
+                        'unicode
+                        (font-spec :family symbol)
+                        nil 'append))
+    (when japanese
+      (--each '(japanese-jisx0208 japanese-jisx0212 katakana-jisx0201)
+        (set-fontset-font "fontset-default" it (font-spec :family japanese))))
+    (when (and fixed-pitch japanese)
+      (setq face-font-rescale-alist
+            (--when-let (alist-get (cons fixed-pitch japanese)
+                                   my-font-rescale-table nil nil #'equal)
+              `((,japanese . ,it)))))))
+
 
 ;;; customize
 
