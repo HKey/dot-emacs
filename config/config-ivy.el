@@ -45,9 +45,12 @@
 
 ;;;;; set re-builders
 
+(require 'init-my-commands)
+
 (setq ivy-re-builders-alist
       `((swiper . ,#'my-ivy-migemo-orderless)
         (counsel-recentf . ,#'my-ivy-migemo-orderless)
+        (,#'my-find-memo . ,#'my-ivy-migemo-orderless)
         (t . ,#'my-ivy-regex-quoted-orderless)))
 
 
