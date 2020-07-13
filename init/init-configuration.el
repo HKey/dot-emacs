@@ -495,12 +495,22 @@
          ("C-n" . company-search-repeat-forward)
          ("C-p" . company-search-repeat-backward))
   :config
-  (setq company-idle-delay nil
-        company-selection-wrap-around t
-        company-tooltip-limit 30
-        ;; company-minimum-prefix-length 1
-        ;; company-minimum-prefix-length nil
-        ))
+  (setq
+   ;; auto start
+   ;; company-idle-delay nil
+   company-idle-delay 0.1
+   ;; company-minimum-prefix-length 1
+   ;; company-minimum-prefix-length nil
+
+   ;; auto complete
+   company-auto-complete 'company-explicit-action-p ; TODO: use function macro
+
+   ;; require match
+   ;; company-require-match nil
+
+   ;; company-selection-wrap-around t
+   company-tooltip-limit 30
+   ))
 
 (use-package company-dabbrev
   :ensure nil
