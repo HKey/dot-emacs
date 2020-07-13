@@ -27,7 +27,7 @@
 (require 'dash)
 (require 's)
 
-(defun my-memo-source ()
+(defun my--memo-source ()
   (--> (list "ag" "--nocolor" "--nogroup" "^\\* " (my-path-org-memo))
        (-map #'shell-quote-argument it)
        (s-join " " it)
@@ -40,14 +40,21 @@
         it)
        (-non-nil it)))
 
+(defun my--memo-file-and-line (str)
+  (cons (get-text-property 0 'file str)
+        (get-text-property 0 'line str)))
+
+(defun my--memo-open-action (str)
+  "Open memo indicated by STR from `completing-read'."
+  (-let (((file . line) (my--memo-file-and-line str)))
+    (with-current-buffer (find-file file)
+      (goto-char (point-min))
+      (forward-line (1- line)))))
+
 (defun my-find-memo ()
   (interactive)
-  (--> (completing-read "title: " (my-memo-source) nil t)
-       (let ((file (get-text-property 0 'file it))
-             (line (get-text-property 0 'line it)))
-         (with-current-buffer (find-file file)
-           (goto-char (point-min))
-           (forward-line (1- line))))))
+  (--> (completing-read "title: " (my--memo-source) nil t)
+       (my--memo-open-action it)))
 
 
 (provide 'init-my-commands)
