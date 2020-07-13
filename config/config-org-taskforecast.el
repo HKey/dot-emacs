@@ -21,6 +21,7 @@
                                     ("1900" 1900)
                                     ("2100" 2100)
                                     ("2300" 2300)
+                                    ("2500" 2500)
                                     ("2630" 2630)))
 
 (add-hook 'org-taskforecast-list-mode-hook #'hl-line-mode)
