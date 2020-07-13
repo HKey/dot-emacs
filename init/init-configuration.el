@@ -484,7 +484,7 @@
   (global-company-mode 1)
   :bind (nil                            ; just for indentation
          :map company-active-map
-         ("C-n" . company-select-next)
+         ("C-n" . company-select-next-if-tooltip-visible-or-complete-selection)
          ("C-p" . company-select-previous)
          ("C-h" . nil)
          ("C-s" . company-filter-candidates)
