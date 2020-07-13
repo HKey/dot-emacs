@@ -56,6 +56,17 @@
   (--> (completing-read "title: " (my--memo-source) nil t)
        (my--memo-open-action it)))
 
+(defun my-store-memo ()
+  (declare (interactive-only t))
+  (interactive)
+  (--> (completing-read "title: " (my--memo-source) nil t)
+       (-let (((file . line) (my--memo-file-and-line it)))
+         (save-window-excursion
+           (with-current-buffer (find-file file)
+             (goto-char (point-min))
+             (forward-line (1- line))
+             (org-store-link nil t))))))
+
 
 (provide 'init-my-commands)
 ;;; init-my-commands.el ends here
