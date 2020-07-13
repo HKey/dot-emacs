@@ -67,6 +67,45 @@
              (forward-line (1- line))
              (org-store-link nil t))))))
 
+(defun my--memo-search (id)
+  (--> (list "ag" "--nocolor" "--nogroup" "--literal"
+             (format "[id:%s]" id)
+             (my-path-org-memo))
+       (-map #'shell-quote-argument it)
+       (s-join " " it)
+       (prog1 it (message it))
+       (shell-command-to-string it)
+       (s-split "\n" it)
+       (--map
+        (-when-let ((_ file line)
+                    (s-match "\\`\\([^:]*\\):\\([0-9]+\\):" it))
+          (cons file (string-to-number line)))
+        it)
+       (-non-nil it)))
+
+(autoload 'org-id-get "org-id" nil t)
+
+(defun my-memo-backward-links ()
+  (interactive)
+  (let ((id (org-id-get))
+        (memos (my--memo-source))
+        (title-table (make-hash-table :test #'equal)))
+    (unless id (error "ID not found on this tree"))
+    (unless memos (error "There is no memo"))
+    ;; This depends on 1 memo per file.
+    (--each memos
+      (-let (((file . _) (my--memo-file-and-line it)))
+        (puthash file it title-table)))
+    (--> (my--memo-search id)
+         (--map
+          (-when-let* (((file . line) it)
+                       (title (gethash file title-table)))
+            (propertize title 'file file 'line line))
+          it)
+         (-non-nil it)
+         (completing-read "backlink: " it nil t)
+         (my--memo-open-action it))))
+
 
 (provide 'init-my-commands)
 ;;; init-my-commands.el ends here

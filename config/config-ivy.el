@@ -51,6 +51,7 @@
       `((swiper . ,#'my-ivy-migemo-orderless)
         (counsel-recentf . ,#'my-ivy-migemo-orderless)
         (,#'my-find-memo . ,#'my-ivy-migemo-orderless)
+        (,#'my-memo-backward-links . ,#'my-ivy-migemo-orderless)
         (t . ,#'my-ivy-regex-quoted-orderless)))
 
 
