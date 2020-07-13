@@ -56,7 +56,9 @@
   (--> (completing-read "title: " (my--memo-source) nil t)
        (my--memo-open-action it)))
 
-(defun my-store-memo ()
+(autoload 'org-id-get-create "org-id" nil t)
+
+(defun my-insert-memo ()
   (declare (interactive-only t))
   (interactive)
   (--> (completing-read "title: " (my--memo-source) nil t)
@@ -65,7 +67,11 @@
            (with-current-buffer (find-file file)
              (goto-char (point-min))
              (forward-line (1- line))
-             (org-store-link nil t))))))
+             (format "[[id:%s][%s]]"
+                     (org-id-get-create)
+                     ;; Remove tags from title.
+                     (s-replace-regexp " +:\\(:?[^ :]+\\)+: *\\'" "" it)))))
+       (insert it)))
 
 (defun my--memo-search (id)
   (--> (list "ag" "--nocolor" "--nogroup" "--literal"
