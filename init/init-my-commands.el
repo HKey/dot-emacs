@@ -26,6 +26,8 @@
 (require 'init-path)
 (require 'dash)
 (require 's)
+(require 'org)
+(require 'org-id)
 
 (defun my--memo-source ()
   (--> (list "ag" "--nocolor" "--nogroup" "^\\* " (my-path-org-memo))
@@ -55,8 +57,6 @@
   (interactive)
   (--> (completing-read "title: " (my--memo-source) nil t)
        (my--memo-open-action it)))
-
-(autoload 'org-id-get-create "org-id" nil t)
 
 (defun my-insert-memo ()
   (declare (interactive-only t))
@@ -106,8 +106,6 @@ SOURCE is a returned value of `my--memo-source'."
           it)
          (-non-nil it))))
 
-(autoload 'org-id-get "org-id" nil t)
-
 (defun my-memo-backward-links ()
   (interactive)
   (let ((id (org-id-get))
@@ -119,8 +117,6 @@ SOURCE is a returned value of `my--memo-source'."
          (prog1 it (unless it (error "Backlink not found")))
          (completing-read "backlink: " it nil t)
          (my--memo-open-action it))))
-
-(autoload 'org-map-region "org" nil t)
 
 (defun my-memo-backward-links-to-this-file ()
   (interactive)
@@ -140,6 +136,28 @@ SOURCE is a returned value of `my--memo-source'."
          (prog1 it (unless it (error "Backlink not found")))
          (completing-read "backlink: " it nil t)
          (my--memo-open-action it))))
+
+(defun my--memo-search-links ()
+  (save-excursion
+    (save-restriction
+      (widen)
+      (goto-char (point-min))
+      (save-match-data
+        (cl-loop while (re-search-forward org-link-any-re nil t)
+                 for title = (match-string 3)
+                 for link = (match-string 2)
+                 when (and title link (s-starts-with-p "id:" link))
+                 collect (propertize
+                          (substring-no-properties title)
+                          'id (s-replace-regexp "^id:" "" link)))))))
+
+(defun my-memo-forward-links ()
+  (interactive)
+  (--> (my--memo-search-links)
+       (prog1 it (unless it (error "Link not found")))
+       (completing-read "forward link: " it nil t)
+       (get-text-property 0 'id it)
+       (org-id-goto it)))
 
 
 (provide 'init-my-commands)

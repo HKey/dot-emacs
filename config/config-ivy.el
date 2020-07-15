@@ -54,6 +54,7 @@
         (,#'my-insert-memo . ,#'my-ivy-migemo-orderless)
         (,#'my-memo-backward-links . ,#'my-ivy-migemo-orderless)
         (,#'my-memo-backward-links-to-this-file . ,#'my-ivy-migemo-orderless)
+        (,#'my-memo-forward-links . ,#'my-ivy-migemo-orderless)
         (t . ,#'my-ivy-regex-quoted-orderless)))
 
 
