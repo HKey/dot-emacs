@@ -89,26 +89,55 @@
         it)
        (-non-nil it)))
 
-(autoload 'org-id-get "org-id" nil t)
-
-(defun my-memo-backward-links ()
-  (interactive)
-  (let ((id (org-id-get))
-        (memos (my--memo-source))
-        (title-table (make-hash-table :test #'equal)))
-    (unless id (error "ID not found on this tree"))
-    (unless memos (error "There is no memo"))
+(defun my--memo-make-backlink-candidates (backlinks source)
+  "Make backlink candidates for `completing-read'.
+BACKLINKS is a returned value of `my--memo-search'.
+SOURCE is a returned value of `my--memo-source'."
+  (let ((title-table (make-hash-table :test #'equal)))
     ;; This depends on 1 memo per file.
-    (--each memos
+    (--each source
       (-let (((file . _) (my--memo-file-and-line it)))
         (puthash file it title-table)))
-    (--> (my--memo-search id)
+    (--> backlinks
          (--map
           (-when-let* (((file . line) it)
                        (title (gethash file title-table)))
             (propertize title 'file file 'line line))
           it)
-         (-non-nil it)
+         (-non-nil it))))
+
+(autoload 'org-id-get "org-id" nil t)
+
+(defun my-memo-backward-links ()
+  (interactive)
+  (let ((id (org-id-get))
+        (memos (my--memo-source)))
+    (unless id (error "ID not found on this tree"))
+    (unless memos (error "There is no memo"))
+    (--> (my--memo-search id)
+         (my--memo-make-backlink-candidates it memos)
+         (prog1 it (unless it (error "Backlink not found")))
+         (completing-read "backlink: " it nil t)
+         (my--memo-open-action it))))
+
+(autoload 'org-map-region "org" nil t)
+
+(defun my-memo-backward-links-to-this-file ()
+  (interactive)
+  (let ((ids nil)
+        (memos (my--memo-source)))
+    (save-restriction
+      (widen)
+      (org-map-region (lambda ()
+                        (-some--> (org-id-get)
+                          (push it ids)))
+                      (point-min) (point-max))
+      (nreverse ids))
+    (unless ids (error "ID not found in this file"))
+    (unless memos (error "There is no memo"))
+    (--> (cl-loop for id in ids append (my--memo-search id))
+         (my--memo-make-backlink-candidates it memos)
+         (prog1 it (unless it (error "Backlink not found")))
          (completing-read "backlink: " it nil t)
          (my--memo-open-action it))))
 
