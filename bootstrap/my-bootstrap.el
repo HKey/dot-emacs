@@ -82,5 +82,10 @@
       use-package-always-ensure t
       use-package-verbose t)
 
+;;; `load-prefer-newer'
+
+;; Always load newer file to avoid loading old files in byte compiling.
+(setq load-prefer-newer t)
+
 (provide 'my-bootstrap)
 ;;; my-bootstrap.el ends here
