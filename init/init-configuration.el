@@ -305,7 +305,8 @@
   ;; highlight-numbers
   (add-hook 'prog-mode-hook #'highlight-numbers-mode)
   ;; hs-minor-mode
-  (add-hook 'prog-mode-hook #'hs-minor-mode))
+  ;; (add-hook 'prog-mode-hook #'hs-minor-mode)
+  )
 
 
 ;;; ruby-mode
