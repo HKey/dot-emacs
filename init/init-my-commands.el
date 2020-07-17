@@ -118,17 +118,18 @@ SOURCE is a returned value of `my--memo-source'."
          (completing-read "backlink: " it nil t)
          (my--memo-open-action it))))
 
-(defun my-memo-backward-links-to-this-file ()
-  (interactive)
+(defun my-memo-backward-links-to-this-file (file)
+  (interactive (list (buffer-file-name)))
   (let ((ids nil)
         (memos (my--memo-source)))
-    (save-restriction
-      (widen)
-      (org-map-region (lambda ()
-                        (-some--> (org-id-get)
-                          (push it ids)))
-                      (point-min) (point-max))
-      (nreverse ids))
+    (with-current-buffer (find-file-noselect file)
+      (save-restriction
+        (widen)
+        (org-map-region (lambda ()
+                          (-some--> (org-id-get)
+                            (push it ids)))
+                        (point-min) (point-max))
+        (setq ids (nreverse ids))))
     (unless ids (error "ID not found in this file"))
     (unless memos (error "There is no memo"))
     (--> (cl-loop for id in ids append (my--memo-search id))
@@ -136,6 +137,13 @@ SOURCE is a returned value of `my--memo-source'."
          (prog1 it (unless it (error "Backlink not found")))
          (completing-read "backlink: " it nil t)
          (my--memo-open-action it))))
+
+(defun my-memo-backward-links-to ()
+  (declare (interactive-only t))
+  (interactive)
+  (--> (completing-read "title: " (my--memo-source) nil t)
+       (-let (((file . _) (my--memo-file-and-line it)))
+         (my-memo-backward-links-to-this-file file))))
 
 (defun my--memo-search-links ()
   (save-excursion
