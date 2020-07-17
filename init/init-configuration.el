@@ -524,6 +524,14 @@
   (setq company-dabbrev-code-other-buffers nil))
 
 
+;;; company-prescient
+
+(my-with-package company-prescient)
+(require 'company-prescient)
+
+(company-prescient-mode 1)
+
+
 ;;; ielm
 
 (use-package ielm
