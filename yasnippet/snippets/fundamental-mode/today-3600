@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: today-3600
+# key: today-3600
+# type: command
+# --
+(insert
+ (format-time-string "%Y-%m-%d"
+                     (time-subtract (current-time) (* 60 60 12))))

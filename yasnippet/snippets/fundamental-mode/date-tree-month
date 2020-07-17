@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: date-tree-month
+# key: date-tree-month
+# type: command
+# --
+(insert (format-time-string "%Y-%m %B" (org-read-date nil t)))
