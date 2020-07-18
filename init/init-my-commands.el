@@ -167,6 +167,19 @@ SOURCE is a returned value of `my--memo-source'."
        (get-text-property 0 'id it)
        (org-id-goto it)))
 
+;;;; file
+
+(defun my-delete-buffer-file ()
+  "Delete current buffer file."
+  (interactive)
+  (let ((file (buffer-file-name)))
+    (and file
+         (yes-or-no-p (format "Delete \"%s\"?" file))
+         (progn
+           (delete-file file)
+           (yes-or-no-p "Kill this buffer?"))
+         (kill-buffer))))
+
 
 (provide 'init-my-commands)
 ;;; init-my-commands.el ends here
