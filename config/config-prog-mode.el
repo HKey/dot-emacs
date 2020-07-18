@@ -3,6 +3,23 @@
 (require 'my-bootstrap)
 (require 'prog-mode)
 
+;;;; utility minor modes
+
+;; eldoc
+(add-hook 'prog-mode-hook #'eldoc-mode)
+
+;; rainbow-delimiters
+(my-with-package rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; highlight-parentheses
+(my-with-package highlight-parentheses)
+(add-hook 'prog-mode-hook #'highlight-parentheses-mode)
+
+;; highlight-numbers
+(my-with-package highlight-numbers)
+(add-hook 'prog-mode-hook #'highlight-numbers-mode)
+
 ;;;; evil
 
 (my-with-package evil)
