@@ -12,8 +12,11 @@
 
 ;; evil-keybindings.el also changes initial state of some modes,
 ;; e.g. `ag-mode'.
-(custom-set-variables '(evil-want-integration nil)
-                      '(evil-want-keybinding nil))
+(custom-set-variables
+ ;; '(evil-want-integration nil)
+ '(evil-want-keybinding nil)
+ '(evil-want-C-w-delete nil)
+ '(evil-want-C-w-in-emacs-state t))
 
 ;;;; enable minor-mode
 (require 'evil)
