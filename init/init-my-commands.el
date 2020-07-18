@@ -180,6 +180,21 @@ SOURCE is a returned value of `my--memo-source'."
            (yes-or-no-p "Kill this buffer?"))
          (kill-buffer))))
 
+;;;; clone emacs
+
+(defun my-clone-emacs ()
+  "Start new emacs process with `load-path' inherited from current emacs."
+  (interactive)
+  (start-process
+   "my-clone-emacs"
+   " *Emacs Clone*"
+   (cl-first command-line-args)
+   "-q"
+   "--eval"
+   (format "%S"
+           `(setq load-path ',load-path
+                  custom-theme-load-path ',custom-theme-load-path))))
+
 
 (provide 'init-my-commands)
 ;;; init-my-commands.el ends here
