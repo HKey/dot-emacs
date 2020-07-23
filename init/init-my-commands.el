@@ -65,7 +65,7 @@
   (--> (completing-read "title: " (my--memo-source) nil t)
        (-let (((file . line) (my--memo-file-and-line it)))
          (save-window-excursion
-           (with-current-buffer (find-file file)
+           (with-current-buffer (find-file-noselect file)
              (goto-char (point-min))
              (forward-line (1- line))
              (format "[[id:%s][%s]]"
