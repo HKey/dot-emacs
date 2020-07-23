@@ -30,7 +30,8 @@
 (require 'org-id)
 
 (defun my--memo-source ()
-  (--> (list "ag" "--nocolor" "--nogroup" "^\\* " (my-path-org-memo))
+  (--> (list "ag" "--nocolor" "--nogroup" "--file-search-regex" "\\.org$"
+             "^\\* " (my-path-org-memo))
        (-map #'shell-quote-argument it)
        (s-join " " it)
        (shell-command-to-string it)
@@ -74,7 +75,8 @@
        (insert it)))
 
 (defun my--memo-search (id)
-  (--> (list "ag" "--nocolor" "--nogroup" "--literal"
+  (--> (list "ag" "--nocolor" "--nogroup" "--file-search-regex" "\\.org$"
+             "--literal"
              (format "[id:%s]" id)
              (my-path-org-memo))
        (-map #'shell-quote-argument it)
