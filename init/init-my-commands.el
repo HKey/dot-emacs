@@ -49,10 +49,8 @@
 
 (defun my--memo-open-action (str)
   "Open memo indicated by STR from `completing-read'."
-  (-let (((file . line) (my--memo-file-and-line str)))
-    (with-current-buffer (find-file file)
-      (goto-char (point-min))
-      (forward-line (1- line)))))
+  (-let (((file . _) (my--memo-file-and-line str)))
+    (find-file file)))
 
 (defun my-find-memo ()
   (interactive)
@@ -66,12 +64,13 @@
        (-let (((file . line) (my--memo-file-and-line it)))
          (save-window-excursion
            (with-current-buffer (find-file-noselect file)
-             (goto-char (point-min))
-             (forward-line (1- line))
-             (format "[[id:%s][%s]]"
-                     (org-id-get-create)
-                     ;; Remove tags from title.
-                     (s-replace-regexp " +:\\(:?[^ :]+\\)+: *\\'" "" it)))))
+             (save-excursion
+               (goto-char (point-min))
+               (forward-line (1- line))
+               (format "[[id:%s][%s]]"
+                       (org-id-get-create)
+                       ;; Remove tags from title.
+                       (s-replace-regexp " +:\\(:?[^ :]+\\)+: *\\'" "" it))))))
        (insert it)))
 
 (defun my--memo-search (id)
