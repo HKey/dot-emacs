@@ -96,77 +96,72 @@
 
 ;;;;; outline-minor-mode
 
-(my-with-package hydra)
+(my-with-package transient)
 
-(require 'hydra)
+(require 'transient)
 (require 'outline)
 
 ;; See `outline-mode-prefix-map' for what commands are provided.
-(defhydra my-hydra-outline-minor-mode (:foreign-keys run)
-  "Hydra for `outline-minor-mode'"
-  ("n" outline-next-visible-heading "next heading"
-   :column "Move cursor")
-  ("p" outline-previous-visible-heading "previous heading")
-  ("u" outline-up-heading "parent")
-  ("f" outline-forward-same-level "forward same level")
-  ("b" outline-backward-same-level "backward same level")
-
-  ("c" outline-toggle-children "toggle children"
-   :column "Hide/Show")
-  ("a" outline-show-all "show all")
-  ("o" outline-hide-other "hide other")
-
-  ("U" outline-move-subtree-up "move subtree up"
-   :column "Move subtree")
-  ("D" outline-move-subtree-down "move subtree down")
-
-  ("<escape>" nil "quit hydra"
-   :column "quit")
-  ("q" nil "quit hydra"))
+(transient-define-prefix my-transient-outline-minor-mode ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-exit
+  [["Go to"
+    ("n" "next heading" outline-next-visible-heading)
+    ("p" "previous heading" outline-previous-visible-heading)
+    ("f" "forward same level" outline-forward-same-level)
+    ("b" "backward same level" outline-backward-same-level)
+    ("u" "parent" outline-up-heading)]
+   ["Hide/show"
+    ("a" "show all" outline-show-all)
+    ("o" "hide other" outline-hide-other)
+    ("c" "toggle children" outline-toggle-children)]
+   ["Move"
+    ("U" "move subtree up" outline-move-subtree-up)
+    ("D" "move subtree down" outline-move-subtree-down)]]
+  ["Transient"
+   [("q" "quit" transient-quit-one)]
+   [("<escape>" "quit" transient-quit-one)]])
 
 (my-define-key evil-motion-state-map
-  "qyo" #'my-hydra-outline-minor-mode/body)
+  "qyo" #'my-transient-outline-minor-mode)
 
 ;;;;; flycheck
 
-(my-with-package hydra)
+(my-with-package transient)
 (my-with-package flycheck)
 
-(require 'hydra)
+(require 'transient)
 (require 'flycheck)
 
-(defhydra my-hydra-flycheck-mode ()
-  "Hydra for `flycheck-mode'"
-  ("c" flycheck-buffer "check buffer" :exit t
-   :column "flycheck")
-  ("C" flycheck-clear "clear errors" :exit t)
-  ("l" flycheck-list-errors "list errors" :exit t)
-  ("x" flycheck-disable-checker "disable flycheck" :exit t)
+(transient-define-prefix my-transient-flycheck-mode ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-exit
+  [["Action"
+    ("n" "next error" flycheck-next-error)
+    ("p" "previous error" flycheck-previous-error)
+    ("w" "copy errors" flycheck-copy-errors-as-kill :transient nil)
+    ("h" "display error" flycheck-display-error-at-point)
+    ("e" "explain error" flycheck-explain-error-at-point)]
+   ["Checker"
+    ("s" "select checker" flycheck-select-checker :transient nil)
+    ("?" "describe checker" flycheck-describe-checker :transient nil)
+    ("x" "disable checker" flycheck-disable-checker :transient nil)]
+   ["Flycheck"
+    ("c" "check buffer" flycheck-buffer :transient nil)
+    ("C" "clear errors" flycheck-clear :transient nil)
+    ("l" "list errors" flycheck-list-errors :transient nil)]]
+  ["Transient"
+   [("q" "quit" transient-quit-one)]
+   [("<escape>" "quit" transient-quit-one)]])
 
-  ("n" flycheck-next-error "next error"
-   :column "error")
-  ("p" flycheck-previous-error "previous error")
-  ("C-w" flycheck-copy-errors-as-kill "copy errors" :exit t)
-  ("h" flycheck-display-error-at-point "display error")
-  ("e" flycheck-explain-error-at-point "explain error")
-
-  ("s" flycheck-select-checker "select checker" :exit t
-   :column "checker")
-  ("?" flycheck-describe-checker "describe checker" :exit t)
-
-  ("<escape>" nil "quit hydra"
-   :column "quit")
-  ("q" nil "quit hydra"))
-
-(my-define-key evil-motion-state-map
-  "qyf" #'my-hydra-flycheck-mode/body)
+(my-define-key evil-motion-state-map "qyf" #'my-transient-flycheck-mode)
 
 ;;;;; projectile
 
-(my-with-package hydra)
+(my-with-package transient)
 (my-with-package projectile)
 
-(require 'hydra)
+(require 'transient)
 (require 'projectile)
 
 (defun my-projectile-switch-project-with-magit (project)
@@ -177,28 +172,31 @@
           nil t)))
   (magit-status project))
 
-(defhydra my-hydra-projectile-mode ()
-  "Hydra for `projectile-mode'"
-  ("x" projectile-run-async-shell-command-in-root "async shell command" :exit t
-   :column "command")
-  ("s" projectile-run-shell "run shell" :exit t)
+(transient-define-prefix my-transient-projectile-mode ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-exit
+  [["Buffer"
+    ("b" "switch to buffer" projectile-switch-to-buffer :transient nil)
+    ("I" "ibuffer" projectile-ibuffer :transient nil)]
+   ["File"
+    ("f" "find file" projectile-find-file :transient nil)
+    ("d" "dired" projectile-dired :transient nil)
+    ("r" "recentf" projectile-recentf :transient nil)]
+   ["Project"
+    ("p" "switch project" projectile-switch-project :transient nil)
+    ("m" "switch and magit" my-projectile-switch-project-with-magit
+     :transient nil)]
+   ["Search"
+    ("/" "ag"  projectile-ag :transient nil)]]
+  ["Shell"
+   ("x" "async command in root" projectile-run-async-shell-command-in-root
+    :transient nil)
+   ("s" "run shell" projectile-run-shell :transient nil)]
+  ["Transient"
+   [("q" "quit" transient-quit-one)]
+   [("<escape>" "quit" transient-quit-one)]])
 
-  ("b" projectile-switch-to-buffer "switch to buffer" :exit t
-   :column "buffer")
-  ("I" projectile-ibuffer "ibuffer" :exit t)
-
-  ("f" projectile-find-file "find file" :exit t
-   :column "file")
-  ("d" projectile-dired "dired" :exit t)
-  ("r" projectile-recentf "recentf" :exit t)
-  ("p" projectile-switch-project "switch project" :exit t)
-  ("m" my-projectile-switch-project-with-magit "switch and magit" :exit t)
-
-  ("/" projectile-ag "ag" :exit t
-   :column "search"))
-
-(my-define-key evil-normal-state-map
-  "qp" #'my-hydra-projectile-mode/body)
+(my-define-key evil-normal-state-map "qp" #'my-transient-projectile-mode)
 
 
 (provide 'config-evil)
