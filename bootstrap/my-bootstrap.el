@@ -17,8 +17,12 @@
 
 
   ;; package
+  (defvar my--with-package-refreshed-p nil)
   (defun my--with-package-ensure-install (package)
     (unless (package-installed-p package)
+      (unless my--with-package-refreshed-p
+        (package-refresh-contents)
+        (setq my--with-package-refreshed-p t))
       (package-install package))
     (add-to-list 'package-selected-packages package))
 
