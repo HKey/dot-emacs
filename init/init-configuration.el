@@ -5,19 +5,18 @@
 ;;; basic configuration
 
 ;;;; frame-alist
-(when (display-graphic-p)
-  ;; `default-frame-alist'
-  (setq default-frame-alist
-        '((height . 26)
-          (width . 80)
-          (inhibit-double-buffering . t)
-          ;; (internal-border-width . 20)
-          (right-fringe . 0)
-          (left-fringe . 0)
-          (horizontal-scroll-bars)
-          (vertical-scroll-bars)
-          (tool-bar-lines . 0)
-          (menu-bar-lines . 0))))
+;; `default-frame-alist'
+(setq default-frame-alist
+      '((height . 28)
+        (width . 80)
+        (inhibit-double-buffering . t)
+        ;; (internal-border-width . 20)
+        (right-fringe . 0)
+        (left-fringe . 0)
+        (horizontal-scroll-bars)
+        (vertical-scroll-bars)
+        (tool-bar-lines . 0)
+        (menu-bar-lines . 0)))
 
 ;;;; supress same file warnings like "file-a and file-b are the same file"
 (setq find-file-suppress-same-file-warnings t)
