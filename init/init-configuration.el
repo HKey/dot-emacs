@@ -75,10 +75,11 @@
 ;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html
 (setq
  ;; message
- garbage-collection-messages t
- ;; increase thresholds
- (cl-callf * gc-cons-threshold 2 2 2 2 2 2)
- (cl-callf * gc-cons-percentage 2 2))
+ ;; garbage-collection-messages t
+ )
+;; increase thresholds
+(cl-callf * gc-cons-threshold 2 2 2 2 2 2 2)
+(cl-callf * gc-cons-percentage 2 2)
 
 ;;;; history
 (cl-callf max history-length 1000)
