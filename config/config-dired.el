@@ -10,7 +10,11 @@
 
 (setq dired-dwim-target t
       dired-clean-up-buffers-too nil    ; do not delete orphan buffers
-      dired-listing-switches "-AFhlv --time-style=long-iso")
+      dired-listing-switches "-AFhlv --time-style=long-iso"
+
+      ;; Do not ask to copy/delete directories.
+      dired-recursive-copies 'always
+      dired-recursive-deletes 'always)
 
 ;;;; open with external application
 
