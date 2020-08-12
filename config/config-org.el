@@ -42,8 +42,12 @@
 
 (require 'lib-util)
 
-;; narrowing
-(my-define-key org-mode-map [remap narrow-to-defun] #'org-narrow-to-subtree)
+(my-define-key org-mode-map
+  ;; narrowing
+  [remap narrow-to-defun] #'org-narrow-to-subtree
+  ;; fill paragraph
+  "M-q" nil                             ; Use default M-q.
+  )
 
 ;;;; speed commands
 

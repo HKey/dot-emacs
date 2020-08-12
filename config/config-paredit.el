@@ -9,7 +9,9 @@
 ;;;; key binding
 
 (my-define-key paredit-mode-map
-  [remap delete-backward-char] #'paredit-backward-delete)
+  [remap delete-backward-char] #'paredit-backward-delete
+  "M-q" nil                             ; Use default M-q.
+  )
 
 ;;;; evil
 
