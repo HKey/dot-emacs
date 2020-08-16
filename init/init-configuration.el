@@ -732,6 +732,7 @@
                          image-mode
                          calendar-mode
                          eww-mode
+                         grep-mode
                          ;; extension
                          ztree-mode
                          pomidor-mode
@@ -741,7 +742,8 @@
                          bm-show-mode
                          org-taskforecast-list-mode
                          flycheck-error-list-mode
-                         ag-mode))))
+                         ag-mode
+                         undo-tree-visualize-mode))))
 
   ;; cursor
   (setq evil-insert-state-cursor '(hbar . 4)
