@@ -718,6 +718,8 @@
 
 ;;; evil
 
+(my-with-package expand-region)
+
 (use-package evil
   :init
   (require 'init-evil)
