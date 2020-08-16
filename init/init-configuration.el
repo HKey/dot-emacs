@@ -1017,6 +1017,11 @@
 (my-with-package json-mode)
 
 
+;;; gif-screencast
+
+(my-with-package gif-screencast)
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
