@@ -6,7 +6,7 @@
 ;;;; basic configuration
 
 ;; for eww and elfeed
-(setq shr-width 60
+(setq shr-width 46
       shr-use-colors nil
       shr-max-image-proportion 0.4
       ;; use variable pitch font
