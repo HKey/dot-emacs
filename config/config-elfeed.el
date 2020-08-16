@@ -23,11 +23,6 @@
 (require 'elfeed-show)
 (require 'time-date)                    ; for `seconds-to-time'
 
-(defface my-elfeed-title
-  '((t :height 1.5 :inherit variable-pitch :bold t))
-  "Title face of elfeed-show"
-  :group 'elfeed)
-
 (defface my-elfeed-show-details
   '((t :height 0.8 :inherit variable-pitch))
   "Details face of elfeed-show"
@@ -49,8 +44,10 @@
          (feed-title (elfeed-feed-title feed))
          (base (and feed (elfeed-compute-base (elfeed-feed-url feed)))))
     (erase-buffer)
-    (insert (propertize (concat title "\n")
-                        'face '(my-elfeed-title message-header-subject)))
+    ;; To wrap words with `shr-width', use `shr-insert-document' and
+    ;; "h1" element.
+    (shr-insert-document `(h1 nil ,title))
+    (insert "\n")
     (insert
      (propertize
       (concat nicedate " / " feed-title "\n")
