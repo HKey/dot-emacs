@@ -50,6 +50,7 @@
 (setq ivy-re-builders-alist
       `((swiper . ,#'my-ivy-migemo-orderless)
         (counsel-recentf . ,#'my-ivy-migemo-orderless)
+        (counsel-yank-pop . ,#'my-ivy-migemo-orderless)
         (read-file-name-internal . ,#'my-ivy-migemo-orderless)
         (,#'my-find-memo . ,#'my-ivy-migemo-orderless)
         (,#'my-insert-memo . ,#'my-ivy-migemo-orderless)
