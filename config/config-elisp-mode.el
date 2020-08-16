@@ -42,6 +42,11 @@
    (("df" describe-function)
     ("dv" describe-variable))))
 
+;;;; linter
+
+(my-with-package package-lint)
+(my-with-package relint)
+
 
 (provide 'config-elisp-mode)
 ;;; config-elisp-mode.el ends here
