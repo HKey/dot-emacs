@@ -1013,6 +1013,11 @@
 (yas-global-mode 1)
 
 
+;;; markdown-mode
+
+(my-with-package markdown-mode)
+
+
 ;;; json-mode
 
 (my-with-package json-mode)
