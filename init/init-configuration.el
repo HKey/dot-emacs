@@ -926,6 +926,17 @@
   )
 
 
+;;; highlight-symbol
+
+(my-with-package highlight-symbol)
+(require 'lib-util)
+
+(my-define-key global-map
+  "<f8>" #'highlight-symbol
+  "<f9>" #'highlight-symbol-prev
+  "<f10>" #'highlight-symbol-next)
+
+
 ;;; flycheck-posframe
 
 (use-package flycheck-posframe
