@@ -46,7 +46,7 @@
   ;; narrowing
   [remap narrow-to-defun] #'org-narrow-to-subtree
   ;; fill paragraph
-  "M-q" nil                             ; Use default M-q.
+  [remap fill-paragraph] nil            ; Use default M-q.
   )
 
 ;;;; speed commands
