@@ -34,6 +34,10 @@
 
 (use-package base16-theme)
 
+;;;; zenburn-theme
+
+(my-with-package zenburn-theme)
+
 ;;;; theme overriding
 
 (use-package dash)
