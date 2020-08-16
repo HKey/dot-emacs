@@ -453,6 +453,12 @@
         (f-files org-directory (lambda (f) (f-ext-p f "org")) t)))
 
 
+;;; org-attach
+
+(with-eval-after-load 'org
+  (require 'org-attach))
+
+
 ;;; org-download
 
 (use-package org-download
