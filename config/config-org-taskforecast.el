@@ -22,7 +22,8 @@
                                     ("2100" 2100)
                                     ("2300" 2300)
                                     ("2500" 2500)
-                                    ("2630" 2630)))
+                                    ("2630" 2630)
+                                    ("NO-SECTION" 3100 "NO SECTION")))
 
 (add-hook 'org-taskforecast-list-mode-hook #'hl-line-mode)
 
