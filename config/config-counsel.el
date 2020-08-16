@@ -19,7 +19,8 @@
                (if (equal "" it) "/" it))
           (or (f-dirname str) "")))
 
-(ivy-set-display-transformer 'counsel-recentf #'my-counsel-recentf-transformer)
+(ivy-configure #'counsel-recentf
+  :display-transformer-fn #'my-counsel-recentf-transformer)
 
 ;;;; settings
 
