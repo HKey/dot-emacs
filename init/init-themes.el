@@ -38,6 +38,10 @@
 
 (my-with-package zenburn-theme)
 
+;;;; labburn-theme
+
+(my-with-package labburn-theme)
+
 ;;;; theme overriding
 
 (use-package dash)
