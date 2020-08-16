@@ -600,22 +600,7 @@
   :config
   ;; don't skip buffers that start with "*"
   (setq iflipb-ignore-buffers nil))
-
-
-;;; helm
-
-(use-package helm)
-
-(use-package helm-files
-  :ensure nil
-  :config
   (setq
-   ;; Show full path for file selection.
-   ;; To toggle that, press "C-]".
-   helm-ff-transformer-show-only-basename nil
-
-   ;; Disable fuzzy matching.
-   helm-ff-fuzzy-matching nil))
 
 
 ;;; ivy
