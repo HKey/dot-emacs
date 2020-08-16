@@ -139,6 +139,10 @@
 (define-key elfeed-search-mode-map (kbd "Cp") #'pocket-reader-elfeed-search-add-link)
 (define-key elfeed-show-mode-map (kbd "Cp") #'pocket-reader-elfeed-entry-add-link)
 
+;;;; feed-discovery
+
+(my-with-package feed-discovery)
+
 
 (provide 'config-elfeed)
 ;;; config-elfeed.el ends here
