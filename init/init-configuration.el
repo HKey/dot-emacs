@@ -961,17 +961,6 @@
                      #'rjsx-mode)))
 
 
-;;; eldoc-box
-
-(use-package eldoc-box
-  :if (display-graphic-p)
-  :after eldoc
-  :init
-  (add-hook 'eldoc-mode-hook #'eldoc-box-hover-at-point-mode)
-  :config
-  (setq eldoc-box-max-pixel-width (* 72 (frame-char-width))))
-
-
 ;;; ztree
 
 (use-package ztree
