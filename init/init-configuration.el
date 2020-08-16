@@ -1013,6 +1013,11 @@
 (yas-global-mode 1)
 
 
+;;; json-mode
+
+(my-with-package json-mode)
+
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
