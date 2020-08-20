@@ -179,6 +179,32 @@
                                    my-font-rescale-table nil nil #'equal)
               `((,japanese . ,it)))))))
 
+;;;; key binding
+
+(require 'lib-util)
+(require 'init-my-commands)
+
+(my-define-key global-map
+  "C-h"   (kbd "DEL")
+  "C-S-h" #'backward-kill-word
+  "C-z"   #'undo
+
+  ;; Replace `list-buffers' to `ibuffer'.
+  ;; I want to show the buffer list into the current window, not
+  ;; showing in other window.  And I want to switch to one of the
+  ;; listed buffers.
+  "C-x C-b" #'ibuffer
+  [remap shell-command] #'async-shell-command
+
+  ;; sequential commands
+  "M-u" #'my-seq-upcase-backward-word     ;`upcase-word'
+  "M-c" #'my-seq-capitalize-backward-word ;`capitalize-word'
+  "M-l" #'my-seq-downcase-backward-word   ;`downcase-word'
+  )
+
+(my-define-key isearch-mode-map
+  "C-h" (kbd "DEL"))
+
 
 ;;; customize
 
