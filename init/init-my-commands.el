@@ -203,6 +203,38 @@ SOURCE is a returned value of `my--memo-source'."
            `(setq load-path ',load-path
                   custom-theme-load-path ',custom-theme-load-path))))
 
+;;;; sequential-command like commands
+
+;; sequential-command cannot be used because its prefix conflicts seq.el.
+;; So I reduced its feature and introduced some commands here.
+;;
+;; Original:
+;; - [Home] Sequential Command
+;;   https://www.emacswiki.org/emacs/SequentialCommand
+
+(defvar my-seq-counter 0)
+
+(defun my-seq-count ()
+  (if (eq last-command this-command)
+      (cl-incf my-seq-counter)
+    (setq my-seq-counter 0)))
+
+;; From sequential-command-config.el
+(defun my-seq-upcase-backward-word ()
+  (declare (interactive-only t))
+  (interactive)
+  (upcase-word (- (1+ (my-seq-count)))))
+
+(defun my-seq-capitalize-backward-word ()
+  (declare (interactive-only t))
+  (interactive)
+  (capitalize-word (- (1+ (my-seq-count)))))
+
+(defun my-seq-downcase-backward-word ()
+  (declare (interactive-only t))
+  (interactive)
+  (downcase-word (- (1+ (my-seq-count)))))
+
 
 (provide 'init-my-commands)
 ;;; init-my-commands.el ends here
