@@ -52,6 +52,7 @@
         (counsel-recentf . ,#'my-ivy-migemo-orderless)
         (counsel-yank-pop . ,#'my-ivy-migemo-orderless)
         (read-file-name-internal . ,#'my-ivy-migemo-orderless)
+        (my-xdg-open-file-with-fd . ,#'my-ivy-migemo-orderless)
         (,#'my-find-memo . ,#'my-ivy-migemo-orderless)
         (,#'my-insert-memo . ,#'my-ivy-migemo-orderless)
         (,#'my-memo-backward-links . ,#'my-ivy-migemo-orderless)

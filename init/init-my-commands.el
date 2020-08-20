@@ -19,6 +19,13 @@
            (find-file it)
          (user-error "Package not found, %s" pkg))))
 
+(defun my-xdg-open-file-with-fd ()
+  (interactive)
+  (--> (shell-command-to-string "fd --type file ")
+       (s-split "\n" it t)
+       (completing-read "xdg-open: " it nil t)
+       (call-process "xdg-open" nil 0 nil it)))
+
 ;;;; memo
 
 (my-with-package dash)
