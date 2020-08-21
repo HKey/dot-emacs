@@ -557,27 +557,6 @@
   (add-hook 'ielm-mode-hook #'enable-paredit-mode))
 
 
-;;; dimmer
-
-(use-package dimmer
-  ;; in "emacs -nw", dimmer slows redisplay down
-  :if (display-graphic-p)
-  :init
-  ;; A workaround: While using some dark themes, echo area messages get
-  ;; too dark to read.
-  ;; That can be prevented by delaying turning dimmer-mode on.
-  ;; (add-hook 'emacs-startup-hook #'dimmer-mode)
-  ;; (require 'dimmer)                     ; to load config section
-  :config
-  (cl-callf append dimmer-buffer-exclusion-regexps
-    (list (rx bos " *helm")             ; for helm
-          (rx bos " *hkey helm")        ; for my helm command
-          (rx bos "*elfeed-entry*" eos) ; for elfeed entry buffer
-          ))
-  (setq dimmer-watch-frame-focus-events nil
-        dimmer-fraction 0.4))
-
-
 ;;; golden-ratio
 
 ;; move after evil
