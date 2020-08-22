@@ -58,8 +58,7 @@
 
 ;;;; key bindings
 
-(use-package dired-atool)
-
+(my-with-package dired-atool)
 (require 'lib-util)
 
 (my-define-key dired-mode-map

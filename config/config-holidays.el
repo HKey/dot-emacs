@@ -13,7 +13,7 @@
 
 ;;;; japanese-holidays
 
-(use-package japanese-holidays)
+(my-with-package japanese-holidays)
 (require 'japanese-holidays)
 
 ;; holidays

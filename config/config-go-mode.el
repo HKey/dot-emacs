@@ -1,7 +1,7 @@
 ;;; config-go-mode.el --- go-mode                    -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package go-mode)
+(my-with-package go-mode)
 
 (require 'go-mode)
 

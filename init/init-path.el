@@ -1,7 +1,7 @@
 ;;; init-path.el --- Path definitions               -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package f)
+(my-with-package f)
 
 (require 'f)
 

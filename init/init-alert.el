@@ -1,7 +1,7 @@
 ;;; init-alert.el --- alert.el                    -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package alert)
+(my-with-package alert)
 
 (require 'alert)
 

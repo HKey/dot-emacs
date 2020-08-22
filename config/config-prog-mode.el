@@ -23,6 +23,7 @@
 ;;;; evil
 
 (my-with-package evil)
+(require 'init-evil)
 (require 'evil)
 (require 'config-evil)
 

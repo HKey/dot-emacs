@@ -8,6 +8,7 @@
 
 ;; evil
 (my-with-package evil)
+(require 'init-evil)
 (require 'evil)
 
 (evil-define-key 'motion help-mode-map

@@ -1,11 +1,11 @@
 ;;; config-cc-mode.el --- c/c++                      -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package dash)
-(use-package irony)
-(use-package company)
-(use-package company-irony)
-(use-package flycheck-irony)
+(my-with-package dash)
+(my-with-package irony)
+(my-with-package company)
+(my-with-package company-irony)
+(my-with-package flycheck-irony)
 
 (require 'cc-mode)
 (require 'dash)

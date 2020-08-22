@@ -1,7 +1,7 @@
 ;;; config-elfeed.el --- elfeed                      -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package elfeed)
+(my-with-package elfeed)
 
 (require 'elfeed)
 
@@ -70,8 +70,8 @@
 (setq elfeed-show-refresh-function #'my-elfeed-show-refresh)
 
 ;;;; org-capture
-(use-package dash)
-(use-package s)
+(my-with-package dash)
+(my-with-package s)
 
 (require 'elfeed-search)
 (require 'elfeed-show)
@@ -110,7 +110,7 @@
 
 ;;;; eww
 
-(use-package dash)
+(my-with-package dash)
 (require 'dash)
 
 (defun my-elfeed-search-eww ()
@@ -132,8 +132,7 @@
 
 ;;;; pocket-reader
 
-(use-package pocket-reader)
-
+(my-with-package pocket-reader)
 (require 'pocket-reader)
 
 (define-key elfeed-search-mode-map (kbd "Cp") #'pocket-reader-elfeed-search-add-link)

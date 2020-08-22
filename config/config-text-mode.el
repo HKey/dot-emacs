@@ -5,7 +5,7 @@
 
 ;;;; company
 
-(use-package company)
+(my-with-package company)
 (require 'company)
 
 (defun my-text-mode-company-setup ()

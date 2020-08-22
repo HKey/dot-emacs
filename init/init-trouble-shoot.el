@@ -11,7 +11,7 @@
 ;; and time.
 
 (require 'my-bootstrap)
-(use-package dash)
+(my-with-package dash)
 
 (require 'dash)
 

@@ -2,9 +2,71 @@
 
 (require 'my-bootstrap)
 (my-with-package evil)
+(my-with-package dash)
 
+(require 'init-evil)
 (require 'evil)
+(require 'dash)
 (require 'lib-util)
+
+;;;; config
+
+;; initial state
+
+(setq evil-motion-state-modes nil
+      evil-emacs-state-modes
+      (-uniq (append evil-emacs-state-modes
+                     '(
+                       ;; builtin
+                       dired-mode
+                       image-mode
+                       calendar-mode
+                       eww-mode
+                       grep-mode
+                       ;; extension
+                       ztree-mode
+                       pomidor-mode
+                       ag-mode
+                       elfeed-show-mode
+                       elfeed-search-mode
+                       bm-show-mode
+                       org-taskforecast-list-mode
+                       flycheck-error-list-mode
+                       ag-mode
+                       undo-tree-visualize-mode))))
+
+;; cursor
+(setq evil-insert-state-cursor '(hbar . 4)
+      evil-emacs-state-cursor 'hollow
+      evil-motion-state-cursor '(bar . 1))
+
+;; do not show state tag in mode-line
+(setq evil-mode-line-format nil)
+
+;; enable crossing lines
+(setq evil-cross-lines t)
+
+;; use fine undo
+(setq evil-want-fine-undo t)
+
+;; completion
+
+(my-with-package company)
+(require 'company-dabbrev)
+
+(setq evil-complete-previous-func
+      (lambda (_)
+        (let ((company-dabbrev-char-regexp
+               ;; from `dabbrev-expand'
+               "\\(?:\\sw\\|\\s_\\)+")
+              (company-dabbrev-time-limit 0.5)
+              (company-dabbrev-other-buffers 'all))
+          (call-interactively #'company-dabbrev)))
+      evil-complete-next-func
+      (lambda (_) (call-interactively #'company-complete)))
+
+;; do not jump across buffers
+(setq evil-jumps-cross-buffers nil)
 
 ;;;; symbol motion
 
@@ -30,14 +92,98 @@
 ;;;; key binding
 
 (my-with-package undo-tree)
+(my-with-package mozc-temp)
+(my-with-package caseformat)
+(my-with-package avy)
+(my-with-package bm)
+(my-with-package expand-region)
 
-(my-define-key evil-normal-state-map "U" #'undo-tree-redo)
+(require 'bm)
+(require 'expand-region)
+(require 'winner)
+
+(my-define-key evil-emacs-state-map
+  ;; do not override C-z
+  "C-z" nil
+  ;; same with other states
+  "<escape>" #'evil-exit-emacs-state)
+
+(my-define-key evil-insert-state-map
+  ;; do not override some keys
+  "C-v" nil
+  "C-k" nil
+  "C-o" nil
+  "C-r" nil
+  "C-e" nil
+  "C-y" nil
+  "C-x C-n" nil
+  "C-x C-p" nil
+  "C-t" nil
+  "C-d" nil
+  "C-a" nil
+  ;; mozc-temp
+  "M-n" #'mozc-temp-convert-dwim
+  ;; caseformat
+  "M-l" #'caseformat-backward)
+
+(my-define-key evil-motion-state-map
+  ;; page up, down
+  "SPC" #'evil-scroll-page-down
+  "S-SPC" #'evil-scroll-page-up
+  ;; beginning, end of line
+  "gh" #'evil-beginning-of-line
+  "gl" #'evil-end-of-line
+  ;; swap visual and physical of line moving
+  "j" #'evil-next-visual-line
+  "k" #'evil-previous-visual-line
+  "gj" #'evil-next-line
+  "gk" #'evil-previous-line
+  ;; avy
+  "t" #'avy-goto-word-0
+  "T" #'avy-goto-char
+  "f" #'avy-goto-line)
+
+(my-define-key evil-normal-state-map
+  ;; undo-tree
+  "U" #'undo-tree-redo
+  ;; bm
+  "m" nil
+  "mm" #'bm-toggle
+  "mn" #'bm-next
+  "mp" #'bm-previous
+  "ms" #'bm-show
+  "ma" #'bm-show-all)
+
+(my-define-key evil-visual-state-map
+  ;; expand-region
+  ;; NOTE: using text object instead is better than
+  ;;       binding keys directly?
+  "u" #'er/expand-region
+  "U" #'er/contract-region)
+
+(my-define-key evil-window-map
+  ;; ;; buf-move
+  ;; "SPC h" #'buf-move-left
+  ;; "SPC j" #'buf-move-down
+  ;; "SPC k" #'buf-move-up
+  ;; "SPC l" #'buf-move-right
+  ;; winner
+  "C-u" #'winner-undo)
 
 (my-define-key evil-ex-completion-map
   "C-a" nil                       ; old: evil-ex-completion
   "C-b" nil                       ; old: move-beginning-of-line
   "C-f" nil                       ; old: evil-ex-search-command-window
   )
+
+;;;;; eyebrowse
+
+(my-with-package eyebrowse)
+(require 'eyebrowse)
+(require 'config-eyebrowse)
+
+;; Disable default "C-t" in evil.
+(evil-define-key* 'normal 'global eyebrowse-keymap-prefix nil)
 
 ;;;;; "q" prefix
 

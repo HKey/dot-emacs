@@ -1,7 +1,7 @@
 ;;; config-paredit.el --- paredit                    -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package paredit)
+(my-with-package paredit)
 
 (require 'paredit)
 (require 'lib-util)

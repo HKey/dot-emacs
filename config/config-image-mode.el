@@ -21,7 +21,7 @@
 
 ;;;; make cursor invisible
 
-(use-package dash)
+(my-with-package dash)
 (require 'init-evil)
 (require 'evil)
 (require 'dash)

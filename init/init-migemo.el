@@ -1,7 +1,7 @@
 ;;; init-migemo.el --- migemo                        -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package migemo)
+(my-with-package migemo)
 
 (require 'migemo)
 

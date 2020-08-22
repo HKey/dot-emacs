@@ -5,9 +5,8 @@
   (add-to-list 'load-path (expand-file-name "bootstrap" dot-emacs-root)))
 
 (require 'my-bootstrap)
-(require 'use-package)
 
-(use-package el-init)
+(my-with-package el-init)
 
 
 ;;; el-init loading

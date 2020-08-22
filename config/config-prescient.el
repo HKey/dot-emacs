@@ -1,7 +1,7 @@
 ;;; config-prescient.el --- prescient                -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package prescient)
+(my-with-package prescient)
 
 (require 'prescient)
 

@@ -1,10 +1,10 @@
 ;;; config-ivy.el --- ivy                            -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package ivy)
-(use-package counsel)
-(use-package dash)
-(use-package s)
+(my-with-package ivy)
+(my-with-package counsel)
+(my-with-package dash)
+(my-with-package s)
 
 (require 'ivy)
 ;; counsel.el pushes some config into `ivy-initial-inputs-alist' using
@@ -15,6 +15,16 @@
 (require 'dash)
 (require 's)
 
+;;;; key binding
+
+(require 'lib-util)
+
+(my-define-key ivy-minibuffer-map
+  "M-m" #'ivy-immediate-done ; (lookup-key ivy-minibuffer-map (kbd "C-M-j"))
+  "C-k" #'delete-minibuffer-contents)
+
+(my-define-key ivy-switch-buffer-map
+  "C-k" nil)
 
 ;;;; miscs
 (setq ivy-extra-directories nil
@@ -33,8 +43,7 @@
        (--map (cons it t) it)))
 
 ;;;;; migemoize input query
-(use-package migemo)
-
+(my-with-package migemo)
 (require 'migemo)
 
 (defun my-ivy-migemo-orderless (query)

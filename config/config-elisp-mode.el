@@ -1,10 +1,10 @@
 ;;; config-elisp-mode.el --- Emacs lisp             -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package paredit)
-(use-package lisp-extra-font-lock)
-(use-package comment-or-uncomment-sexp)
-(use-package major-mode-hydra)
+(my-with-package paredit)
+(my-with-package lisp-extra-font-lock)
+(my-with-package comment-or-uncomment-sexp)
+(my-with-package major-mode-hydra)
 
 (require 'elisp-mode)
 (require 'paredit)

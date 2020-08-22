@@ -1,9 +1,9 @@
 ;;; init-my-commands.el --- My utility commands   -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package s)
-(use-package f)
-(use-package dash)
+(my-with-package s)
+(my-with-package f)
+(my-with-package dash)
 
 (require 's)
 (require 'f)

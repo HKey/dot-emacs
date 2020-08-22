@@ -6,7 +6,7 @@
 ;; before loading evil.
 
 (require 'my-bootstrap)
-(use-package evil)
+(my-with-package evil)
 
 ;;;; configuration
 
@@ -22,6 +22,13 @@
 (require 'evil)
 
 (evil-mode 1)
+
+;;;; evil-surround
+
+(my-with-package evil-surround)
+(require 'evil-surround)
+
+(global-evil-surround-mode 1)
 
 
 (provide 'init-evil)

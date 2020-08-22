@@ -232,6 +232,17 @@ CMD is a movig command."
 
 (advice-add 'org-set-tags-command :around #'my-org-set-tags-advice)
 
+;;; other libraries
+
+;; use org-tempo for old style template expansion
+(require 'org-tempo)
+
+;; org-id
+(require 'org-id)
+
+;; org-attach
+(require 'org-attach)
+
 
 (provide 'config-org)
 ;;; config-org.el ends here

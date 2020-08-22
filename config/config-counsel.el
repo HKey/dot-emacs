@@ -1,10 +1,10 @@
 ;;; config-counsel.el --- counsel                    -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(use-package ivy)
-(use-package counsel)
-(use-package f)
-(use-package dash)
+(my-with-package ivy)
+(my-with-package counsel)
+(my-with-package f)
+(my-with-package dash)
 
 (require 'ivy)
 (require 'counsel)

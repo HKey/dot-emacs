@@ -4,35 +4,21 @@
 
 ;;;; paper-theme
 
-(use-package paper-theme)
+(my-with-package paper-theme)
 
 ;;;; spacemacs-common
 
-(use-package spacemacs-common
-  :ensure spacemacs-theme
-  :config
-  (setq spacemacs-theme-org-agenda-height nil
-        spacemacs-theme-org-bold nil
-        spacemacs-theme-org-height nil
-        spacemacs-theme-org-priority-bold nil))
+(my-with-package spacemacs-theme)
+;; config is in config-spacemacs-common
 
 ;;;; solarized
 
-(use-package solarized
-  :ensure solarized-theme
-  :config
-  (setq solarized-use-variable-pitch  nil
-        solarized-use-less-bold       t
-        solarized-height-minus-1      1.0
-        solarized-height-plus-1       1.0
-        solarized-height-plus-2       1.0
-        solarized-height-plus-3       1.0
-        solarized-height-plus-4       1.0
-        solarized-scale-org-headlines nil))
+(my-with-package solarized-theme)
+;; config is in config-solarized.el
 
 ;;;; base16-theme
 
-(use-package base16-theme)
+(my-with-package base16-theme)
 
 ;;;; zenburn-theme
 
@@ -44,7 +30,7 @@
 
 ;;;; theme overriding
 
-(use-package dash)
+(my-with-package dash)
 (require 'dash)
 
 (defvar my-theme-overriding
@@ -90,6 +76,7 @@
 ;;;; enable theme
 
 (when (display-graphic-p)
+  (require 'config-spacemacs-common)
   (load-theme 'spacemacs-light t))
 
 
