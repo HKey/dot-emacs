@@ -162,11 +162,6 @@
   "U" #'er/contract-region)
 
 (my-define-key evil-window-map
-  ;; ;; buf-move
-  ;; "SPC h" #'buf-move-left
-  ;; "SPC j" #'buf-move-down
-  ;; "SPC k" #'buf-move-up
-  ;; "SPC l" #'buf-move-right
   ;; winner
   "C-u" #'winner-undo)
 
