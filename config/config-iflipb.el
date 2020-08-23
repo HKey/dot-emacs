@@ -10,6 +10,8 @@
  iflipb-ignore-buffers nil
  ;; vertical style
  iflipb-format-buffers-function #'iflipb-format-buffers-vertically
+ iflipb-format-buffers-height 9
+ max-mini-window-height 9
  iflipb-other-buffer-template "  %s"
  iflipb-current-buffer-template "* %s")
 
