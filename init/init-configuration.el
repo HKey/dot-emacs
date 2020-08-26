@@ -131,6 +131,9 @@
 ;;;; `show-paren-mode'
 (show-paren-mode 1)
 
+;;;; mini-window
+(setq  max-mini-window-height 9)
+
 ;;;; font
 
 (my-with-package dash)
