@@ -8,8 +8,7 @@
 
 ;; pinning
 (setq package-pinned-packages
-      '((org-taskforecast . "manual")
-        (pocket-reader . "manual")))
+      '((org-taskforecast . "manual")))
 
 (package-initialize)
 
