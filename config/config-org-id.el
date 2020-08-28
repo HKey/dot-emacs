@@ -5,9 +5,10 @@
 
 (require 'org-id)
 (require 'f)
+(require 'init-path)
 
 (setq org-id-extra-files
-      (f-files org-directory (lambda (f) (f-ext-p f "org")) t))
+      (f-files my-path-org (lambda (f) (f-ext-p f "org")) t))
 
 
 (provide 'config-org-id)
