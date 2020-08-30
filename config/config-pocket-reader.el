@@ -13,6 +13,10 @@
  ;; do not archive by opening a page
  pocket-reader-archive-on-open nil)
 
+;;;; hl-line-mode
+
+(add-hook 'pocket-reader-mode-hook #'hl-line-mode)
+
 
 (provide 'config-pocket-reader)
 ;;; config-pocket-reader.el ends here
