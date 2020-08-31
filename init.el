@@ -13,8 +13,6 @@
 
 (require 'el-init)
 
-(setq el-init-lazy-init-regexp "\\`config-\\(.+\\)\\'")
-
 (defun my-el-init-require/dont-load-lib (feature &optional filename noerror)
   "Do not load lib-*.el"
   (when (or el-init-overridden-require-p
@@ -22,7 +20,8 @@
     (el-init-next feature filename noerror)))
 
 (let ((dot-emacs-root (file-name-directory
-                       (or (buffer-file-name) load-file-name))))
+                       (or (buffer-file-name) load-file-name)))
+      (el-init-lazy-init-regexp "\\`config-\\(.+\\)\\'"))
   (el-init-load dot-emacs-root
                 :subdirectories '(("init" t)
                                   ("config" t)
@@ -33,7 +32,8 @@
                             )))
 
 ;; load private configuration from "~/.emacs.d/private-conf"
-(el-init-load (expand-file-name "private-conf" user-emacs-directory)
-              :wrappers '(el-init-require/lazy))
+(let ((el-init-lazy-init-regexp "\\`config-private-\\(.+\\)\\'"))
+  (el-init-load (expand-file-name "private-conf" user-emacs-directory)
+                :wrappers '(el-init-require/lazy)))
 
 ;;; init.el ends here
