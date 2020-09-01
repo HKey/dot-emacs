@@ -318,6 +318,8 @@
 
 ;;; save-place
 
+(require 'saveplace)
+(setq save-place-limit 10000)
 (save-place-mode 1)
 
 
