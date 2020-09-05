@@ -30,7 +30,6 @@
                        elfeed-show-mode
                        elfeed-search-mode
                        bm-show-mode
-                       org-taskforecast-list-mode
                        flycheck-error-list-mode
                        ag-mode
                        undo-tree-visualize-mode))))
@@ -182,7 +181,6 @@
 
 ;;;;; "q" prefix
 
-(my-with-package org-taskforecast)
 (my-with-package counsel)
 (my-with-package swiper)
 (my-with-package ztree)
@@ -199,7 +197,6 @@
 (my-define-key evil-motion-state-map
   ;; qm*: major commands
   "qma"      #'org-agenda
-  "qmt"      #'org-taskforecast-list
   "qmb"      #'switch-to-buffer
   "qmc"      #'org-capture
   "qmd"      #'dired-jump

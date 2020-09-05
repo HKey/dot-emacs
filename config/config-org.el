@@ -51,8 +51,6 @@
 
 ;;;; speed commands
 
-(my-with-package org-taskforecast)
-
 (defun my-org-toggle-archive-tag ()
   "Do `org-toggle-archive-tag' and align tags.
 This command only works for the current headline."
@@ -98,7 +96,6 @@ CMD is a movig command."
             (save-excursion
               (evil-normal-state))))
    ("T" . my-org-touch)
-   ("g" . org-taskforecast-register-task)
    ("G" . (org-refile t))
    ("E" . (org-entry-put nil "ORDERED" "t"))
    ;; move with recenter
