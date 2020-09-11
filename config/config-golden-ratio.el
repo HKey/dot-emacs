@@ -1,6 +1,7 @@
 ;;; config-golden-ratio.el --- golden-ratio          -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
+(my-with-package golden-ratio)
 (require 'golden-ratio)
 
 (cl-callf append golden-ratio-extra-commands
