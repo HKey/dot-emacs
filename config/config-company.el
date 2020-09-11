@@ -32,7 +32,7 @@
  ;; company-minimum-prefix-length nil
 
  ;; auto complete
- company-auto-complete #'company-explicit-action-p
+ company-auto-commit #'company-explicit-action-p
 
  ;; require match
  ;; company-require-match nil
