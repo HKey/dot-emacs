@@ -208,6 +208,7 @@
   "qm SPC q" #'my-delete-buffer-file
   "qms"      #'swiper
   "qmw"      #'my-find-memo
+  "qm SPC w" #'my-memo-related-links-to
   "qmx"      #'async-shell-command
   "qmz"      #'ztree-dir
 

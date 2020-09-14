@@ -56,8 +56,13 @@
 
 (defun my--memo-open-action (str)
   "Open memo indicated by STR from `completing-read'."
-  (-let (((file . _) (my--memo-file-and-line str)))
-    (find-file file)))
+  (-when-let ((file . line) (my--memo-file-and-line str))
+    ;; backward link (title)
+    (find-file file))
+  ;; forward link (id)
+  (-when-let (id (get-text-property 0 'id str))
+    (find-file (car (org-id-find id))))
+  (error "Cannot open %s" str))
 
 (defun my-find-memo ()
   (interactive)
@@ -114,45 +119,6 @@ SOURCE is a returned value of `my--memo-source'."
           it)
          (-non-nil it))))
 
-(defun my-memo-backward-links ()
-  (interactive)
-  (let ((id (org-id-get))
-        (memos (my--memo-source)))
-    (unless id (error "ID not found on this tree"))
-    (unless memos (error "There is no memo"))
-    (--> (my--memo-search id)
-         (my--memo-make-backlink-candidates it memos)
-         (prog1 it (unless it (error "Backlink not found")))
-         (completing-read "backlink: " it nil t)
-         (my--memo-open-action it))))
-
-(defun my-memo-backward-links-to-this-file (file)
-  (interactive (list (buffer-file-name)))
-  (let ((ids nil)
-        (memos (my--memo-source)))
-    (with-current-buffer (find-file-noselect file)
-      (save-restriction
-        (widen)
-        (org-map-region (lambda ()
-                          (-some--> (org-id-get)
-                            (push it ids)))
-                        (point-min) (point-max))
-        (setq ids (nreverse ids))))
-    (unless ids (error "ID not found in this file"))
-    (unless memos (error "There is no memo"))
-    (--> (cl-loop for id in ids append (my--memo-search id))
-         (my--memo-make-backlink-candidates it memos)
-         (prog1 it (unless it (error "Backlink not found")))
-         (completing-read "backlink: " it nil t)
-         (my--memo-open-action it))))
-
-(defun my-memo-backward-links-to ()
-  (declare (interactive-only t))
-  (interactive)
-  (--> (completing-read "title: " (my--memo-source) nil t)
-       (-let (((file . _) (my--memo-file-and-line it)))
-         (my-memo-backward-links-to-this-file file))))
-
 (defun my--memo-search-links ()
   (save-excursion
     (save-restriction
@@ -167,13 +133,36 @@ SOURCE is a returned value of `my--memo-source'."
                           (substring-no-properties title)
                           'id (s-replace-regexp "^id:" "" link)))))))
 
-(defun my-memo-forward-links ()
+(defun my-memo-related-links-to-this-file (file)
+  (interactive (list (buffer-file-name)))
+  (let (ids
+        forward-links
+        (memos (my--memo-source)))
+    (with-current-buffer (find-file-noselect file)
+      (save-excursion
+        (save-restriction
+          (widen)
+          (org-map-region (lambda ()
+                            (-some--> (org-id-get)
+                              (push it ids)))
+                          (point-min) (point-max))
+          (setq ids (nreverse ids)
+                forward-links (my--memo-search-links)))))
+    (unless memos (error "There is no memo"))
+    (--> (cl-loop for id in ids append (my--memo-search id))
+         (my--memo-make-backlink-candidates it memos)
+         (append it forward-links)
+         (-uniq it)
+         (prog1 it (unless it (error "Link not found")))
+         (completing-read "link: " it nil t)
+         (my--memo-open-action it))))
+
+(defun my-memo-related-links-to ()
+  (declare (interactive-only t))
   (interactive)
-  (--> (my--memo-search-links)
-       (prog1 it (unless it (error "Link not found")))
-       (completing-read "forward link: " it nil t)
-       (get-text-property 0 'id it)
-       (org-id-goto it)))
+  (--> (completing-read "title: " (my--memo-source) nil t)
+       (-let (((file . _) (my--memo-file-and-line it)))
+         (my-memo-related-links-to-this-file file))))
 
 ;;;; file
 
