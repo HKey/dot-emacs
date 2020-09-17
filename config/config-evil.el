@@ -122,6 +122,7 @@
   "C-a" nil
   ;; mozc-temp
   "M-n" #'mozc-temp-convert-dwim
+  "<muhenkan>" #'mozc-temp-convert-dwim
   ;; caseformat
   "M-l" #'caseformat-backward)
 
