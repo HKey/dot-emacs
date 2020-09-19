@@ -7,7 +7,7 @@
 ;;;; frame-alist
 ;; `default-frame-alist'
 (setq default-frame-alist
-      '((height . 28)
+      '((height . 32)
         (width . 80)
         (inhibit-double-buffering . t)
         ;; (internal-border-width . 20)
