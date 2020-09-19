@@ -31,7 +31,8 @@
       ivy-truncate-lines nil
       ;; stop starting completion with "^" with `org-refile', `woman'
       ;; and more
-      ivy-initial-inputs-alist nil)
+      ivy-initial-inputs-alist nil
+      ivy-height 14)
 
 ;;;; regex builder
 
