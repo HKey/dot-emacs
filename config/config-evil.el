@@ -178,7 +178,7 @@
 (require 'config-eyebrowse)
 
 ;; Disable default "C-t" in evil.
-(evil-define-key* 'normal 'global eyebrowse-keymap-prefix nil)
+(evil-define-key* 'normal 'global (kbd "C-t") nil)
 
 ;;;;; "q" prefix
 
