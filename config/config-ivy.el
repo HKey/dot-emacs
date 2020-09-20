@@ -57,13 +57,15 @@
 
 (require 'init-my-commands)
 
+(my-with-package swiper)
+
 (setq ivy-re-builders-alist
-      `((swiper . ,#'my-ivy-migemo-orderless)
-        (counsel-recentf . ,#'my-ivy-migemo-orderless)
-        (counsel-yank-pop . ,#'my-ivy-migemo-orderless)
+      `((,#'swiper . ,#'my-ivy-migemo-orderless)
+        (,#'counsel-recentf . ,#'my-ivy-migemo-orderless)
+        (,#'counsel-yank-pop . ,#'my-ivy-migemo-orderless)
         (,#'counsel-imenu . ,#'my-ivy-migemo-orderless)
-        (read-file-name-internal . ,#'my-ivy-migemo-orderless)
-        (my-xdg-open-file-with-fd . ,#'my-ivy-migemo-orderless)
+        (,#'read-file-name-internal . ,#'my-ivy-migemo-orderless)
+        (,#'my-xdg-open-file-with-fd . ,#'my-ivy-migemo-orderless)
         (,#'my-find-memo . ,#'my-ivy-migemo-orderless)
         (,#'my-insert-memo . ,#'my-ivy-migemo-orderless)
         (,#'my-memo-related-links-to-this-file . ,#'my-ivy-migemo-orderless)
