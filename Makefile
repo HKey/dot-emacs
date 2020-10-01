@@ -10,8 +10,12 @@ build: $(ELCFILES)
 .PHONY: rebuild-el
 rebuild-el: clean build
 
+.PHONY: package-refresh
+package-refresh:
+	$(EMACS) -batch -l bootstrap/my-bootstrap.el -f package-refresh-contents
+
 .PHONY: rebuild-all
-rebuild-all: clean clean-pkg build
+rebuild-all: clean clean-pkg package-refresh build
 
 .PHONY: clean
 clean:
