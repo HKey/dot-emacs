@@ -3,6 +3,12 @@
 (require 'my-bootstrap)
 (require 'image-mode)
 
+;;;; miscs
+
+;; Resize images immediately.
+(setq image-auto-resize t
+      image-auto-resize-on-window-resize 0.01)
+
 ;;;; command
 
 (defun my-image-delete-current-image ()
