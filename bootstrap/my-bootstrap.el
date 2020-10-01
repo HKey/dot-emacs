@@ -11,7 +11,9 @@
 ;; package
 (defun my--with-package-ensure-install (package)
   (unless (package-installed-p package)
-    (package-install package))
+    ;; Allow warnings when installing external packages.
+    (let ((byte-compile-error-on-warn nil))
+      (package-install package)))
   (add-to-list 'package-selected-packages package))
 
 (defmacro my-with-package (package)
