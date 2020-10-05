@@ -37,6 +37,10 @@
   "yt" #'my-eww-copy-title
   "yo" #'my-eww-copy-as-org-list)
 
+;; Disable textarea insertion
+(set-keymap-parent eww-textarea-map eww-mode-map)
+(set-keymap-parent eww-text-map eww-mode-map)
+
 ;;;; org-capture
 
 (defun my-org-capture-eww ()
