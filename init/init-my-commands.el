@@ -164,6 +164,14 @@ SOURCE is a returned value of `my--memo-source'."
        (-let (((file . _) (my--memo-file-and-line it)))
          (my-memo-related-links-to-this-file file))))
 
+(my-with-package ag)
+(require 'ag)
+
+(defun my-memo-search (query)
+  (interactive "sQuery: ")
+  (let ((ag-context-lines 2))
+    (ag/search query (my-path-org-memo) :file-regex ".org$")))
+
 ;;;; file
 
 (defun my-delete-buffer-file ()
