@@ -169,7 +169,7 @@ SOURCE is a returned value of `my--memo-source'."
 
 (defun my-memo-search (query)
   (interactive "sQuery: ")
-  (let ((ag-context-lines 2))
+  (let ((ag-context-lines 1))
     (ag/search query (my-path-org-memo) :file-regex ".org$")))
 
 ;;;; file
