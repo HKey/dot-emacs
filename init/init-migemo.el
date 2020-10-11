@@ -12,7 +12,9 @@
       ;; migemo-coding-system 'utf-8
       migemo-use-default-isearch-keybinding nil
       migemo-user-dictionary nil
-      migemo-regex-dictionary nil)
+      migemo-regex-dictionary nil
+      migemo-use-frequent-pattern-alist t
+      migemo-use-pattern-alist t)
 
 (unless migemo-command
   (warn "cmigemo command not found"))
