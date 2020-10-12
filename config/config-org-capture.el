@@ -6,22 +6,10 @@
 
 ;;;; `org-capture-templates'
 
-(my-with-package f)
-(require 'f)
 (require 'init-path)
 
-(defun my-org-capture-memo-path (dir)
-  "Create memo file path based on DIR"
-  (--> (format-time-string "%Y/%m/%Y-%m-%d-%H%M%S.org" (current-time))
-       (f-join dir it)
-       (prog1 it (make-directory (file-name-directory it) t))))
-
 (setq org-capture-templates
-      `(("m" "Memo" entry
-         (file ,(lambda () (my-org-capture-memo-path (my-path-org-memo))))
-         (file ,(my-path-org-capture-templates "basic.org"))
-         :kill-buffer t)
-        ("i" "Inbox" entry
+      `(("i" "Inbox" entry
          (file+datetree ,(lambda () (my-path-org-agenda "inbox.org")))
          (file ,(my-path-org-capture-templates "inbox.org"))
          :empty-lines 1)

@@ -172,6 +172,25 @@ SOURCE is a returned value of `my--memo-source'."
   (let ((ag-context-lines 1))
     (ag/search query (my-path-org-memo) :file-regex ".org$")))
 
+(require 'org-capture)
+
+(defun my-memo-capture ()
+  (interactive)
+  (declare (interactive-only t))
+  (let* ((key "m")
+         (org-capture-templates
+          `((,key "Memo" entry
+             (file
+              ,(lambda ()
+                 (--> (current-time)
+                      (format-time-string "%Y/%m/%Y-%m-%d-%H%M%S.org" it)
+                      (f-join (my-path-org-memo) it)
+                      (prog1 it (make-directory (file-name-directory it) t)))))
+             (file ,(my-path-org-capture-templates "basic.org"))
+             :kill-buffer t
+             :unnarrowed t))))
+    (org-capture nil key)))
+
 ;;;; file
 
 (defun my-delete-buffer-file ()
