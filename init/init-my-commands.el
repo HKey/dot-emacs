@@ -191,6 +191,24 @@ SOURCE is a returned value of `my--memo-source'."
              :unnarrowed t))))
     (org-capture nil key)))
 
+;; transient
+
+(my-with-package transient)
+(require 'transient)
+
+(transient-define-prefix my-transient-memo ()
+  :transient-non-suffix 'transient--do-exit
+  [["Memo"
+    ("c" "create" my-memo-capture)
+    ("f" "find" my-find-memo)
+    ("r" "find related" my-memo-related-links-to)
+    ("R" "related to this file" my-memo-related-links-to-this-file)
+    ("i" "insert" my-insert-memo)
+    ("/" "search" my-memo-search)]]
+  ["Transient"
+   [("q" "quit" transient-quit-one)]
+   [("<escape>" "quit" transient-quit-one)]])
+
 ;;;; file
 
 (defun my-delete-buffer-file ()
