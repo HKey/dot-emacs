@@ -18,6 +18,10 @@
  '(evil-want-C-w-delete nil)
  '(evil-want-C-w-in-emacs-state t))
 
+;; undo system
+(custom-set-variables
+ '(evil-undo-system 'undo-tree))
+
 ;;;; enable minor-mode
 (require 'evil)
 
