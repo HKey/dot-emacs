@@ -7,7 +7,7 @@
 ;;;; frame-alist
 ;; `default-frame-alist'
 (setq default-frame-alist
-      '((height . 32)
+      '((height . 37)
         (width . 80)
         (inhibit-double-buffering . t)
         ;; (internal-border-width . 20)
@@ -139,7 +139,7 @@
 (my-with-package dash)
 (require 'dash)
 
-(defvar my-font-height 135)
+(defvar my-font-height 120)
 (defvar my-font-fixed-pitch '("mononoki" "ubuntu mono"))
 (defvar my-font-variable-pitch '("ubuntu"))
 (defvar my-font-japanese '("Migu 2M"
