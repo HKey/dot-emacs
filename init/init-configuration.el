@@ -203,7 +203,9 @@
   "M-u" #'my-seq-upcase-backward-word     ;`upcase-word'
   "M-c" #'my-seq-capitalize-backward-word ;`capitalize-word'
   "M-l" #'my-seq-downcase-backward-word   ;`downcase-word'
-  )
+
+  ;; memo
+  "<f4>" #'my-transient-memo)
 
 (my-define-key isearch-mode-map
   "C-h" (kbd "DEL"))

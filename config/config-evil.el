@@ -208,7 +208,7 @@
   "qmq"      #'kill-this-buffer
   "qm SPC q" #'my-delete-buffer-file
   "qms"      #'swiper
-  "qmw"      #'my-transient-memo
+  "qmw"      #'my-find-memo
   "qmx"      #'async-shell-command
   "qmz"      #'ztree-dir
 
