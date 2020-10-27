@@ -8,7 +8,7 @@
 ;; for eww and elfeed
 (setq shr-width 46
       shr-use-colors nil
-      shr-max-image-proportion 0.4
+      ;; shr-max-image-proportion 0.4
       ;; use variable pitch font
       shr-use-fonts t
       ;; disable animation, it makes emacs slow
