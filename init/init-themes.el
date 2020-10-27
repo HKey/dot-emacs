@@ -76,8 +76,14 @@
 ;;;; enable theme
 
 (when (display-graphic-p)
-  (require 'config-spacemacs-common)
-  (load-theme 'spacemacs-light t))
+  ;; (progn
+  ;;   ;; spacemacs-light
+  ;;   (require 'config-spacemacs-common)
+  ;;   (load-theme 'spacemacs-light t))
+  (progn
+    ;; solarized-light-high-contrast
+    (require 'config-solarized)
+    (load-theme 'solarized-light-high-contrast t)))
 
 
 (provide 'init-themes)
