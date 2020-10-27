@@ -56,13 +56,15 @@
 
 (defun my--memo-open-action (str)
   "Open memo indicated by STR from `completing-read'."
-  (-when-let ((file . line) (my--memo-file-and-line str))
-    ;; backward link (title)
-    (find-file file))
-  ;; forward link (id)
-  (-when-let (id (get-text-property 0 'id str))
-    (find-file (car (org-id-find id))))
-  (error "Cannot open %s" str))
+  (-let (((file . line) (my--memo-file-and-line str))
+         (id (get-text-property 0 'id str)))
+    (cond ((and file line)
+           ;; backward link (file)
+           (find-file file))
+          (id
+           ;; forward link (id)
+           (find-file (car (org-id-find id))))
+          (t (error "Cannot open %s" str)))))
 
 (defun my-find-memo ()
   (interactive)
