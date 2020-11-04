@@ -141,7 +141,7 @@
 
 (defvar my-font-height 120)
 (defvar my-font-fixed-pitch '("mononoki" "ubuntu mono"))
-(defvar my-font-variable-pitch '("ubuntu"))
+(defvar my-font-variable-pitch '("MigMix 2P"))
 (defvar my-font-japanese '("Migu 2M"
                            "07YasashisaGothic"
                            "セプテンバーＭ-等幅教漢"))
