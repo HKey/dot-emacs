@@ -518,6 +518,10 @@
 
 (my-with-package gif-screencast)
 
+;;; yaml-mode
+
+(my-with-package yaml-mode)
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
