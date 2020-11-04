@@ -210,7 +210,6 @@
 (my-define-key isearch-mode-map
   "C-h" (kbd "DEL"))
 
-
 ;;; customize
 
 ;; workaround to limit custom variables to save
@@ -226,7 +225,6 @@
 
 (advice-add #'custom-save-all :before #'my-limited-custom-save-all)
 
-
 ;;; image
 
 ;; add webp as one of extensions of image file
@@ -235,7 +233,6 @@
              "webp is already registered in `image-file-name-extensions'"))
 (push "webp" image-file-name-extensions)
 
-
 ;;; recentf
 
 ;; to prevent reducing `recentf-list' before loading config.
@@ -247,13 +244,11 @@
 
 (recentf-mode 1)
 
-
 ;;; eldoc
 
 (setq eldoc-idle-delay 0.2
       eldoc-echo-area-use-multiline-p t)
 
-
 ;;; whitespace
 
 (require 'whitespace)
@@ -296,7 +291,6 @@
 (setq whitespace-global-modes
       '(not magit-log-mode))
 
-
 ;;; libraries
 
 (my-with-package s)
@@ -307,29 +301,24 @@
 (require 'f)
 (require 'dash)
 
-
 ;;; shell
 
 (autoload 'my-new-shell "config-shell" nil t)
 
-
 ;;; winner-mode
 
 (winner-mode 1)
 
-
 ;;; save-place
 
 (require 'saveplace)
 (setq save-place-limit 10000)
 (save-place-mode 1)
 
-
 ;;; generic-x
 
 (require 'generic-x)
 
-
 ;;; clipboard for emacs --no-window-system
 
 ;; - Emacs - ArchWiki
@@ -353,12 +342,10 @@
   (setq interprogram-cut-function #'my-xclip-cut
         interprogram-paste-function #'my-xclip-paste))
 
-
 ;;; major-mode-hydra
 
 (my-with-package major-mode-hydra)
 
-
 ;;; company
 
 (require 'company)
@@ -366,7 +353,6 @@
 
 (global-company-mode 1)
 
-
 ;;; company-prescient
 
 (my-with-package company-prescient)
@@ -374,7 +360,6 @@
 
 (company-prescient-mode 1)
 
-
 ;;; eyebrowse
 
 (my-with-package eyebrowse)
@@ -384,7 +369,6 @@
 
 (eyebrowse-mode 1)
 
-
 ;;; iflipb
 
 (my-with-package iflipb)
@@ -393,7 +377,6 @@
   "M-t" #'iflipb-next-buffer
   "M-T" #'iflipb-previous-buffer)
 
-
 ;;; ivy
 
 (my-with-package ivy)
@@ -403,7 +386,6 @@
 
 (ivy-mode 1)
 
-
 ;;; ivy-prescient
 
 (my-with-package ivy-prescient)
@@ -414,7 +396,6 @@
 
 (ivy-prescient-mode 1)
 
-
 ;;; counsel
 
 (my-with-package counsel)
@@ -423,14 +404,12 @@
   [remap yank-pop] #'counsel-yank-pop   ; M-y
   )
 
-
 ;;; js2-mode and tern
 
 (my-with-package js2-mode)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-
 ;;; mozc
 
 (my-with-package mozc)
@@ -446,7 +425,6 @@
 
 (setq default-input-method "japanese-mozc")
 
-
 ;;; undo-tree
 
 (my-with-package undo-tree)
@@ -459,13 +437,11 @@
 
 (global-undo-tree-mode 1)
 
-
 ;;; evil
 
 ;; Do not load evil before init-evil
 (require 'init-evil)
 
-
 ;;; feebleline
 
 (my-with-package feebleline)
@@ -475,21 +451,18 @@
 
 (feebleline-mode 1)
 
-
 ;;; projectile
 
 (my-with-package projectile)
 
 (projectile-mode 1)
 
-
 ;;; which-key
 
 (my-with-package which-key)
 
 (which-key-mode 1)
 
-
 ;;; highlight-symbol
 
 (my-with-package highlight-symbol)
@@ -500,7 +473,6 @@
   "<f9>" #'highlight-symbol-prev
   "<f10>" #'highlight-symbol-next)
 
-
 ;;; rjsx-mode
 
 (my-with-package rjsx-mode)
@@ -509,7 +481,6 @@
              (cons (rx (or "components" "pages") "/" (* any) ".js" eos)
                    #'rjsx-mode))
 
-
 ;;; yasnippet
 
 (my-with-package yasnippet)
@@ -531,27 +502,22 @@
 ;;;; turn on minor mode
 (yas-global-mode 1)
 
-
 ;;; svg-clock
 
 (my-with-package svg-clock)
 
-
 ;;; markdown-mode
 
 (my-with-package markdown-mode)
 
-
 ;;; json-mode
 
 (my-with-package json-mode)
 
-
 ;;; gif-screencast
 
 (my-with-package gif-screencast)
 
-
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here

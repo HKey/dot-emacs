@@ -8,7 +8,6 @@
 
 (my-with-package el-init)
 
-
 ;;; el-init loading
 
 (require 'el-init)
