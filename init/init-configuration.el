@@ -147,9 +147,10 @@
                            "セプテンバーＭ-等幅教漢"))
 (defvar my-font-symbol '("Noto Color Emoji"))
 (defvar my-font-rescale-table
-  '((("mononoki" . "Migu 2M") . 1.125)
-    (("mononoki" . "07YasashisaGothic") . 1.0625)
-    (("mononoki" . "セプテンバーＭ-等幅教漢") . 1.125)))
+  '(("mononoki"
+     ("Migu 2M" . 1.125)
+     ("07YasashisaGothic" . 1.0625)
+     ("セプテンバーＭ-等幅教漢" . 1.0625))))
 
 (when (display-graphic-p)
   (let ((fixed-pitch (-first #'font-info my-font-fixed-pitch))
@@ -176,11 +177,8 @@
     (when japanese
       (--each '(japanese-jisx0208 japanese-jisx0212 katakana-jisx0201)
         (set-fontset-font "fontset-default" it (font-spec :family japanese))))
-    (when (and fixed-pitch japanese)
-      (setq face-font-rescale-alist
-            (--when-let (alist-get (cons fixed-pitch japanese)
-                                   my-font-rescale-table nil nil #'equal)
-              `((,japanese . ,it)))))))
+    (setq face-font-rescale-alist
+          (alist-get fixed-pitch my-font-rescale-table nil nil #'equal))))
 
 ;;;; key binding
 
