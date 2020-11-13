@@ -100,6 +100,7 @@
 (require 'bm)
 (require 'expand-region)
 (require 'winner)
+(require 'undo-tree)
 
 (my-define-key evil-emacs-state-map
   ;; do not override C-z
