@@ -197,10 +197,10 @@
   "C-x C-b" #'ibuffer
   [remap shell-command] #'async-shell-command
 
-  ;; sequential commands
-  "M-u" #'my-seq-upcase-backward-word     ;`upcase-word'
-  "M-c" #'my-seq-capitalize-backward-word ;`capitalize-word'
-  "M-l" #'my-seq-downcase-backward-word   ;`downcase-word'
+  ;; convert backward word
+  "M-u" #'my-convert-word-continuously-upcase-backward
+  "M-c" #'my-convert-word-continuously-capitalize-backward
+  "M-l" #'my-convert-word-continuously-downcase-backward
 
   ;; memo
   "<f4>" #'my-transient-memo)

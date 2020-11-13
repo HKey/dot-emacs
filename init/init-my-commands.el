@@ -239,37 +239,59 @@ SOURCE is a returned value of `my--memo-source'."
            `(setq load-path ',load-path
                   custom-theme-load-path ',custom-theme-load-path))))
 
-;;;; sequential-command like commands
+;;;; sequential-command like "convert backward word" commands
 
-;; sequential-command cannot be used because its prefix conflicts seq.el.
-;; So I reduced its feature and introduced some commands here.
-;;
-;; Original:
-;; - [Home] Sequential Command
-;;   https://www.emacswiki.org/emacs/SequentialCommand
+(my-with-package transient)
+(require 'transient)
 
-(defvar my-seq-counter 0)
+(defvar my-convert-word-continuously--start-position nil)
 
-(defun my-seq-count ()
-  (if (eq last-command this-command)
-      (cl-incf my-seq-counter)
-    (setq my-seq-counter 0)))
+(defun my-convert-word-continuously-start-conversion ()
+  (unless (markerp my-convert-word-continuously--start-position)
+    (let ((marker (make-marker)))
+      (set-marker marker (point))
+      (setq my-convert-word-continuously--start-position marker))))
 
-;; From sequential-command-config.el
-(defun my-seq-upcase-backward-word ()
-  (declare (interactive-only t))
+(defun my-convert-word-continuously-finish-conversion ()
+  (when (and (markerp my-convert-word-continuously--start-position)
+             (eq (current-buffer)
+                 (marker-buffer my-convert-word-continuously--start-position)))
+    (goto-char my-convert-word-continuously--start-position))
+  (setq my-convert-word-continuously--start-position nil))
+
+(transient-define-prefix my-convert-word-continuously-convert ()
+  :transient-non-suffix
+  (lambda ()
+    (my-convert-word-continuously-finish-conversion)
+    (transient--do-exit))
+  [["Word conversion"
+    ("M-u" "uppercase" my-convert-word-continuously-upcase-backward)
+    ("M-l" "lowercase" my-convert-word-continuously-downcase-backward)
+    ("M-c" "capitalize" my-convert-word-continuously-capitalize-backward)]])
+
+(defun my-convert-word-continuously-upcase-backward ()
   (interactive)
-  (upcase-word (- (1+ (my-seq-count)))))
-
-(defun my-seq-capitalize-backward-word ()
   (declare (interactive-only t))
-  (interactive)
-  (capitalize-word (- (1+ (my-seq-count)))))
+  (my-convert-word-continuously-start-conversion)
+  (upcase-word -1)
+  (backward-word 1)
+  (call-interactively #'my-convert-word-continuously-convert))
 
-(defun my-seq-downcase-backward-word ()
-  (declare (interactive-only t))
+(defun my-convert-word-continuously-downcase-backward ()
   (interactive)
-  (downcase-word (- (1+ (my-seq-count)))))
+  (declare (interactive-only t))
+  (my-convert-word-continuously-start-conversion)
+  (downcase-word -1)
+  (backward-word 1)
+  (call-interactively #'my-convert-word-continuously-convert))
+
+(defun my-convert-word-continuously-capitalize-backward ()
+  (interactive)
+  (declare (interactive-only t))
+  (my-convert-word-continuously-start-conversion)
+  (capitalize-word -1)
+  (backward-word 1)
+  (call-interactively #'my-convert-word-continuously-convert))
 
 
 (provide 'init-my-commands)
