@@ -5,9 +5,6 @@
 
 (require 'exec-path-from-shell)
 
-;; I'm using .zshrc to setup environment variables.
-(setq exec-path-from-shell-check-startup-files nil)
-
 ;; Additional environment variables
 (setq exec-path-from-shell-variables
       `(,@exec-path-from-shell-variables
