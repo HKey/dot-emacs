@@ -65,7 +65,7 @@
       (lambda (_) (call-interactively #'company-complete)))
 
 ;; do not jump across buffers
-(setq evil-jumps-cross-buffers nil)
+;; (setq evil-jumps-cross-buffers nil)
 
 ;;;; symbol motion
 
