@@ -1,5 +1,9 @@
 ;;; init.el ---   -*- lexical-binding: t; -*-
 
+;; gccemacs (native comp)
+(custom-set-variables
+ '(comp-speed 3))
+
 (let ((dot-emacs-root (file-name-directory
                        (or (buffer-file-name) load-file-name))))
   (add-to-list 'load-path (expand-file-name "bootstrap" dot-emacs-root)))
