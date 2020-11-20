@@ -167,10 +167,7 @@
     (insert "\n")
     (when t
       (-some--> (my-elfeed-ogp-get-image-url link)
-        (let ((height (* 5 (default-font-height))))
-          (shr-insert-document `(img ((src . ,it)
-                                      (height . ,(number-to-string height)))))
-          (insert "\n"))))
+        (shr-insert-document `(img ((src . ,it))))))
     ;; (setq-local shr-inhibit-images t)
     (if content
         (if (eq type 'html)
