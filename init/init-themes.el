@@ -28,6 +28,10 @@
 
 (my-with-package labburn-theme)
 
+;;;; gruvbox-theme
+
+(my-with-package gruvbox-theme)
+
 ;;;; theme overriding
 
 (my-with-package dash)
@@ -80,10 +84,12 @@
   ;;   ;; spacemacs-light
   ;;   (require 'config-spacemacs-common)
   ;;   (load-theme 'spacemacs-light t))
+  ;; (progn
+  ;;   ;; solarized-light-high-contrast
+  ;;   (require 'config-solarized)
+  ;;   (load-theme 'solarized-light-high-contrast t))
   (progn
-    ;; solarized-light-high-contrast
-    (require 'config-solarized)
-    (load-theme 'solarized-light-high-contrast t)))
+    (load-theme 'gruvbox-light-medium t)))
 
 
 (provide 'init-themes)
