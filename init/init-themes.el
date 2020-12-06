@@ -32,6 +32,10 @@
 
 (my-with-package gruvbox-theme)
 
+;;;; doom-themes
+
+(my-with-package doom-themes)
+
 ;;;; theme overriding
 
 (my-with-package dash)
@@ -88,8 +92,10 @@
   ;;   ;; solarized-light-high-contrast
   ;;   (require 'config-solarized)
   ;;   (load-theme 'solarized-light-high-contrast t))
+  ;; (progn
+  ;;   (load-theme 'gruvbox-light-medium t))
   (progn
-    (load-theme 'gruvbox-light-medium t)))
+    (load-theme 'doom-nova t)))
 
 
 (provide 'init-themes)
