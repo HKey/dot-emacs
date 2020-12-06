@@ -2,33 +2,19 @@
 
 (require 'my-bootstrap)
 (my-with-package dash)
-(my-with-package irony)
-(my-with-package company)
-(my-with-package company-irony)
-(my-with-package flycheck-irony)
 
 (require 'cc-mode)
 (require 'dash)
-(require 'company)
 
-;; indentation
+;;;; indentation
 (c-set-offset 'case-label '+)
 (c-set-offset 'arglist-cont-nonempty '+)
 (c-set-offset 'arglist-intro '+)
 
+;;;; hooks
 (defun my-c/c++-mode-hook ()
-  ;; irony
-  (irony-mode 1)
-
-  ;; company-irony
-  (make-local-variable 'company-backend)
-  (push 'company-irony company-backends)
-
   ;; flycheck
-  (flycheck-mode 1)
-
-  ;; flycheck-irony
-  (flycheck-irony-setup))
+  (flycheck-mode 1))
 
 (--each '(c-mode-hook c++-mode-hook)
   (add-hook it #'my-c/c++-mode-hook))
