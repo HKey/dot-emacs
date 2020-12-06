@@ -520,6 +520,10 @@
 
 (my-with-package yaml-mode)
 
+;;; lsp-mode
+
+(my-with-package lsp-mode)
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
