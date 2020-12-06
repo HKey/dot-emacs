@@ -7,8 +7,8 @@
 ;;;; frame-alist
 ;; `default-frame-alist'
 (setq default-frame-alist
-      '((height . 37)
-        (width . 80)
+      '((height . 54)
+        (width . 90)
         (inhibit-double-buffering . t)
         (internal-border-width . 10)
         ;; (right-fringe . 0)
