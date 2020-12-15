@@ -132,6 +132,9 @@
 ;;;; `show-paren-mode'
 (show-paren-mode 1)
 
+;;;; display-fill-column-indicator-mode
+(global-display-fill-column-indicator-mode 1)
+
 ;;;; mini-window
 (setq  max-mini-window-height 9)
 
