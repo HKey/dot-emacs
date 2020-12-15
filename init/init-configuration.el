@@ -404,6 +404,7 @@
 
 (my-define-key global-map
   [remap yank-pop] #'counsel-yank-pop   ; M-y
+  [remap execute-extended-command] #'counsel-M-x
   )
 
 ;;; js2-mode and tern
