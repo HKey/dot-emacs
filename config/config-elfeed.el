@@ -68,7 +68,7 @@
   (unless my-elfeed-ogp--parser-timer
     (setq my-elfeed-ogp--parser-timer
           (run-with-timer
-           1 nil
+           2 nil
            (lambda ()
              (setq my-elfeed-ogp--link-stack
                    (-drop-while #'my-elfeed-ogp-article-registered-p
