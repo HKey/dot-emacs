@@ -45,6 +45,10 @@
   ;; ((THEME . ((FACE . (:PARAM VALUE ...)) ...) ...) ...)
   '((spacemacs-light
      (dired-directory :inherit unspecified :patch t))
+    (solarized-light
+     (link :inherit link-visited))
+    (solarized-dark
+     (link :inherit link-visited))
     (solarized-light-high-contrast
      (link :inherit link-visited))
     (solarized-dark-high-contrast
@@ -92,11 +96,16 @@
   ;;   ;; solarized-light-high-contrast
   ;;   (require 'config-solarized)
   ;;   (load-theme 'solarized-light-high-contrast t))
+  (progn
+    ;; solarized-light
+    (require 'config-solarized)
+    (load-theme 'solarized-light t))
   ;; (progn
   ;;   (load-theme 'gruvbox-light-medium t))
-  (progn
-    (require 'config-doom-themes)
-    (load-theme 'doom-nova t)))
+  ;; (progn
+  ;;   (require 'config-doom-themes)
+  ;;   (load-theme 'doom-nova t))
+  )
 
 
 (provide 'init-themes)
