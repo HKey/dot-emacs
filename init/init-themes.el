@@ -95,6 +95,7 @@
   ;; (progn
   ;;   (load-theme 'gruvbox-light-medium t))
   (progn
+    (require 'config-doom-themes)
     (load-theme 'doom-nova t)))
 
 
