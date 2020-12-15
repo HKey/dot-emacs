@@ -191,6 +191,11 @@
 (require 'init-my-commands)
 (require 'dired-x)
 
+(defun my-kill-this-buffer ()
+  "Kill current buffer."
+  (interactive)
+  (kill-buffer (current-buffer)))
+
 (my-define-key evil-normal-state-map
   "q" nil
   "qq" #'evil-record-macro)
@@ -206,7 +211,7 @@
   "qmh"      #'counsel-recentf
   "qmi"      #'counsel-imenu
   "qml"      #'align-regexp
-  "qmq"      #'kill-this-buffer
+  "qmq"      #'my-kill-this-buffer
   "qm SPC q" #'my-delete-buffer-file
   "qms"      #'swiper
   "qmw"      #'my-find-memo
