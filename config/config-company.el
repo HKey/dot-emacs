@@ -38,7 +38,10 @@
  ;; company-require-match nil
 
  ;; company-selection-wrap-around t
- company-tooltip-limit 30)
+ company-tooltip-limit 30
+
+ ;; search regexp transform
+ company-search-regexp-function #'company-search-words-regexp)
 
 
 (provide 'config-company)
