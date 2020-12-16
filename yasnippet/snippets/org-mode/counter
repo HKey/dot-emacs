@@ -1,5 +1,7 @@
 # -*- mode: snippet -*-
 # name: counter
 # key: counter
+# type: command
 # --
-[/]
+(insert "[/]")
+(org-update-statistics-cookies nil)

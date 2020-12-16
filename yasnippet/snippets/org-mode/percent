@@ -1,5 +1,7 @@
 # -*- mode: snippet -*-
 # name: percent
 # key: percent
+# type: command
 # --
-[%]
+(insert "[%]")
+(org-update-statistics-cookies nil)
