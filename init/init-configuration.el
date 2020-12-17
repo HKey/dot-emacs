@@ -529,6 +529,35 @@
 
 (my-with-package lsp-mode)
 
+;;; `my-always-recenter-mode'
+
+(defvar my-always-recenter-ignore-commands
+  (list #'recenter-top-bottom
+        #'scroll-up-line
+        #'scroll-down-line))
+
+(defun my-always-recenter--recenter ()
+  (unless (or (minibufferp)
+              (memq this-command my-always-recenter-ignore-commands)
+              (not (eq (window-buffer) (current-buffer))))
+    (recenter)))
+
+(define-minor-mode my-always-recenter-mode
+  "Always recentering mode."
+  :init-value nil
+  (if my-always-recenter-mode
+      (add-hook 'post-command-hook #'my-always-recenter--recenter nil t)
+    (remove-hook 'post-command-hook #'my-always-recenter--recenter t)))
+
+(define-globalized-minor-mode my-global-always-recenter-mode
+  my-always-recenter-mode (lambda () (my-always-recenter-mode 1))
+  ;; `:group' is to suppress compiler warning "fails to specify
+  ;; containing group", currently `emacs' group is set but it may not
+  ;; be the proper group for this code.
+  :group 'emacs)
+
+(my-global-always-recenter-mode 1)
+
 
 (provide 'init-configuration)
 ;;; init-configuration.el ends here
