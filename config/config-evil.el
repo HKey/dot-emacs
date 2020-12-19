@@ -24,7 +24,6 @@
                        eww-mode
                        grep-mode
                        ;; extension
-                       ztree-mode
                        pomidor-mode
                        ag-mode
                        elfeed-show-mode
@@ -185,7 +184,6 @@
 
 (my-with-package counsel)
 (my-with-package swiper)
-(my-with-package ztree)
 (my-with-package major-mode-hydra)
 
 (require 'init-my-commands)
@@ -216,7 +214,6 @@
   "qms"      #'swiper
   "qmw"      #'my-find-memo
   "qmx"      #'async-shell-command
-  "qmz"      #'ztree-dir
 
   ;; qn*: narrowing commands
   "qnd" #'narrow-to-defun
