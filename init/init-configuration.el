@@ -44,7 +44,7 @@
       ;; scroll-margin 2
       scroll-preserve-screen-position t
       hscroll-step 1
-      hscroll-margin 20
+      hscroll-margin 30
       make-cursor-line-fully-visible t
       auto-window-vscroll nil
       ;; auto-hscroll-mode 'current-line
