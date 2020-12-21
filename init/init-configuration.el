@@ -534,7 +534,9 @@
 (defvar my-always-recenter-ignore-commands
   (list #'recenter-top-bottom
         #'scroll-up-line
-        #'scroll-down-line))
+        #'scroll-down-line
+        #'scroll-up-command
+        #'scroll-down-command))
 
 (defun my-always-recenter--recenter ()
   (unless (or (minibufferp)
