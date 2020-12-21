@@ -267,7 +267,14 @@ SOURCE is a returned value of `my--memo-source'."
   [["Word conversion"
     ("M-u" "uppercase" my-convert-word-continuously-upcase-backward)
     ("M-l" "lowercase" my-convert-word-continuously-downcase-backward)
-    ("M-c" "capitalize" my-convert-word-continuously-capitalize-backward)]])
+    ("M-c" "capitalize" my-convert-word-continuously-capitalize-backward)]]
+  (interactive)
+  ;; Always show the popup at the right side to prevent changing
+  ;; visual position of the current line due to window height changing.
+  (let ((transient-display-buffer-action
+         `(,#'display-buffer-in-side-window
+           (side . right))))
+    (transient-setup 'my-convert-word-continuously-convert)))
 
 (defun my-convert-word-continuously-upcase-backward ()
   (interactive)
