@@ -1,7 +1,7 @@
 EMACS := emacs
 ELFILES = $(shell find . -name '*.el' -type f)
 ELCFILES = $(patsubst %.el, %.elc, $(ELFILES))
-LOAD_PATH_OPT = -L ./init -L ./config -L ./util -L ./bootstrap
+LOAD_PATH_OPT = -L ./init -L ./config -L ./lib -L ./bootstrap
 PACKAGE_DIR := ~/.emacs.d/elpa
 
 .PHONY: build
