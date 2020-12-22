@@ -6,14 +6,16 @@
 ;;;; basic configuration
 
 ;; for eww and elfeed
-(setq shr-width 50
-      shr-use-colors nil
+(setq shr-use-colors nil
       ;; shr-max-image-proportion 0.4
       ;; use variable pitch font
       shr-use-fonts t
       ;; disable animation, it makes emacs slow
       shr-image-animate nil
       ;; shr-inhibit-images t
+
+      ;; `shr-width' will be set by major-mode/minor-mode specific configs,
+      ;; so it is not set here.
       )
 
 ;;;; slice big images

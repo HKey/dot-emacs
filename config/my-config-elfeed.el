@@ -136,6 +136,9 @@
   "Show entry"
   ;; ref: `elfeed-show-refresh--mail-style'
   (interactive)
+  ;; setup shr
+  (setq-local shr-width 50)
+
   (let* ((inhibit-read-only t)
          (title (elfeed-entry-title elfeed-show-entry))
          (link (elfeed-entry-link elfeed-show-entry))

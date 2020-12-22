@@ -52,12 +52,13 @@
 
 (define-key eww-mode-map (kbd "C") #'my-org-capture-eww)
 
-;;;; images
+;;;; shr
 
-(defun my-eww-disable-images ()
-  (setq-local shr-inhibit-images t))
+(defun my-eww-setup-shr ()
+  (setq-local shr-inhibit-images t
+              shr-width fill-column))
 
-(add-hook 'eww-mode-hook #'my-eww-disable-images)
+(add-hook 'eww-mode-hook #'my-eww-setup-shr)
 
 (provide 'my-config-eww)
 ;;; my-config-eww.el ends here
