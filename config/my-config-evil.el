@@ -184,7 +184,6 @@
 
 (my-with-package counsel)
 (my-with-package swiper)
-(my-with-package major-mode-hydra)
 
 (require 'my-init-my-commands)
 (require 'dired-x)
@@ -231,9 +230,6 @@
 
   ;; qw*: window commands
   "qw" evil-window-map
-
-  ;; qy*: hydra
-  "qym" #'major-mode-hydra
   )
 
 ;;;;; outline-minor-mode

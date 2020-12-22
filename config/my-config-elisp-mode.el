@@ -4,7 +4,6 @@
 (my-with-package paredit)
 (my-with-package lisp-extra-font-lock)
 (my-with-package comment-or-uncomment-sexp)
-(my-with-package major-mode-hydra)
 
 (require 'elisp-mode)
 (require 'paredit)
@@ -24,23 +23,6 @@
 
 ;; lisp-extra-font-lock
 (lisp-extra-font-lock-global-mode 1)
-
-;; major-mode-hydra
-(require 'hydra)   ; for byte compilation of `major-mode-hydra-define'
-(require 'major-mode-hydra)
-
-(major-mode-hydra-define emacs-lisp-mode nil
-  ("Eval"
-   (("ed" eval-defun)
-    ("eb" eval-buffer))
-   "REPL"
-   (("r" ielm))
-   "Package"
-   (("pf" package-install-file)
-    ("pb" package-install-from-buffer))
-   "Describe"
-   (("df" describe-function)
-    ("dv" describe-variable))))
 
 ;;;; linter
 

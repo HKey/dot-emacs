@@ -344,10 +344,6 @@
   (setq interprogram-cut-function #'my-xclip-cut
         interprogram-paste-function #'my-xclip-paste))
 
-;;; major-mode-hydra
-
-(my-with-package major-mode-hydra)
-
 ;;; company
 
 (require 'company)
