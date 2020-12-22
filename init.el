@@ -26,7 +26,7 @@
                 :wrappers '(el-init-require/lazy)))
 
 ;; load private configuration from "~/.emacs.d/private-conf"
-(let ((el-init-lazy-init-regexp "\\`my-config-private-\\(.+\\)\\'"))
+(let ((el-init-lazy-init-regexp "\\`my-private-config-\\(.+\\)\\'"))
   (el-init-load (expand-file-name "private-conf" user-emacs-directory)
                 :wrappers '(el-init-require/lazy)))
 
