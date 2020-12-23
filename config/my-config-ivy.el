@@ -55,7 +55,7 @@
 
 ;;;;; set re-builders
 
-(require 'my-init-my-commands)
+(require 'my-init-commands)
 
 (my-with-package swiper)
 

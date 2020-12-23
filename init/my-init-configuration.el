@@ -187,7 +187,7 @@
 ;;;; key binding
 
 (require 'my-util)
-(require 'my-init-my-commands)
+(require 'my-init-commands)
 
 (my-define-key global-map
   "C-h"   (kbd "DEL")

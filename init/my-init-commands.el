@@ -1,4 +1,4 @@
-;;; my-init-my-commands.el --- My utility commands   -*- lexical-binding: t; -*-
+;;; my-init-commands.el --- My utility commands   -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
 (my-with-package s)
@@ -301,5 +301,5 @@ SOURCE is a returned value of `my--memo-source'."
   (call-interactively #'my-convert-word-continuously-convert))
 
 
-(provide 'my-init-my-commands)
-;;; my-init-my-commands.el ends here
+(provide 'my-init-commands)
+;;; my-init-commands.el ends here

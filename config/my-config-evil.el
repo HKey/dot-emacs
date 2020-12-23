@@ -185,7 +185,7 @@
 (my-with-package counsel)
 (my-with-package swiper)
 
-(require 'my-init-my-commands)
+(require 'my-init-commands)
 (require 'dired-x)
 
 (defun my-kill-this-buffer ()
