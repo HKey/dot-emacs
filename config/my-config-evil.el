@@ -186,6 +186,7 @@
 (my-with-package swiper)
 
 (require 'my-init-commands)
+(require 'my-memo)
 (require 'dired-x)
 
 (my-define-key evil-normal-state-map

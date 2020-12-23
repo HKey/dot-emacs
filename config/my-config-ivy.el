@@ -56,6 +56,7 @@
 ;;;;; set re-builders
 
 (require 'my-init-commands)
+(require 'my-memo)
 
 (my-with-package swiper)
 

@@ -188,6 +188,7 @@
 
 (require 'my-util)
 (require 'my-init-commands)
+(require 'my-memo)
 
 (my-define-key global-map
   "C-h"   (kbd "DEL")
