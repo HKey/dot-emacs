@@ -188,11 +188,6 @@
 (require 'my-init-commands)
 (require 'dired-x)
 
-(defun my-kill-this-buffer ()
-  "Kill current buffer."
-  (interactive)
-  (kill-buffer (current-buffer)))
-
 (my-define-key evil-normal-state-map
   "q" nil
   "qq" #'evil-record-macro)

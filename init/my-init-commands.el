@@ -5,10 +5,18 @@
 (my-with-package f)
 (my-with-package dash)
 
+;;;; buffer
+
+(defun my-kill-this-buffer ()
+  "Kill current buffer."
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+;;;; gentoo
+
 (require 's)
 (require 'f)
 (require 'dash)
-
 
 (defun my-open-gentoo-ebuild (pkg)
   "Open ebuild file with equery."
@@ -18,6 +26,11 @@
        (if (f-exists-p it)
            (find-file it)
          (user-error "Package not found, %s" pkg))))
+
+;;;; xdg-open
+
+(require 's)
+(require 'dash)
 
 (defun my-xdg-open-file-with-fd ()
   (interactive)
