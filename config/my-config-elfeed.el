@@ -92,8 +92,9 @@
                 (-remove-item 'unread it)
                 (-map #'symbol-name it)
                 (s-join ":" it)
-                (s-wrap it ":" ":"))))
-    (format "%s  %s\n%s" title (or tags "") url)))
+                (s-wrap it ":" ":")
+                (concat "  " it))))
+    (format "%s%s\n%s" title (or tags "") url)))
 
 (defun my-org-capture-elfeed-search ()
   "Capture current entry of elfeed-search"
