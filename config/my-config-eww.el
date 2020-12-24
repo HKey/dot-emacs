@@ -4,6 +4,10 @@
 
 (require 'eww)
 
+;;;; search engine
+
+(setq eww-search-prefix "https://www.google.co.jp/search?q=")
+
 ;;;; key binding
 
 (require 'my-util)
