@@ -12,6 +12,9 @@
 (c-set-offset 'arglist-intro '+)
 
 ;;;; hooks
+
+(my-with-package flycheck)
+
 (defun my-c/c++-mode-hook ()
   ;; flycheck
   (flycheck-mode 1))
