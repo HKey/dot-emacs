@@ -1,8 +1,6 @@
 ;;; my-config-windmove.el --- windmove                  -*- lexical-binding: t; -*-
 
 (require 'my-bootstrap)
-(my-with-package windmove)
-
 (require 'windmove)
 
 ;; Split window if there is no split window.
