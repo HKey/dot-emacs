@@ -5,28 +5,28 @@
 
 ;;;; jedi-core
 
-;; NOTE: jedi needs to refer PYTHONUSERBASE environment variable if virtualenv
-;; is installed at the user local directory.
-;; So I should add PYTHONUSERBASE to `exec-path-from-shell-variables'.
+;; ;; NOTE: jedi needs to refer PYTHONUSERBASE environment variable if virtualenv
+;; ;; is installed at the user local directory.
+;; ;; So I should add PYTHONUSERBASE to `exec-path-from-shell-variables'.
 
-(my-with-package jedi-core)
+;; (my-with-package jedi-core)
 
-(require 'my-init-exec-path-from-shell)
-;; (require 'jedi-core)
+;; (require 'my-init-exec-path-from-shell)
+;; ;; (require 'jedi-core)
 
-;; (add-hook 'python-mode-hook #'jedi:setup)
+;; ;; (add-hook 'python-mode-hook #'jedi:setup)
 
-;;;; company
+;; ;;;; company
 
-(my-with-package company)
-(my-with-package company-jedi)
+;; (my-with-package company)
+;; (my-with-package company-jedi)
 
-(require 'company)
+;; (require 'company)
 
-(defun my-python-setup-company ()
-  (setq-local company-backends `(,#'company-jedi ,@company-backends)))
+;; (defun my-python-setup-company ()
+;;   (setq-local company-backends `(,#'company-jedi ,@company-backends)))
 
-(add-hook 'python-mode-hook #'my-python-setup-company)
+;; (add-hook 'python-mode-hook #'my-python-setup-company)
 
 ;;;; flycheck
 
