@@ -468,10 +468,6 @@
 ;;;; turn on minor mode
 (yas-global-mode 1)
 
-;;; svg-clock
-
-(my-with-package svg-clock)
-
 ;;; markdown-mode
 
 (my-with-package markdown-mode)
