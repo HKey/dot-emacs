@@ -5,7 +5,7 @@
 
 (require 'dash)
 
-(dash-enable-font-lock)
+(global-dash-fontify-mode 1)
 
 
 (provide 'my-config-dash)
