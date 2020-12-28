@@ -91,7 +91,6 @@
 
 (my-with-package undo-tree)
 (my-with-package mozc-temp)
-(my-with-package caseformat)
 (my-with-package avy)
 (my-with-package bm)
 (my-with-package expand-region)
@@ -122,9 +121,7 @@
   "C-a" nil
   ;; mozc-temp
   "M-n" #'mozc-temp-convert-dwim
-  "<muhenkan>" #'mozc-temp-convert-dwim
-  ;; caseformat
-  "M-l" #'caseformat-backward)
+  "<muhenkan>" #'mozc-temp-convert-dwim)
 
 (my-define-key evil-motion-state-map
   ;; page up, down
