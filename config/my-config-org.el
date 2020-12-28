@@ -31,12 +31,6 @@
  ;; use font-lock of language's major-mode
  org-src-fontify-natively t
 
- ;; refile
- ;; only files are targets, not trees
- org-refile-targets '((org-agenda-files :level . 0) (nil :level . 0))
- org-refile-use-outline-path 'file
- org-refile-use-cache t
-
  ;; open link in current window by `org-open-link'
  (cdr (assoc 'file org-link-frame-setup)) #'find-file
  )
