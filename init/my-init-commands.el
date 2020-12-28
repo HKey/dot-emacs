@@ -87,10 +87,14 @@
     (goto-char my-convert-word-continuously--start-position))
   (setq my-convert-word-continuously--start-position nil))
 
+(defvar my-convert-word-continuously--old-transient-show-popup nil)
+
 (transient-define-prefix my-convert-word-continuously-convert ()
   :transient-non-suffix
   (lambda ()
     (my-convert-word-continuously-finish-conversion)
+    (setq transient-show-popup
+          my-convert-word-continuously--old-transient-show-popup)
     (transient--do-exit))
   [["Word conversion"
     ("M-u" "uppercase" my-convert-word-continuously-upcase-backward)
@@ -102,6 +106,10 @@
   (let ((transient-display-buffer-action
          `(,#'display-buffer-in-side-window
            (side . right))))
+    (setq my-convert-word-continuously--old-transient-show-popup
+          transient-show-popup
+          transient-show-popup
+          nil)
     (transient-setup 'my-convert-word-continuously-convert)))
 
 (defun my-convert-word-continuously-upcase-backward ()
