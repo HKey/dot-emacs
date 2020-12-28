@@ -495,7 +495,9 @@
         #'scroll-up-line
         #'scroll-down-line
         #'scroll-up-command
-        #'scroll-down-command))
+        #'scroll-down-command
+        #'iflipb-next-buffer
+        #'iflipb-previous-buffer))
 
 (defun my-always-recenter--recenter ()
   (unless (or (minibufferp)
