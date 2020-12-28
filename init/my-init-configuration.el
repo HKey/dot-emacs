@@ -211,7 +211,8 @@
   "<f4>" #'my-transient-memo)
 
 (my-define-key isearch-mode-map
-  "C-h" (kbd "DEL"))
+  ;; Remapping "C-h" to "DEL" does not work (ref emacs' bug#20466).
+  "C-h" (lookup-key isearch-mode-map (kbd "DEL")))
 
 ;;; customize
 
