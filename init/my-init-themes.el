@@ -96,16 +96,15 @@
   ;;   ;; solarized-light-high-contrast
   ;;   (require 'my-config-solarized)
   ;;   (load-theme 'solarized-light-high-contrast t))
-  (progn
-    ;; solarized-light
-    (require 'my-config-solarized)
-    (load-theme 'solarized-light t))
+  ;; (progn
+  ;;   ;; solarized-light
+  ;;   (require 'my-config-solarized)
+  ;;   (load-theme 'solarized-light t))
   ;; (progn
   ;;   (load-theme 'gruvbox-light-medium t))
-  ;; (progn
-  ;;   (require 'my-config-doom-themes)
-  ;;   (load-theme 'doom-nova t))
-  )
+  (progn
+    (require 'my-config-doom-themes)
+    (load-theme 'doom-nova t)))
 
 
 (provide 'my-init-themes)
