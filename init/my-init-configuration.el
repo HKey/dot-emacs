@@ -494,6 +494,10 @@
 
 (my-global-always-recenter-mode 1)
 
+;;; `hl-line-mode'
+
+(global-hl-line-mode 1)
+
 
 (provide 'my-init-configuration)
 ;;; my-init-configuration.el ends here
