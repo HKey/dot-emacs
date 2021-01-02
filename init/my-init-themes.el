@@ -62,7 +62,10 @@
      (outline-5 :inherit outline-1)
      (outline-6 :inherit outline-1)
      (outline-7 :inherit outline-1)
-     (outline-8 :inherit outline-1))))
+     (outline-8 :inherit outline-1))
+    (doom-nova
+     ;; Same as `vertical-border'.
+     (hl-line :background "#4f5d65"))))
 
 (defun my-theme-override-face (face attributes)
   (let ((default
