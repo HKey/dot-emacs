@@ -87,30 +87,17 @@
     (goto-char my-convert-word-continuously--start-position))
   (setq my-convert-word-continuously--start-position nil))
 
-(defvar my-convert-word-continuously--old-transient-show-popup nil)
-
 (transient-define-prefix my-convert-word-continuously-convert ()
   :transient-non-suffix
   (lambda ()
     (my-convert-word-continuously-finish-conversion)
-    (setq transient-show-popup
-          my-convert-word-continuously--old-transient-show-popup)
     (transient--do-exit))
   [["Word conversion"
     ("M-u" "uppercase" my-convert-word-continuously-upcase-backward)
     ("M-l" "lowercase" my-convert-word-continuously-downcase-backward)
     ("M-c" "capitalize" my-convert-word-continuously-capitalize-backward)]]
   (interactive)
-  ;; Always show the popup at the right side to prevent changing
-  ;; visual position of the current line due to window height changing.
-  (let ((transient-display-buffer-action
-         `(,#'display-buffer-in-side-window
-           (side . right))))
-    (setq my-convert-word-continuously--old-transient-show-popup
-          transient-show-popup
-          transient-show-popup
-          nil)
-    (transient-setup 'my-convert-word-continuously-convert)))
+  (transient-setup 'my-convert-word-continuously-convert))
 
 (defun my-convert-word-continuously-upcase-backward ()
   (interactive)
@@ -135,6 +122,13 @@
   (capitalize-word -1)
   (backward-word 1)
   (call-interactively #'my-convert-word-continuously-convert))
+
+(require 'my-always-recenter)
+
+(cl-callf append my-always-recenter-ignore-commands
+  (list #'my-convert-word-continuously-upcase-backward
+        #'my-convert-word-continuously-downcase-backward
+        #'my-convert-word-continuously-capitalize-backward))
 
 
 (provide 'my-init-commands)
