@@ -19,6 +19,14 @@
 (when (> iflipb-format-buffers-height max-mini-window-height)
   (warn "`max-mini-window-height' is smaller than `iflipb-format-buffers-height'"))
 
+;;; my-always-recenter
+
+(require 'my-always-recenter)
+
+(cl-callf append my-always-recenter-ignore-commands
+  (list #'iflipb-next-buffer
+        #'iflipb-previous-buffer))
+
 
 (provide 'my-config-iflipb)
 ;;; my-config-iflipb.el ends here
