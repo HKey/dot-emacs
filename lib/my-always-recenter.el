@@ -20,16 +20,34 @@
               (not (eq (window-buffer) (current-buffer))))
     (recenter)))
 
+(defvar my-always-recenter--last-minibuffer-height nil)
+
+(defun my-always-recenter--window-conf-change ()
+  ;; Recenter when minibuffer height changed.  Mainly this is for
+  ;; handling disappearing of iflipb's vertical buffer list.
+  (let ((current-minibuffer-height
+         (window-height (minibuffer-window))))
+    (when (and my-always-recenter--last-minibuffer-height
+               (/= my-always-recenter--last-minibuffer-height
+                   current-minibuffer-height))
+      (my-always-recenter--recenter))
+    (setq my-always-recenter--last-minibuffer-height
+          current-minibuffer-height)))
+
 (define-minor-mode my-always-recenter-mode
   "Always recentering mode."
   :init-value nil
-  (let ((hooks '(post-command-hook
-                 window-configuration-change-hook)))
+  (let ((hook-fns
+         `((post-command-hook . ,#'my-always-recenter--recenter)
+           (window-configuration-change-hook
+            . ,#'my-always-recenter--window-conf-change))))
     (if my-always-recenter-mode
-        (--each hooks
-          (add-hook it #'my-always-recenter--recenter 100 t))
-      (--each hooks
-        (remove-hook it #'my-always-recenter--recenter t)))))
+        (--each hook-fns
+          (-let (((hook . fn) it))
+            (add-hook hook fn 100 t)))
+      (--each hook-fns
+        (-let (((hook . fn) it))
+          (remove-hook hook fn t))))))
 
 (define-globalized-minor-mode my-global-always-recenter-mode
   my-always-recenter-mode (lambda () (my-always-recenter-mode 1))
