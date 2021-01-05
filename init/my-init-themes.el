@@ -64,8 +64,8 @@
      (outline-7 :inherit outline-1)
      (outline-8 :inherit outline-1))
     (doom-nova
-     ;; Same as `vertical-border'.
-     (hl-line :background "#4f5d65"))))
+     ;; Darker than default background color.
+     (hl-line :background "#2f3f48"))))
 
 (defun my-theme-override-face (face attributes)
   (let ((default
