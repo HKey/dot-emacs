@@ -80,7 +80,7 @@
 
 (defun my-elfeed-ogp--new-entry-parse-hook-fn (_type _xml entry)
   (my-elfeed-ogp-load-as-needed)
-  (when (time-less-p (time-subtract (current-time) (* 60 60 24 30))
+  (when (time-less-p (time-subtract (current-time) (* 60 60 24 2))
                      (elfeed-entry-date entry))
     (my-elfeed-ogp-push-link (elfeed-entry-link entry))))
 
