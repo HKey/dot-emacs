@@ -10,7 +10,7 @@
 (require 'org)
 (require 'org-id)
 
-(defun my--memo-source ()
+(defun my-memo--source ()
   (--> (list "ag" "--nocolor" "--nogroup" "--file-search-regex" "\\.org$"
              "^\\* " (my-path-org-memo))
        (-map #'shell-quote-argument it)
@@ -24,13 +24,13 @@
         it)
        (-non-nil it)))
 
-(defun my--memo-file-and-line (str)
+(defun my-memo--file-and-line (str)
   (cons (get-text-property 0 'file str)
         (get-text-property 0 'line str)))
 
-(defun my--memo-open-action (str)
+(defun my-memo--open-action (str)
   "Open memo indicated by STR from `completing-read'."
-  (-let (((file . line) (my--memo-file-and-line str))
+  (-let (((file . line) (my-memo--file-and-line str))
          (id (get-text-property 0 'id str)))
     (cond ((and file line)
            ;; backward link (file)
@@ -40,16 +40,16 @@
            (find-file (car (org-id-find id))))
           (t (error "Cannot open %s" str)))))
 
-(defun my-find-memo ()
+(defun my-memo-find ()
   (interactive)
-  (--> (completing-read "title: " (my--memo-source) nil t)
-       (my--memo-open-action it)))
+  (--> (completing-read "title: " (my-memo--source) nil t)
+       (my-memo--open-action it)))
 
-(defun my-insert-memo ()
+(defun my-memo-insert ()
   (declare (interactive-only t))
   (interactive)
-  (--> (completing-read "title: " (my--memo-source) nil t)
-       (-let (((file . line) (my--memo-file-and-line it)))
+  (--> (completing-read "title: " (my-memo--source) nil t)
+       (-let (((file . line) (my-memo--file-and-line it)))
          (save-window-excursion
            (with-current-buffer (find-file-noselect file)
              (save-excursion
@@ -61,7 +61,7 @@
                        (s-replace-regexp " +:\\(:?[^ :]+\\)+: *\\'" "" it))))))
        (insert it)))
 
-(defun my--memo-search (id)
+(defun my-memo--search (id)
   (--> (list "ag" "--nocolor" "--nogroup" "--file-search-regex" "\\.org$"
              "--literal"
              (format "[id:%s]" id)
@@ -78,14 +78,14 @@
         it)
        (-non-nil it)))
 
-(defun my--memo-make-backlink-candidates (backlinks source)
+(defun my-memo--make-backlink-candidates (backlinks source)
   "Make backlink candidates for `completing-read'.
-BACKLINKS is a returned value of `my--memo-search'.
-SOURCE is a returned value of `my--memo-source'."
+BACKLINKS is a returned value of `my-memo--search'.
+SOURCE is a returned value of `my-memo--source'."
   (let ((title-table (make-hash-table :test #'equal)))
     ;; This depends on 1 memo per file.
     (--each source
-      (-let (((file . _) (my--memo-file-and-line it)))
+      (-let (((file . _) (my-memo--file-and-line it)))
         (puthash file it title-table)))
     (--> backlinks
          (--map
@@ -113,7 +113,7 @@ SOURCE is a returned value of `my--memo-source'."
   (interactive (list (buffer-file-name)))
   (let (ids
         forward-links
-        (memos (my--memo-source)))
+        (memos (my-memo--source)))
     (with-current-buffer (find-file-noselect file)
       (save-excursion
         (save-restriction
@@ -125,19 +125,19 @@ SOURCE is a returned value of `my--memo-source'."
           (setq ids (nreverse ids)
                 forward-links (my--memo-search-links)))))
     (unless memos (error "There is no memo"))
-    (--> (cl-loop for id in ids append (my--memo-search id))
-         (my--memo-make-backlink-candidates it memos)
+    (--> (cl-loop for id in ids append (my-memo--search id))
+         (my-memo--make-backlink-candidates it memos)
          (append it forward-links)
          (-uniq it)
          (prog1 it (unless it (error "Link not found")))
          (completing-read "link: " it nil t)
-         (my--memo-open-action it))))
+         (my-memo--open-action it))))
 
 (defun my-memo-related-links-to ()
   (declare (interactive-only t))
   (interactive)
-  (--> (completing-read "title: " (my--memo-source) nil t)
-       (-let (((file . _) (my--memo-file-and-line it)))
+  (--> (completing-read "title: " (my-memo--source) nil t)
+       (-let (((file . _) (my-memo--file-and-line it)))
          (my-memo-related-links-to-this-file file))))
 
 (my-with-package ag)
@@ -172,14 +172,14 @@ SOURCE is a returned value of `my--memo-source'."
 (my-with-package transient)
 (require 'transient)
 
-(transient-define-prefix my-transient-memo ()
+(transient-define-prefix my-memo-transient ()
   :transient-non-suffix 'transient--do-exit
   [["Memo"
     ("c" "create" my-memo-capture)
-    ("f" "find" my-find-memo)
+    ("f" "find" my-memo-find)
     ("r" "find related" my-memo-related-links-to)
     ("R" "related to this file" my-memo-related-links-to-this-file)
-    ("i" "insert" my-insert-memo)
+    ("i" "insert" my-memo-insert)
     ("/" "search" my-memo-search)]]
   ["Transient"
    [("q" "quit" transient-quit-one)]

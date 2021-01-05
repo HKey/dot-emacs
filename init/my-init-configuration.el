@@ -208,7 +208,7 @@
   "M-l" #'my-convert-word-continuously-downcase-backward
 
   ;; memo
-  "<f4>" #'my-transient-memo)
+  "<f4>" #'my-memo-transient)
 
 (my-define-key isearch-mode-map
   ;; Remapping "C-h" to "DEL" does not work (ref emacs' bug#20466).

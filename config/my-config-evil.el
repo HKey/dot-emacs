@@ -204,7 +204,7 @@
   "qmq"      #'my-kill-this-buffer
   "qm SPC q" #'my-delete-buffer-file
   "qms"      #'swiper
-  "qmw"      #'my-find-memo
+  "qmw"      #'my-memo-find
   "qmx"      #'async-shell-command
 
   ;; qn*: narrowing commands
