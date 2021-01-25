@@ -152,9 +152,22 @@
 (defvar my-font-symbol '("Noto Color Emoji"))
 (defvar my-font-rescale-table
   '(("mononoki"
-     ("Migu 2M" . 1.125)
-     ("07YasashisaGothic" . 1.0625)
-     ("セプテンバーＭ-等幅教漢" . 1.0625))))
+     ("Migu 2M"
+      (96 . 1.125)
+      (128 . 1.1500)
+      (144 . 1.1000))
+     ("07YasashisaGothic" (96 . 1.0625))
+     ("セプテンバーＭ-等幅教漢" (96 . 1.0625)))))
+
+(defun my-font--get-dpi ()
+  (when (and (display-graphic-p)
+             (executable-find "xrdb"))
+    (save-match-data
+      (-some--> (shell-command-to-string "xrdb -query -all")
+        (when (string-match (rx bol "Xft.dpi:" (+ space) (group (+ num)) eol)
+                            it)
+          (match-string 1 it))
+        (string-to-number it)))))
 
 (when (display-graphic-p)
   (let ((fixed-pitch (-first #'font-info my-font-fixed-pitch))
@@ -182,7 +195,14 @@
       (--each '(japanese-jisx0208 japanese-jisx0212 katakana-jisx0201)
         (set-fontset-font "fontset-default" it (font-spec :family japanese))))
     (setq face-font-rescale-alist
-          (alist-get fixed-pitch my-font-rescale-table nil nil #'equal))))
+          (let ((scale-table
+                 (alist-get fixed-pitch my-font-rescale-table nil nil #'equal))
+                (dpi (or (my-font--get-dpi) 96)))
+            (--map (let* ((scales (cdr it))
+                          (default (alist-get 96 scales nil nil #'=))
+                          (scale (alist-get dpi scales default nil #'=)))
+                     (cons (car it) scale))
+                   scale-table)))))
 
 ;;;; key binding
 
