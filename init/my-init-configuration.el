@@ -17,7 +17,8 @@
         (vertical-scroll-bars)
         (tool-bar-lines . 0)
         (menu-bar-lines . 0)
-        (undecorated . t)))
+        ;; (undecorated . t)
+        ))
 
 ;;;; supress same file warnings like "file-a and file-b are the same file"
 (setq find-file-suppress-same-file-warnings t)
