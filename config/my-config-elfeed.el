@@ -31,7 +31,7 @@
   ;; ref: `elfeed-show-refresh--mail-style'
   (interactive)
   ;; setup shr
-  (setq-local shr-width 50)
+  (setq-local shr-width fill-column)
 
   (let* ((inhibit-read-only t)
          (title (elfeed-entry-title elfeed-show-entry))
