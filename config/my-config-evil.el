@@ -30,8 +30,7 @@
                        elfeed-search-mode
                        bm-show-mode
                        flycheck-error-list-mode
-                       ag-mode
-                       undo-tree-visualize-mode))))
+                       ag-mode))))
 
 ;; cursor
 (setq evil-insert-state-cursor '(hbar . 4)
@@ -89,7 +88,6 @@
 
 ;;;; key binding
 
-(my-with-package undo-tree)
 (my-with-package mozc-temp)
 (my-with-package avy)
 (my-with-package bm)
@@ -98,7 +96,6 @@
 (require 'bm)
 (require 'expand-region)
 (require 'winner)
-(require 'undo-tree)
 
 (my-define-key evil-emacs-state-map
   ;; do not override C-z
@@ -141,8 +138,7 @@
   "f" #'avy-goto-line)
 
 (my-define-key evil-normal-state-map
-  ;; undo-tree
-  "U" #'undo-tree-redo
+  "U" #'evil-redo
   ;; bm
   "m" nil
   "mm" #'bm-toggle

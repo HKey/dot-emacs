@@ -411,18 +411,6 @@
 
 (setq default-input-method "japanese-mozc")
 
-;;; undo-tree
-
-(my-with-package undo-tree)
-(require 'undo-tree)
-
-(my-define-key global-map
-  "C-z"   #'undo-tree-undo
-  "C-S-z" #'undo-tree-redo
-  "M-z"   #'undo-tree-visualize)
-
-(global-undo-tree-mode 1)
-
 ;;; evil
 
 ;; Do not load evil before my-init-evil

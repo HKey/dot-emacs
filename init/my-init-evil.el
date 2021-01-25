@@ -19,8 +19,10 @@
  '(evil-want-C-w-in-emacs-state t))
 
 ;; undo system
+(eval-when-compile
+  (cl-assert (fboundp 'undo-redo)))
 (custom-set-variables
- '(evil-undo-system 'undo-tree))
+ '(evil-undo-system 'undo-redo))
 
 ;;;; enable minor-mode
 (require 'evil)
