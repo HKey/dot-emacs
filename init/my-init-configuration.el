@@ -402,8 +402,6 @@
 (my-with-package mozc)
 
 (my-define-key global-map
-  ;; disable `toggle-input-method'
-  "C-\\" nil
   ;; prevent calling unwanted commands by mistyping
   "M-m" nil
   "C-M-m" nil)
