@@ -241,7 +241,8 @@
     ("p" "previous heading" outline-previous-visible-heading)
     ("f" "forward same level" outline-forward-same-level)
     ("b" "backward same level" outline-backward-same-level)
-    ("u" "parent" outline-up-heading)]
+    ("u" "parent" outline-up-heading)
+    ("g" "heading" counsel-outline :transient nil)]
    ["Hide/show"
     ("a" "show all" outline-show-all)
     ("o" "hide other" outline-hide-other)
