@@ -5,7 +5,7 @@
 
 (require 'mozc-temp)
 
-(setq mozc-temp-auto-conversion t)
+(setq mozc-temp-auto-conversion nil)
 
 
 (provide 'my-config-mozc-temp)
