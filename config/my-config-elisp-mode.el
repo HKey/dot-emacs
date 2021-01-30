@@ -22,7 +22,6 @@
 ;;;; linter
 
 (my-with-package package-lint)
-(my-with-package relint)
 
 
 (provide 'my-config-elisp-mode)
