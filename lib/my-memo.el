@@ -13,16 +13,24 @@
 (defun my-memo--source ()
   (--> (list "ag" "--nocolor" "--nogroup" "--file-search-regex" "\\.org$"
              "^\\* " (my-path-org-memo))
-       (-map #'shell-quote-argument it)
-       (s-join " " it)
-       (shell-command-to-string it)
-       (s-split "\n" it)
-       (--map
-        (-when-let ((_ file line title)
-                    (s-match "\\`\\([^:]*\\):\\([0-9]+\\):\\* \\(.*\\)\\'" it))
-          (propertize title 'file file 'line (string-to-number line)))
-        it)
-       (-non-nil it)))
+    (-map #'shell-quote-argument it)
+    (s-join " " it)
+    (shell-command-to-string it)
+    (s-split "\n" it)
+    (--map
+     (-when-let* (((_ file line raw-title)
+                   (s-match "\\`\\([^:]*\\):\\([0-9]+\\):\\* \\(.*\\)\\'" it))
+                  (title
+                   (s-replace-regexp
+                    (rx "["
+                        (? "[" (+ (not (any "[]"))) "]")
+                        "[" (group (+ (not (any "[]")))) "]"
+                        "]")
+                    "\\1"
+                    raw-title)))
+       (propertize title 'file file 'line (string-to-number line)))
+     it)
+    (-non-nil it)))
 
 (defun my-memo--file-and-line (str)
   (cons (get-text-property 0 'file str)
