@@ -21,7 +21,7 @@
 
 (my-define-key ivy-minibuffer-map
   "M-m" #'ivy-immediate-done ; (lookup-key ivy-minibuffer-map (kbd "C-M-j"))
-  "C-k" #'delete-minibuffer-contents)
+  )
 
 (my-define-key ivy-switch-buffer-map
   "C-k" nil)
