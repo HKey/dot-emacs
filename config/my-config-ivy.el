@@ -28,7 +28,8 @@
 
 ;;;; miscs
 (setq ivy-extra-directories nil
-      ivy-truncate-lines nil
+      ;; Prevent minibuffer growing when some candidates were wrapped.
+      ivy-truncate-lines t
       ;; stop starting completion with "^" with `org-refile', `woman'
       ;; and more
       ivy-initial-inputs-alist nil
