@@ -67,6 +67,10 @@
 ;; (setq inhibit-startup-screen t)
 ;; (setq inhibit-startup-buffer-menu t)
 
+;;;; message log
+
+(setq message-log-max t)
+
 ;;;; bell
 ;; - Emacs Lisp TIPS
 ;;   https://sci.nao.ac.jp/MEMBER/zenitani/elisp-j.html#bell
