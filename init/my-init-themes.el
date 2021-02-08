@@ -91,18 +91,18 @@
 ;;;; enable theme
 
 (when (display-graphic-p)
-  ;; (progn
-  ;;   ;; spacemacs-light
-  ;;   (require 'my-config-spacemacs-common)
-  ;;   (load-theme 'spacemacs-light t))
+  (progn
+    ;; spacemacs-light
+    (require 'my-config-spacemacs-common)
+    (load-theme 'spacemacs-light t))
   ;; (progn
   ;;   ;; solarized-light-high-contrast
   ;;   (require 'my-config-solarized)
   ;;   (load-theme 'solarized-light-high-contrast t))
-  (progn
-    ;; solarized-light
-    (require 'my-config-solarized)
-    (load-theme 'solarized-light t))
+  ;; (progn
+  ;;   ;; solarized-light
+  ;;   (require 'my-config-solarized)
+  ;;   (load-theme 'solarized-light t))
   ;; (progn
   ;;   (load-theme 'gruvbox-light-medium t))
   ;; (progn
