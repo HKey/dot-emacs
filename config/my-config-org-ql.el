@@ -15,7 +15,11 @@
 ;;; my commands
 
 (my-with-package transient)
+(my-with-package dash)
+(my-with-package f)
 (require 'transient)
+(require 'dash)
+(require 'f)
 
 (defconst my-org-ql--query-next-actions
   '(and (todo)
@@ -48,6 +52,17 @@
   (interactive)
   (org-ql-view-recent-items :num-days 3 :files (current-buffer)))
 
+(defun my-org-ql-search-directory (query directory)
+  "Search org files in DIRECTORY by QUERY with `org-ql-search'."
+  (interactive
+   (list (read-string "Query: ")
+         (or dired-directory
+             (-some--> (buffer-file-name)
+               (file-name-directory it)))))
+  (--> directory
+    (f-files it (lambda (x) (s-match (rx ".org" eos) x)) t)
+    (org-ql-search it query)))
+
 (transient-define-prefix my-org-ql-transient ()
   [["Query for this buffer"
     ("r" "recent items" my-org-ql-recent-items)
@@ -56,6 +71,8 @@
    ["Sparse tree for this buffer"
     ("sn" "next actions sparse tree" my-org-ql-next-actions-sparse-tree)
     ("sq" "show all (exit sparse tree)" org-show-all)]]
+  [["Other"
+    ("d" "search current directory" my-org-ql-search-directory)]]
   ["Transient"
    [("q" "quit" transient-quit-one)]
    [("<escape>" "quit" transient-quit-one)]])
