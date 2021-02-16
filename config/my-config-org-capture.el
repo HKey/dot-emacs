@@ -16,16 +16,6 @@
         ("c" "Inbox from clipboard" entry
          (file+datetree ,(lambda () (my-path-org-agenda "inbox.org")))
          (file ,(my-path-org-capture-templates "inbox-clipboard.org"))
-         :empty-lines 1)
-        ("d" "Datetree in this buffer" entry
-         (file+datetree
-          ,(lambda ()
-             (unless (eq major-mode 'org-mode)
-               (user-error "This capturing can be called on an org-mode buffer"))
-             (unless (buffer-file-name)
-               (user-error "This capturing can be called on a file buffer"))
-             (buffer-file-name)))
-         (file ,(my-path-org-capture-templates "basic.org"))
          :empty-lines 1)))
 
 
