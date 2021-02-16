@@ -157,6 +157,29 @@ CMD is a movig command."
           (outline-up-heading 1 t)
           (funcall touch))))))
 
+;;;; sort by first url
+
+(defun my-org-sort-entries-by-first-url ()
+  "Sort org entries by first URL."
+  (declare (interactive-only t))
+  (interactive)
+  (let ((get-first-url
+         (lambda ()
+           (save-excursion
+             (save-restriction
+               (widen)
+               (save-match-data
+                 (search-forward-regexp
+                  (rx bow
+                      (group "http" (? "s") "://" (+ (not (any "[]()<> \n\t")))))
+                  (save-excursion (outline-next-heading) (point))
+                  t)
+                 (or (match-string 1) "")))))))
+    (save-excursion
+      (org-sort-entries nil ?f get-first-url #'string<)))
+  (save-excursion
+    (org-show-all)))
+
 ;;;; company
 
 (my-with-package company)
