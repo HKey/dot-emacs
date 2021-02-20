@@ -177,6 +177,7 @@
 
 (my-with-package counsel)
 (my-with-package swiper)
+(my-with-package magit)
 
 (require 'my-init-commands)
 (require 'my-memo)
