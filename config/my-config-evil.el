@@ -198,6 +198,7 @@
   "qmh"      #'counsel-recentf
   "qmi"      #'counsel-imenu
   "qml"      #'align-regexp
+  "qmo"      #'counsel-outline
   "qmq"      #'my-kill-this-buffer
   "qm SPC q" #'my-delete-buffer-file
   "qms"      #'swiper
