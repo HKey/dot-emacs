@@ -510,6 +510,43 @@
 
 (global-hl-line-mode 1)
 
+;;; my-notify
+
+(defconst my-notify--notify-send "notify-send")
+
+(defun my-notify (summary &optional description)
+  "Notify SUMMARY and DESCRIPTION."
+  (unless (stringp summary)
+    (error "SUMMARY must be a string"))
+  (unless (or (null description) (stringp description))
+    (error "DESCRIPTION must be a string or nil"))
+  (cond ((executable-find my-notify--notify-send)
+         (apply #'start-process
+                "my-notify"
+                nil
+                my-notify--notify-send
+                "--icon"
+                "emacs"
+                (-non-nil (list summary description))))
+        (t
+         (message "%s\n%s" summary (or description "")))))
+
+(defun my-notify-buffer-saving ()
+  (my-notify (buffer-name (current-buffer)) "バッファを保存しました。"))
+
+(defun my-notify-emacs-startup ()
+  (my-notify "Emacsを起動しました"
+             (format "%.3f秒掛かりました。"
+                     (float-time (time-subtract after-init-time
+                                                before-init-time)))))
+
+(defun my-notify-emacs-shutdown ()
+  (my-notify "Emacsを終了します" (emacs-uptime)))
+
+(add-hook 'after-save-hook #'my-notify-buffer-saving)
+(add-hook 'after-init-hook #'my-notify-emacs-startup)
+(add-hook 'kill-emacs-hook #'my-notify-emacs-shutdown)
+
 
 (provide 'my-init-configuration)
 ;;; my-init-configuration.el ends here
