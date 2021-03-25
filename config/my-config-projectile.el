@@ -5,8 +5,53 @@
 
 (require 'projectile)
 
+;;;; `projectile-completion-system'
+
 ;; use default to use ivy instead of ido
 (setq projectile-completion-system 'default)
+
+;;;; transient
+
+(my-with-package transient)
+(my-with-package magit)
+
+(require 'transient)
+
+(defun my-projectile-switch-project-with-magit (project)
+  (interactive
+   (list (completing-read
+          "Project: "
+          projectile-known-projects
+          nil t)))
+  (magit-status project))
+
+(transient-define-prefix my-transient-projectile-mode ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-exit
+  [["Buffer"
+    ("b" "switch to buffer" projectile-switch-to-buffer :transient nil)
+    ("I" "ibuffer" projectile-ibuffer :transient nil)]
+   ["File"
+    ("f" "find file" projectile-find-file :transient nil)
+    ("d" "dired" projectile-dired :transient nil)
+    ("r" "recentf" projectile-recentf :transient nil)]
+   ["Project"
+    ("p" "switch project" projectile-switch-project :transient nil)
+    ("m" "switch and magit" my-projectile-switch-project-with-magit
+     :transient nil)]
+   ["Search"
+    ("/" "ag"  projectile-ag :transient nil)]]
+  ["Shell"
+   ("x" "async command in root" projectile-run-async-shell-command-in-root
+    :transient nil)
+   ("s" "run shell" projectile-run-shell :transient nil)]
+  ["Transient"
+   [("q" "quit" transient-quit-one)]
+   [("<escape>" "quit" transient-quit-one)]])
+
+;;;; `projectile-switch-project-action'
+
+(setq projectile-switch-project-action #'my-transient-projectile-mode)
 
 
 (provide 'my-config-projectile)
