@@ -317,6 +317,7 @@
 ;;; kill-ring
 
 (cl-callf max kill-ring-max 1000)
+(setq kill-do-not-save-duplicates t)
 
 ;;; clipboard for emacs --no-window-system
 
