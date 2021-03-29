@@ -314,6 +314,10 @@
 
 (require 'generic-x)
 
+;;; kill-ring
+
+(cl-callf max kill-ring-max 1000)
+
 ;;; clipboard for emacs --no-window-system
 
 ;; - Emacs - ArchWiki
