@@ -43,7 +43,16 @@
 
 ;;;; `projectile-switch-project-action'
 
-(setq projectile-switch-project-action #'my-transient-projectile-mode)
+(defun my--transient-projectile-mode ()
+  "Workaround for changing current buffer by transient."
+  ;; When a command called via transient, the current buffer may be
+  ;; the buffer when transient called not the emacs lisp context's
+  ;; one.  So this workaround changes the current window's buffer to
+  ;; the target project directory then call the command.
+  (with-current-buffer (find-file default-directory)
+    (call-interactively #'my-transient-projectile-mode)))
+
+(setq projectile-switch-project-action #'my--transient-projectile-mode)
 
 
 (provide 'my-config-projectile)
