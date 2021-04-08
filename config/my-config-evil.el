@@ -221,6 +221,9 @@
 
   ;; qw*: window commands
   "qw" evil-window-map
+
+  ;; emacs state
+  "qz" #'evil-emacs-state
   )
 
 ;;;;; outline-minor-mode
