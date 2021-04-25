@@ -89,7 +89,6 @@
 ;;;; key binding
 
 (my-with-package mozc-temp)
-(my-with-package avy)
 (my-with-package bm)
 (my-with-package expand-region)
 
@@ -131,11 +130,7 @@
   "j" #'evil-next-visual-line
   "k" #'evil-previous-visual-line
   "gj" #'evil-next-line
-  "gk" #'evil-previous-line
-  ;; avy
-  "t" #'avy-goto-word-0
-  "T" #'avy-goto-char
-  "f" #'avy-goto-line)
+  "gk" #'evil-previous-line)
 
 (my-define-key evil-normal-state-map
   "U" #'evil-redo
