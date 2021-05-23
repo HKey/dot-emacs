@@ -176,40 +176,54 @@
           (match-string 1 it))
         (string-to-number it)))))
 
+(defun my-font--set-font (height)
+  (when (display-graphic-p)
+    (let ((fixed-pitch (-first #'font-info my-font-fixed-pitch))
+          (variable-pitch (-first #'font-info my-font-variable-pitch))
+          (japanese (-first #'font-info my-font-japanese))
+          (symbol (-first #'font-info my-font-symbol)))
+      (when fixed-pitch
+        (set-face-attribute 'default nil
+                            :family fixed-pitch
+                            :height height
+                            :weight 'normal)
+        (set-face-attribute 'fixed-pitch nil
+                            :family fixed-pitch
+                            :height 'unspecified))
+      (when variable-pitch
+        (set-face-attribute 'variable-pitch nil
+                            :family variable-pitch
+                            :height 'unspecified))
+      (when symbol
+        (set-fontset-font "fontset-default"
+                          'unicode
+                          (font-spec :family symbol)
+                          nil 'append))
+      (when japanese
+        (--each '(japanese-jisx0208 japanese-jisx0212 katakana-jisx0201)
+          (set-fontset-font "fontset-default" it (font-spec :family japanese))))
+      (setq face-font-rescale-alist
+            (let ((scale-table
+                   (alist-get fixed-pitch my-font-rescale-table nil nil #'equal))
+                  (dpi (or (my-font--get-dpi) 96)))
+              (--map (let* ((scales (cdr it))
+                            (default (alist-get 96 scales nil nil #'=))
+                            (scale (alist-get dpi scales default nil #'=)))
+                       (cons (car it) scale))
+                     scale-table))))))
+
+(defun my-font-set-height (height)
+  (interactive
+   (list
+    (string-to-number
+     (read-string (format "height (default: %s): " my-font-height)
+                  nil
+                  nil
+                  my-font-height))))
+  (my-font--set-font height))
+
 (when (display-graphic-p)
-  (let ((fixed-pitch (-first #'font-info my-font-fixed-pitch))
-        (variable-pitch (-first #'font-info my-font-variable-pitch))
-        (japanese (-first #'font-info my-font-japanese))
-        (symbol (-first #'font-info my-font-symbol)))
-    (when fixed-pitch
-      (set-face-attribute 'default nil
-                          :family fixed-pitch
-                          :height my-font-height
-                          :weight 'normal)
-      (set-face-attribute 'fixed-pitch nil
-                          :family fixed-pitch
-                          :height 'unspecified))
-    (when variable-pitch
-      (set-face-attribute 'variable-pitch nil
-                          :family variable-pitch
-                          :height 'unspecified))
-    (when symbol
-      (set-fontset-font "fontset-default"
-                        'unicode
-                        (font-spec :family symbol)
-                        nil 'append))
-    (when japanese
-      (--each '(japanese-jisx0208 japanese-jisx0212 katakana-jisx0201)
-        (set-fontset-font "fontset-default" it (font-spec :family japanese))))
-    (setq face-font-rescale-alist
-          (let ((scale-table
-                 (alist-get fixed-pitch my-font-rescale-table nil nil #'equal))
-                (dpi (or (my-font--get-dpi) 96)))
-            (--map (let* ((scales (cdr it))
-                          (default (alist-get 96 scales nil nil #'=))
-                          (scale (alist-get dpi scales default nil #'=)))
-                     (cons (car it) scale))
-                   scale-table)))))
+  (my-font--set-font my-font-height))
 
 ;;;; key binding
 
