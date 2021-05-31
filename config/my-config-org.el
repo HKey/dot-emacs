@@ -33,6 +33,9 @@
 
  ;; open link in current window by `org-open-link'
  (cdr (assoc 'file org-link-frame-setup)) #'find-file
+
+ ;; do not bookmark when capturing and refiling
+ org-bookmark-names-plist nil
  )
 
 ;;;; key binding
