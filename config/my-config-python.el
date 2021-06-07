@@ -41,6 +41,10 @@
 
 (add-hook 'python-mode-hook #'my-python-setup-flycheck)
 
+;;; electric-pair-mode
+
+(add-hook 'python-mode-hook #'electric-pair-local-mode)
+
 
 (provide 'my-config-python)
 ;;; my-config-python.el ends here
