@@ -3,7 +3,7 @@
 (require 'my-bootstrap)
 (require 'python)
 
-;;;; jedi-core
+;;; jedi-core
 
 ;; ;; NOTE: jedi needs to refer PYTHONUSERBASE environment variable if virtualenv
 ;; ;; is installed at the user local directory.
@@ -28,7 +28,7 @@
 
 ;; (add-hook 'python-mode-hook #'my-python-setup-company)
 
-;;;; flycheck
+;;; flycheck
 
 (my-with-package flycheck)
 (require 'flycheck)
