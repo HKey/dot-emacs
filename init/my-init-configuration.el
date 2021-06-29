@@ -148,8 +148,8 @@
 (my-with-package dash)
 (require 'dash)
 
-(defvar my-font-height 120)
-(defvar my-font-fixed-pitch '("mononoki" "ubuntu mono"))
+(defvar my-font-height 135)
+(defvar my-font-fixed-pitch '("ubuntu mono" "mononoki"))
 (defvar my-font-variable-pitch '("MigMix 2P"))
 (defvar my-font-japanese '("Migu 2M"
                            "07YasashisaGothic"
